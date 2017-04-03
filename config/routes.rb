@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   get 'static_pages/about'
-
   get 'static_pages/home'
   get 'static_pages/help'
+  get 'static_pages/search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'static_pages#search'
   
   #devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
