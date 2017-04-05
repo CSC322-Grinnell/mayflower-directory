@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Mayflower Diretory", '#', id: "logo" %>
+    <%= link_to "Mayflower Diretory", '/static_pages/home', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   '/static_pages/home' %></li>
@@ -11,7 +11,7 @@
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <li><%= link_to "About",   '/static_pages/about' %></li>
-        <li><%= link_to "Log out", '/users/sign_out', :method => :delete  %></li>
+        <li><%= link_to "Log out", '/auth/logout', :method => :delete  %></li>
       </ul>
     </nav>
   </div>

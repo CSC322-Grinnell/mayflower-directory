@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -23,9 +23,12 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
+  def configure_sign_in_params
+  end
+  
   def create
-    super do |resource|
-      BackgroundWorker.trigger(resource)
-    end
+    # super do |resource|
+    #  BackgroundWorker.trigger(resource)
+    # end
   end
 end
