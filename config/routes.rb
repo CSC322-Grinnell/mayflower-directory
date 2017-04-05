@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
   
-  #devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  #devise_for :users, path: 'users'
+  #path_names :{ sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
-  #after_sign_in_path_for 'application#yourein'
+  devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+
+  #after_sign_in_path_for 'static_pages/home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -63,11 +66,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-   Rails.application.routes.draw do
-  get 'static_pages/about'
+  # Rails.application.routes.draw do
+  #get 'static_pages/about'
 
-      devise_for :users, controllers: {
-        sessions: 'users/sessions'
-      }
-    end
+   ##    sessions: 'users/sessions'
+     # }
+    #end
 end
