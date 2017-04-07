@@ -1,0 +1,2 @@
+module FrizbeesHelper
+end

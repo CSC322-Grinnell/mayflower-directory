@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'frizbees/new'
+
   get 'static_pages/about'
   get 'static_pages/home'
   get 'static_pages/help'
@@ -67,6 +69,8 @@ Rails.application.routes.draw do
   #   end
   
   # Rails.application.routes.draw do
+  get 'frizbees/new'
+
   #get 'static_pages/about'
 
    ##    sessions: 'users/sessions'
