@@ -29,4 +29,14 @@ require 'csv'
 #   Residents.create!(row.to_hash)
 # end
 
-Frizbee.create!(:name => 'Yetter')
+#Frizbee.create!(:name => 'Yetter')
+ 
+ csv_data = File.read('Workbook1.csv')
+ csv = CSV.parse(csv_data, :headers => true)
+ csv.each do |row|
+     row = row.to_hash.with_indifferent_access
+     bob = row.to_hash.symbolize_keys
+     Profile.create!(bob)
+ end
+
+#Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
