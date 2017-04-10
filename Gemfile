@@ -34,15 +34,61 @@ gem 'bootstrap-sass', '3.3.6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#Gems for testing
+gem 'rails_12factor'
+gem 'haml-rails'
+gem 'selenium-webdriver'
+gem 'poltergeist'
+gem 'authlogic'
+gem 'twilio-ruby'
+gem 'rubocop'
+gem 'simplecov'
+gem 'masonry-rails'
+gem 'table_print'
+
+# Normalize.css is a customisable CSS file that makes browsers render all
+#   elements more consistently and in line with modern standards.
+gem 'normalize-rails'
+
+# In order to avoid the json 1.8.1 bug
+#   (https://travis-ci.org/CSC322-Grinnell/notifications/jobs/110022386), force
+#   an unbroken version
+gem 'json', '~>1.8.2'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-byebug'
   gem 'byebug'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'test-unit'
 end
+
+#moved this group to :development
+group :test do
+  gem 'cucumber-rails'
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  # CodeClimate reports test coverage and scores the DRYness and readibility of
+  #  the project.
+  gem 'codeclimate-test-reporter'
+end
+
+group :production do
+  gem 'pg'
+  gem 'heroku'
+end
+
+#  gem 'cucumber-rails', :require => true
+#  # database_cleaner is not required, but highly recommended
+#  gem 'database_cleaner'
+#  # CodeClimate reports test coverage and scores the DRYness and readibility of
+#  #  the project.
+#  gem 'codeclimate-test-reporter'
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
