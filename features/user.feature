@@ -47,6 +47,31 @@ Scenario: login with incorrect password
  	And I fill in "Password" with "pass2222222"
  	And I press "Log in"
  	Then I should see "Invalid Email or password"
+ 	
+ Scenario: sign up and then log in
+  Given I am on the signup page 
+  And I fill in "Email" with "me@lovely.com"
+  And I fill in "Password" with "beautifulgirl"
+  And I fill in "Password confirmation" with "beautifulgirl"
+  And I press "Sign up"
+  Then I should be on the search page
+  
+Scenario: cannot sign up a user who already exists
+  Given I am on the signup page 
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I fill in "Password confirmation" with "jojo12345"
+  And I press "Sign up"
+  Then I should see "Email has already been taken"
+  
+Scenario: cannot sign up without matching passwords
+  Given I am on the signup page
+  And I fill in "Email" with "me@lovely.com"
+  And I fill in "Password" with "sweetie"
+  And I fill in "Password confirmation" with "fresh"
+  And I press "Sign up"
+  Then I should see "Password confirmation doesn't match Password"
+  
 
 #ADMIN TESTS BELOW NOT WORKING YET
 Scenario: log in as admin

@@ -26,6 +26,7 @@ module NavigationHelpers
     when /^the text page$/ then '/text'
     when /^the home page$/ then '/home'
     when /^the search page$/ then '/'
+    when /^the signup page$/ then "/auth/register/cmon_let_me_in"
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then user_session_path
     when /^the user page$/ then '/user'
