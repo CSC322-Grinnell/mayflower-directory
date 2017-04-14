@@ -1,0 +1,2 @@
+class Frizbee < ApplicationRecord
+end
