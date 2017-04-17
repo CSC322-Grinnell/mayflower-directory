@@ -3,6 +3,12 @@
     <%= link_to "Mayflower Directory", '/static_pages/home', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? && current_user.admin %>
+          <li><%= link_to "Edit Users", '#' %></li>
+        <% end %>
+        <% if user_signed_in? && current_user.admin %>
+          <li><%= link_to "Edit Residents", '#' %></li>
+        <% end %>
         <li><%= link_to "Home",   '/static_pages/home' %></li>
         <li><%= link_to "Search",   '/static_pages/search' %></li>
         <li><%= link_to "About",   '/static_pages/about' %></li>
