@@ -1,4 +1,6 @@
 #Run these tests using: cucumber --require features features/user.feature
+#Run the app using: rails s -b $IP -p $PORT
+#A user is testing@testing.com PW is testme
 Feature: login page capabilities
 
   As a user
@@ -24,8 +26,8 @@ Scenario: attempt to access page when not logged in
 
 Scenario: login (happy path)
  	Given I am on the login page
- 	And I fill in "Email" with "admin@example.com"
- 	And I fill in "Password" with "pass12345"
+ 	And I fill in "Email" with "jojo@this.com"
+ 	And I fill in "Password" with "jojo12345"
  	And I press "Log in"
  	Then I should be on the search page
  	
@@ -72,17 +74,26 @@ Scenario: cannot sign up with passwords that don't match
   And I press "Sign up"
   Then I should see "Password confirmation doesn't match Password"
   
-Scenario: Logged in user can access about page
-  Given I am logged in as user
-  And I follow "About"
-  Then I should be on the about page
-  
-Scenario: Logged in user can access contact page
-  Given I am logged in as user
-  And I follow "Contact"
-  Then I should be on the contact page
-  
 Scenario: Log out feature works
   Given I am logged in as user
   And I log out
   Then I am on the login page
+
+Scenario: Logged in user can access about page
+  Given I am on the login page
+ 	And I fill in "Email" with "jojo@this.com"
+ 	And I fill in "Password" with "jojo12345"
+ 	And I press "Log in"
+ 	Then I should be on the search page
+  When I follow "About"
+  Then I should be on the about page
+  
+Scenario: Logged in user can access contact page
+  Given I am on the login page
+ 	And I fill in "Email" with "jojo@this.com"
+ 	And I fill in "Password" with "jojo12345"
+ 	And I press "Log in"
+ 	Then I should be on the search page
+  When I follow "Contact"
+  Then I should be on the help page
+  

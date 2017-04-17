@@ -32,7 +32,7 @@ Given /^I am logged in as user$/ do
   password = 'jojo12345'
   encrypted_password = 'jojo12345'
   admin = false
-  User.new(:email => email, :password => password, :encrypted_password => encrypted_password, :admin => admin).save!
+  User.new(:email => email, :password => password, :encrypted_password => encrypted_password).save!
 end
 
 Given /^I am logged in as admin$/ do
@@ -86,6 +86,9 @@ And "I remove admin" do
     first(:link, 'Delete').click
 end
 
+Given(/^I delete "([^"]*)"$/) do |user|
+  pending # Write code here that turns the phrase above into concrete actions
+end
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

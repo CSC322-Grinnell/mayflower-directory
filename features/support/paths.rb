@@ -13,9 +13,6 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the students page$/ then '/students'
-    when /^the student details page for \"(.*)\"/i
-      student_path(Student.find_by_Student_Name($1))
     when /^the user details page for \"(.*)\"/i
       user_path(User.find_by_name($1))
     when /^the edit page for \"(.*)\"/i
@@ -26,14 +23,15 @@ module NavigationHelpers
     when /^the text page$/ then '/text'
     when /^the home page$/ then '/home'
     when /^the search page$/ then '/'
+    when /^the help page$/ then '/static_pages/help'
+    when /^the about page$/ then '/static_pages/about'
     when /^the signup page$/ then "/auth/register/cmon_let_me_in"
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then user_session_path
-    when /^the user page$/ then '/user'
-    when /^the classroom page$/ then '/classrooms'
+    when /^the users page$/ then '/users'
     when /^the classroom details page for \"(.*)\"/i
        classroom_path(Classroom.find_by_name($1))
-    # Ad more mappings here.
+    # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
