@@ -23,12 +23,32 @@
   <%= f.search_field :last_name_cont %>
   <br/>
   <br/>
-  <%= f.label :first_name_start %>
-  <%= f.search_field :first_name_start %>
+  <%= f.label :email_cont %>
+  <%= f.search_field :email_cont %>
   <br/>
   <br/>
-  <%= f.label :last_name_start %>
-  <%= f.search_field :last_name_start %>
+  <%= f.label :landline_cont %>
+  <%= f.search_field :landline_cont %>
+  <br/>
+  <br/>
+  <%= f.label :cell_cont %>
+  <%= f.search_field :cell_cont %>
+  <br/>
+  <br/>
+  <%= f.label :neighborhood_cont %>
+  <%= f.search_field :neighborhood_cont %>
+  <br/>
+  <br/>
+  <%= f.label :nickname_cont %>
+  <%= f.search_field :nickname_cont %>
+  <br/>
+  <br/>
+  <%= f.label :address_cont %>
+  <%= f.search_field :address_cont %>
+  <br/>
+  <br/>
+  <%= f.label :spouse_cont %>
+  <%= f.search_field :spouse_cont %>
   <br/>
   <br/>
   <%= f.submit %>
@@ -42,7 +62,12 @@
  <div class="one">
   <p> <font size="6"> Results: </font></p>
    <% @results.each do |person| %>
-<p> <font size="4"> <%= person.first_name %> <%= person.last_name %> </font> </p>
+<p> <font size="4"> 
+<%= person.first_name %> <%= person.last_name %> 
+<%= person.email %> <%= person.landline %>
+<%= person.cell %> <%= person.neighborhood %>
+<%= person.nickname %> <%= person.address %>
+<%= person.spouse %> <br/> </font> </p>
 <% end %>
    </div>
 <% else %>

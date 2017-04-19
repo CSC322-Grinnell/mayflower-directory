@@ -24,4 +24,9 @@ class ProfilesController < ApplicationController
     @search = Profile.search(params[:q])
     @profiles = @search.result
   end
+  
+  def show
+    @user = Profile.find(params[:id])
+  end
+  
 end
