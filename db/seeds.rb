@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
  
- csv_data = File.read('Workbook1.csv')
+ csv_data = File.read('sample_db.csv')
  csv = CSV.parse(csv_data, :headers => true)
  csv.each do |row|
      row = row.to_hash.with_indifferent_access
