@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  
+  
   get 'profiles/new'
-
   get 'residents/new'
-
   get 'static_pages/about'
   get 'static_pages/home'
   get 'static_pages/help'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   root 'static_pages#search'
 
+  
   
   #devise_for :users, path: 'users'
   #path_names :{ sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
