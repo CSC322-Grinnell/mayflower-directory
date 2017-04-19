@@ -96,4 +96,3 @@ Scenario: Logged in user can access contact page
  	Then I should be on the search page
   When I follow "Contact"
   Then I should be on the help page
-  

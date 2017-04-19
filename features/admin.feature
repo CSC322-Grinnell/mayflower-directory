@@ -8,12 +8,19 @@ Feature: create an administrative user
 Background: some users have been added to database
 
   Given the following users exist:
-  | email              | encrypted_password  | password       | admin | name           |
-  | admin@example.com  | pass12345           | pass12345      | true  | Administrator  |
-  | jojo@this.com      | jojo12345           | jojo12345      | false | Jojo Nice      |
-  | admin2@admin.com   | getin12345          | getin12345     | true  | Admin Two      |
+  | email              | encrypted_password  | password       | admin | 
+  | admin@example.com  | pass12345           | pass12345      | true  | 
+  | jojo@this.com      | jojo12345           | jojo12345      | false | 
+  | admin2@admin.com   | getin12345          | getin12345     | true  | 
   | laddy@school.edu   | laddybuck12345      | laddybuck12345 | false | Laddy Buck     |
   | baddie@gone.com    | baddie12345         | baddie12345    | false | Baddie User    |
+  
+  Given the following profiles exist:
+ 
+ | first_name | last_name | nickname | email            | address      | neighborhood | spouse      |
+ | Joseph     | Nice      | Jojo     | jojo@this.com    | 312 High St  | Nice One     | Baddie User |
+ | Baddest    | User      | Baddie   | baddie@gone.com  | 312 High St  | Nice One     | Joseph Nice |
+ | Lad        | Buck      | Laddy    | laddy@school.edu | 1202 East St | Bad one      | None        |
 
 Scenario: log in as admin takes you to users page
   Given I am on the login page
@@ -22,20 +29,33 @@ Scenario: log in as admin takes you to users page
   And I press "Log in"
   Then I should be on the users page
   
-Scenario: logged in admin sees edit
+Scenario: regular user cannot see users page
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I should be on the search page 
+  When I go to the users page
+  Then I should see "Error"
+  
+Scenario: regular user cannot see edit, add or delete
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I should be on the search page 
+  When I fill in "Email" with "laddy@school.edu"
+  And I press "Search"
+  Then I should not see "Edit"
+  And I should not see "Add"
+  And I should not see "Delete"
+  
+Scenario: logged in admin sees edit, add and delete
   Given I am logged in as admin
   And I am on the users page
   Then I should see "Edit"
-  
-Scenario: logged in admin sees add
-  Given I am logged in as admin
-  And I am on the users page
-  Then I should see "Add"
-  
-Scenario: logged in admin sees delete
-  Given I am logged in as admin
-  And I am on the users page
-  Then I should see "Delete"
+  And I should see "Add"
+  And I should see "Delete"
     
 Scenario: view users
   Given I am logged in as admin
@@ -74,52 +94,51 @@ Scenario: admin creates a regular user
   Then I should see "me@mine.com"
 
 Scenario: delete last admin attempt
- Given I am logged in as admin
- And I am on the users page
- And I remove admin
- And I confirm the popup
- Then I should see "Unable to delete the last admistrator."
+  Given I am logged in as admin
+  And I am on the users page
+  And I remove admin
+  And I confirm the popup
+  Then I should see "Unable to delete the last admistrator."
 
 Scenario: change admin info
- Given I am logged in as admin
- And I am on the edit user page for "Jojo Nice"
- When I fill in "user_name" with "Ojoj Mean"
- And I fill in "user_email" with "new@email.com"
- And I fill in "user_password" with "dogs12345"
- And I fill in "user_password_confirmation" with "dogs12345"
- And I press "Update User Info"
- Then I should be on the user details page for "Ojoj Mean"
- And I should see "Ojoj Mean"
- And I should see "new@email.com"
+  Given I am logged in as admin
+  And I am on the edit user page for "Jojo Nice"
+  When I fill in "user_name" with "Ojoj Mean"
+  And I fill in "user_email" with "new@email.com"
+  And I fill in "user_password" with "dogs12345"
+  And I fill in "user_password_confirmation" with "dogs12345"
+  And I press "Update User Info"
+  Then I should be on the user details page for "Ojoj Mean"
+  And I should see "Ojoj Mean"
+  And I should see "new@email.com"
  
 Scenario: change user password 
- Given I am logged in as admin
- And I am on the edit user page for "Admin Two"
- When I fill in "user_name" with "Alice Walker"
- And I fill in "user_email" with "Example2@admin.com"
- And I fill in "user_password" with "dogs12345"
- And I fill in "user_password_confirmation" with "dogs12345"
- And I press "Update User Info"
- Then I should be on the user details page for "Alice Walker"
- And I should see "Alice Walker"
- And I should see "Example2@admin.com"
+  Given I am logged in as admin
+  And I am on the edit user page for "Admin Two"
+  When I fill in "user_name" with "Alice Walker"
+  And I fill in "user_email" with "Example2@admin.com"
+  And I fill in "user_password" with "dogs12345"
+  And I fill in "user_password_confirmation" with "dogs12345"
+  And I press "Update User Info"
+  Then I should be on the user details page for "Alice Walker"
+  And I should see "Alice Walker"
+  And I should see "Example2@admin.com"
 
 Scenario: Passwords not the same
- Given I am logged in as admin
- And I am on the edit user page for "Admin Two"
- When I fill in "user_name" with "Alice Walker"
- And I fill in "user_email" with "Example2@admin.com"
- And I fill in "user_password" with "dogs12345"
- And I fill in "user_password_confirmation" with "cats12345"
- And I press "Update User Info"
- Then I am on the edit user page for "Administrator"
- And I should see "Passwords aren't the same"
- 
-#Don't have DELETE step yet is it possible?
+  Given I am logged in as admin
+  And I am on the edit user page for "Admin Two"
+  When I fill in "user_name" with "Alice Walker"
+  And I fill in "user_email" with "Example2@admin.com"
+  And I fill in "user_password" with "dogs12345"
+  And I fill in "user_password_confirmation" with "cats12345"
+  And I press "Update User Info"
+  Then I am on the edit user page for "Administrator"
+  And I should see "Passwords aren't the same"
+
 Scenario: Delete a user
   Given I am logged in as admin
   And I am on the users page
-  And I delete "Baddie User"
+  And I delete "baddie@gone.com"
   And I confirm the popup
   Then I am on the users page
-  And I should not see "Baddie User"
+  And I should not see "baddie@gone.com"

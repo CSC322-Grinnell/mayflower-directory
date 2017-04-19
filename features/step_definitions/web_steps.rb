@@ -86,8 +86,8 @@ And "I remove admin" do
     first(:link, 'Delete').click
 end
 
-Given(/^I delete "([^"]*)"$/) do |user|
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^I delete "([^"]*)"$/) do |user_email|
+  find('tr', email: user_email).click_link("Delete")
 end
 # Use this to fill in an entire form with data from a table. Example:
 #
