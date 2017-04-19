@@ -27,6 +27,14 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^I am logged in as user$/ do
+  email = 'jojo@this.comm'
+  password = 'jojo12345'
+  encrypted_password = 'jojo12345'
+  admin = false
+  User.new(:email => email, :password => password, :encrypted_password => encrypted_password).save!
+end
+
 Given /^I am logged in as admin$/ do
   email = 'admin2@example.com'
   password = 'pass12345'
@@ -46,6 +54,11 @@ Given /^I am logged in as not_admin$/ do
 end
 
 Given "I am not logged in" do
+  # UserSession.find.try(:destroy)
+  page.driver.submit :delete, "/auth/logout", {}
+end
+
+Given "I log out" do
   # UserSession.find.try(:destroy)
   page.driver.submit :delete, "/auth/logout", {}
 end
@@ -73,6 +86,9 @@ And "I remove admin" do
     first(:link, 'Delete').click
 end
 
+Given(/^I delete "([^"]*)"$/) do |user_email|
+  find('tr', email: user_email).click_link("Delete")
+end
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:
