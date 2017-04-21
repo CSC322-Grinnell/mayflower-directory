@@ -29,4 +29,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
   
+  def display
+    @allProfiles = Profile.all
+  end
+  
 end
