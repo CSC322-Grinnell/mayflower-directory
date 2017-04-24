@@ -44,6 +44,10 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
+  def show
+    @profile = Profile.find(params[:id])
+  end
+  
   # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user.admin
