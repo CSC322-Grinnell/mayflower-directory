@@ -12,8 +12,8 @@ Background: some users have been added to database
   | admin@example.com  | pass12345           | pass12345      | true  | 
   | jojo@this.com      | jojo12345           | jojo12345      | false | 
   | admin2@admin.com   | getin12345          | getin12345     | true  | 
-  | laddy@school.edu   | laddybuck12345      | laddybuck12345 | false | Laddy Buck     |
-  | baddie@gone.com    | baddie12345         | baddie12345    | false | Baddie User    |
+  | laddy@school.edu   | laddybuck12345      | laddybuck12345 | false | 
+  | baddie@gone.com    | baddie12345         | baddie12345    | false |
   
   Given the following profiles exist:
  
