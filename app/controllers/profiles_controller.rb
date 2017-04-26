@@ -60,4 +60,9 @@ class ProfilesController < ApplicationController
     @allProfiles = Profile.all
   end
   
+  def destroy
+    Profile.find(params[:id]).destroy
+    flash[:success] = "Profile deleted"
+    redirect_to '/static_pages/display'
+  end
 end
