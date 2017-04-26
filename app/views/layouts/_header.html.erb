@@ -7,7 +7,7 @@
           <li><%= link_to "Edit Users", '#' %></li>
         <% end %>
         <% if user_signed_in? && current_user.admin %>
-          <li><%= link_to "Edit Residents", '#' %></li>
+          <li><%= link_to "Edit Residents", '/static_pages/display' %></li>
         <% end %>
         <li><%= link_to "Home",   '/static_pages/home' %></li>
         <li><%= link_to "Search",   '/static_pages/search' %></li>
