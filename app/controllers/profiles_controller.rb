@@ -52,6 +52,10 @@ class ProfilesController < ApplicationController
      end
    end
   
+  def show
+    @user = Profile.find(params[:id])
+  end
+  
   def display
     @allProfiles = Profile.all
   end
