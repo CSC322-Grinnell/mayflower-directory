@@ -38,3 +38,10 @@
 
   </div>
 </div>
+
+<li>
+  <% if current_user.admin %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

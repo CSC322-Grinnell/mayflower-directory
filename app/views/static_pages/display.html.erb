@@ -10,6 +10,11 @@
 <%= person.nickname %>
 <%= person.address %>
 <%= person.spouse %>
+<%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
+<% if current_user.admin %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
 <br/>
 <% end %>
 </div>
