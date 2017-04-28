@@ -25,8 +25,8 @@ class ProfilesController < ApplicationController
   
   def create
     @user = Profile.new(profile_params)
-    puts "User is "
-    puts @user.to_s
+    #puts "User is "
+    #puts @user.to_s
     if @user.save
       flash[:notice] = "profile sucessfully added"
       redirect_to '/profiles/' + @user[:id].to_s

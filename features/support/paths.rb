@@ -28,7 +28,7 @@ module NavigationHelpers
     when /^the signup page$/ then "/auth/register/cmon_let_me_in"
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then user_session_path
-    when /^the users page$/ then '/users'
+    when /^the users page$/ then '/static_pages/display'
     when /^the classroom details page for \"(.*)\"/i
        classroom_path(Classroom.find_by_name($1))
     # Add more mappings here.
