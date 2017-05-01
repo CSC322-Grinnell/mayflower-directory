@@ -2,7 +2,7 @@
  <div class="one">
   <br/>
 <br/>
-  <p> <font size="6"> All Residents: (hold "Ctrl" and press "F" to search for one specific residents)</font></p>
+  <p> <font size="6"> All Residents: (hold "Ctrl" and press "F" to search for one specific residents)<br/><br/></font></p>
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 

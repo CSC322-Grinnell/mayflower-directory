@@ -24,6 +24,11 @@ class ProfilesController < ApplicationController
   end
   
   def create
+<<<<<<< HEAD
+=======
+    puts "*** CREATING A NEW USER ****"
+    puts profile_params
+>>>>>>> testing
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
