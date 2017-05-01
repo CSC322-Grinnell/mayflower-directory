@@ -1,8 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
+  first_name: Frog
+  last_name: Green
+  nickname: Froggy
+  email: frog@friend.com
+  address: 312 High St
+  neighborhood: Nice One
+  spouse: Baddie User
+  cell: 1112224324
+  landline: 9871232324
 
 two:
   first_name: MyString
