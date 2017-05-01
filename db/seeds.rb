@@ -18,7 +18,4 @@ require 'csv'
 #Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
 
 user = User.create! :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password', :admin =>true
-<<<<<<< HEAD
-=======
-#Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
->>>>>>> a1827af1a7d4ad2560b061b9be1bd0e3b677988a
+

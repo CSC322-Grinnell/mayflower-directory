@@ -1,21 +1,11 @@
 <div class="page-header">
-<<<<<<< HEAD
   <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
-=======
-  <h1><%= @user.first_name %> Profile</h1>
->>>>>>> a1827af1a7d4ad2560b061b9be1bd0e3b677988a
 </div>
 
-<%= image_tag @profile.first_name.to_s+@profile.last_name.to_s+".png" %>
+<%= image_tag @profile.first_name.to_s + @profile.last_name.to_s+".png" %>
 
 <p>
-<<<<<<< HEAD
-=======
-  <b>
-    <br/>
-  <font size = 5><%= @user.first_name %> <%= @user.last_name %><font/>
-  </b>
->>>>>>> a1827af1a7d4ad2560b061b9be1bd0e3b677988a
+
   <br/>
   <br/>
   
@@ -24,31 +14,31 @@
   
   
     <b>Email: </b>
-  <%= @user.email %>
+  <%= @profile.email %>
   <br/>
   
     <b>Landline:</b>
-  <%= @user.landline %>
+  <%= @profile.landline %>
   <br/>
   
     <b>Cell:</b>
-  <%= @user.cell %>
+  <%= @profile.cell %>
   <br/>
   
    <b>Neighborhood:</b>
-  <%= @user.neighborhood %>
+  <%= @profile.neighborhood %>
   <br/>
   
    <b>Nickname:</b>
-  <%= @user.nickname %>
+  <%= @profile.nickname %>
   <br/>
   
    <b>Address:</b>
-  <%= @user.address %>
+  <%= @profile.address %>
   <br/>
   
   <b>Spouse:</b>
-  <%= @user.spouse %>
+  <%= @profile.spouse %>
   <br/>
   
   <font/>
