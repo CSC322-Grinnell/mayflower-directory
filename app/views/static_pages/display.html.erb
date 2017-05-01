@@ -4,12 +4,22 @@
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+<font/>
+<br/>
 <%= person.email %>
 <%= person.landline %>
 <%= person.cell %>
 <%= person.nickname %>
 <%= person.address %>
 <%= person.spouse %>
+<% if current_user.admin %>
+ <%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
+<% end %>
+<% if current_user.admin %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
 <br/>
 <% end %>
+<li><%= link_to "Add new Resident", "/profiles/new" %></li>
 </div>
