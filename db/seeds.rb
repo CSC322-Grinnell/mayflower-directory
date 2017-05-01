@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 require 'csv'
- 
  csv_data = File.read('MayflowerDirectory1.csv')
  csv = CSV.parse(csv_data, :headers => true)
  csv.each do |row|
@@ -15,7 +15,6 @@ require 'csv'
      Profile.create!(bob)
  end
 
-#Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
 
+# This is how we are making the admin, an admin. Add with the same format if you would like to make a new admin.
 user = User.create! :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password', :admin =>true
-#Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")

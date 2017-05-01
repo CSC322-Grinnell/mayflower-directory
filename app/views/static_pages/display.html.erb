@@ -4,6 +4,8 @@
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+<font/>
+<br/>
 <%= person.email %>
 <%= person.landline %>
 <%= person.cell %>
