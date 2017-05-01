@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
  
- csv_data = File.read('sample_db.csv')
+ csv_data = File.read('MayflowerDirectory1.csv')
  csv = CSV.parse(csv_data, :headers => true)
  csv.each do |row|
      row = row.to_hash.with_indifferent_access
@@ -18,3 +18,7 @@ require 'csv'
 #Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
 
 user = User.create! :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password', :admin =>true
+<<<<<<< HEAD
+=======
+#Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
+>>>>>>> a1827af1a7d4ad2560b061b9be1bd0e3b677988a

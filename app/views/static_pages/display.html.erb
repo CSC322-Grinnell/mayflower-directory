@@ -12,8 +12,14 @@
 <%= person.nickname %>
 <%= person.address %>
 <%= person.spouse %>
-<br/>
-
+<% if current_user.admin %>
+ <%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
+<% end %>
+<% if current_user.admin %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
 <br/>
 <% end %>
+<li><%= link_to "Add new Resident", "/profiles/new" %></li>
 </div>

@@ -22,16 +22,21 @@ Rails.application.routes.draw do
   
   
   root 'static_pages#search'
-
-  
   
   #devise_for :users, path: 'users'
   #path_names :{ sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
+<<<<<<< HEAD
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', 
   password: 'secret', confirmation: 'verification', unlock: 'unblock', 
   registration: 'register', sign_up: 'cmon_let_me_in' }
 
+=======
+  devise_for :users, path: 'auth', 
+    controllers: {registrations: "users/registrations"},
+    path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up'  }
+  #devise_for :users, path_names: {sign_up: 'sign_up'}
+>>>>>>> a1827af1a7d4ad2560b061b9be1bd0e3b677988a
   #after_sign_in_path_for 'static_pages/home'
 
   # Example of regular route:
