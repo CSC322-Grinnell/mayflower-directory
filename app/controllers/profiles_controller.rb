@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :create, :index]
+  before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
   
   def new
     @user = Profile.new
@@ -24,8 +24,11 @@ class ProfilesController < ApplicationController
   end
   
   def create
-    #puts "*** CREATING A NEW USER ****"
-    #puts profile_params
+<<<<<<< HEAD
+=======
+    puts "*** CREATING A NEW USER ****"
+    puts profile_params
+>>>>>>> testing
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
@@ -44,10 +47,6 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
-  def show
-    @profile = Profile.find(params[:id])
-  end
-  
   # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user.admin
@@ -56,8 +55,17 @@ class ProfilesController < ApplicationController
      end
    end
   
+  def show
+    @profile = Profile.find(params[:id])
+  end
+  
   def display
     @allProfiles = Profile.all
   end
   
+  def destroy
+    Profile.find(params[:id]).destroy
+    flash[:success] = "Profile deleted"
+    redirect_to '/static_pages/display'
+  end
 end

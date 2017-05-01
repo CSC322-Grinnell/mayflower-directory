@@ -1,16 +1,17 @@
 <div class="page-header">
-  <h1><%= @profile.first_name %> Profile</h1>
+  <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
 </div>
 
+<%= image_tag @profile.first_name.to_s + @profile.last_name.to_s+".png" %>
+
 <p>
-  <b>
-    <br/>
-  <font size = 5><%= @profile.first_name %> <%= @profile.last_name %><font/>
-  </b>
+
   <br/>
   <br/>
   
   <font size = 3>
+  
+  
   
     <b>Email: </b>
   <%= @profile.email %>
@@ -41,4 +42,6 @@
   <br/>
   
   <font/>
+  
 </p>
+
