@@ -19,12 +19,130 @@ Background: some users have been added to database
  
    Given the following profiles exist:
  
- | first_name | last_name | nickname | email            | address      | neighborhood | spouse      |
- | Joseph     | Nice      | Jojo     | jojo@this.com    | 312 High St  | Nice One     | Baddie User |
- | Baddest    | User      | Baddie   | baddie@gone.com  | 312 High St  | Nice One     | Joseph Nice |
- | Lad        | Buck      | Laddy    | laddy@school.edu | 1202 East St | Bad one      | None        |
+ | first_name | last_name | nickname | email            | address      | neighborhood | spouse      | cell       | landline   |
+ | Joseph     | Nice      | Jojo     | jojo@this.com    | 312 High St  | Nice One     | Baddie User | 1112224324 | 9871232324 |
+ | Baddest    | User      | Baddie   | baddie@gone.com  | 312 High St  | Nice One     | Joseph Nice | 1112224322 | 9871232324 | 
+ | Lad        | Buck      | Laddy    | laddy@school.edu | 1202 East St | Bad one      | None        | 6663336666 | 2223334444 |
 
 Scenario: search user by first name
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "First name contains" with "Joseph"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by partial data
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "First name contains" with "Jos"
+  And I press "Search"
+  Then I should see "Joseph Nice"
   
 Scenario: search user by last name
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Last name contains" with "Nice"
+  And I press "Search"
+  Then I should see "Joseph Nice"
   
+Scenario: search user by nickname
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Nickname contains" with "Jojo"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by email
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Email contains" with "jojo@this.com"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+
+Scenario: search user by address
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  Given I am on the search page
+  And I fill in "Address contains" with "312 High St"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by neighborhood
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Neighborhood contains" with "Nice One"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by spouse
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Spouse contains" with "Baddie User"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by cell
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Cell contains" with "1112224324"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: search user by landline
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Landline contains" with "9871232324"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  
+Scenario: Users with common data
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Landline contains" with "9871232324"
+  And I press "Search"
+  Then I should see "Joseph Nice"
+  And I should see "Baddest User"
+  
+Scenario: Clicking on search result takes you to user page
+  Given I am on the login page
+  And I fill in "Email" with "jojo@this.com"
+  And I fill in "Password" with "jojo12345"
+  And I press "Log in"
+  Then I am on the search page
+  And I fill in "Landline contains" with "9871232324"
+  And I press "Search"
+  And I follow "Joseph Nice"
+  Then I am on the user details page for Joseph Nice

@@ -24,8 +24,8 @@ class ProfilesController < ApplicationController
   end
   
   def create
-    #puts "*** CREATING A NEW USER ****"
-    #puts profile_params
+    puts "*** CREATING A NEW USER ****"
+    puts profile_params
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
