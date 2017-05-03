@@ -1,6 +1,8 @@
 <% @allProfiles = Profile.ransack(params[:q]).result %>
  <div class="one">
-  <p> <font size="6"> Results: </font></p>
+  <br/>
+<br/>
+  <p> <font size="6"> All Residents: (hold "Ctrl" and press "F" to search for one specific residents)<br/><br/></font></p>
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
@@ -20,7 +22,7 @@
                                   data: { confirm: "You sure?" } %>
   <% end %>
 <br/>
-
+<br/>
 <% end %>
 <li><%= link_to "Add new Resident", "/profiles/new" %></li>
 </div>

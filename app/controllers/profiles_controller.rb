@@ -24,6 +24,8 @@ class ProfilesController < ApplicationController
   end
   
   def create
+    puts "*** CREATING A NEW USER ****"
+    puts profile_params
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
@@ -51,7 +53,7 @@ class ProfilesController < ApplicationController
    end
   
   def show
-    @user = Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
   
   def display

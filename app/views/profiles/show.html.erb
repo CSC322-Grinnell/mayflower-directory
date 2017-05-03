@@ -1,43 +1,44 @@
 <div class="page-header">
-  <h1><%= @user.first_name %> Profile</h1>
+  <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
 </div>
 
+<%= image_tag @profile.first_name.to_s + @profile.last_name.to_s+".png" %>
+
 <p>
-  <b>
-    <br/>
-  <font size = 5><%= @user.first_name %> <%= @user.last_name %><font/>
-  </b>
+
   <br/>
   <br/>
   
   <font size = 3>
   
+  
+  
     <b>Email: </b>
-  <%= @user.email %>
+  <%= @profile.email %>
   <br/>
   
     <b>Landline:</b>
-  <%= @user.landline %>
+  <%= @profile.landline %>
   <br/>
   
     <b>Cell:</b>
-  <%= @user.cell %>
+  <%= @profile.cell %>
   <br/>
   
    <b>Neighborhood:</b>
-  <%= @user.neighborhood %>
+  <%= @profile.neighborhood %>
   <br/>
   
    <b>Nickname:</b>
-  <%= @user.nickname %>
+  <%= @profile.nickname %>
   <br/>
   
    <b>Address:</b>
-  <%= @user.address %>
+  <%= @profile.address %>
   <br/>
   
   <b>Spouse:</b>
-  <%= @user.spouse %>
+  <%= @profile.spouse %>
   <br/>
   
   <font/>

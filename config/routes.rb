@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'profiles/new'
   get 'residents/new'
   get 'static_pages/about'
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  
   
   root 'static_pages#search'
   
@@ -77,6 +82,12 @@ Rails.application.routes.draw do
   #   end
   
   # Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+  
+  
+
   #get 'static_pages/about'
 
    ##    sessions: 'users/sessions'
