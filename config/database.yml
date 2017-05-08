@@ -6,9 +6,7 @@
 #
 default: &default
   adapter: sqlite3
-  pool: 5
-  timeout: 5000
-
+  
 development:
   <<: *default
   database: db/development.sqlite3
@@ -22,6 +20,9 @@ test: &test
 
 production:
   <<: *default
+  adapter: postgresq
+  pool: 5
+  timeout: 5000
   database: db/production.sqlite3
 
 cucumber:
