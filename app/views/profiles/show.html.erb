@@ -2,7 +2,7 @@
   <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
 </div>
 
-<%= image_tag @profile.first_name.to_s + @profile.last_name.to_s+".png" %>
+<%= image_tag @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png", size: 200 %>
 
 <p>
 

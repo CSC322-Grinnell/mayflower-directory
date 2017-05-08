@@ -5,6 +5,8 @@
   <p> <font size="6"> All Residents: (hold "Ctrl" and press "F" to search for one specific residents)<br/><br/></font></p>
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
+<br/>
+<%= image_tag person.last_name.to_s + ", " + person.first_name.to_s+".png", size: 100 %>
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
 <font/>
 <br/>
