@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :create, :index]
-  skip_before_action :require_no_authentication, only: [:sign_up]
+  before_action :require_no_authentication, only: [:sign_up]
   
   def new
     @user = User.new
