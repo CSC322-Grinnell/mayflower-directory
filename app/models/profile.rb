@@ -1,2 +1,3 @@
-class Profile < ApplicationRecord
+class Profile < ActiveRecord
+  mount_uploader :avatar, AvatarUploader
 end
