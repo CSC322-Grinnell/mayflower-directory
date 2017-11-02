@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 #Gem for getting stuff from AWS
 gem 'carrierwave', '~> 1.0'
 
+#minimagick gem
+gem "mini_magick"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'ransack'
@@ -100,5 +103,8 @@ group :development do
   gem 'spring'
   
 end
+
+#fog gem
+gem 'fog', '~> 1.38'
 
 ruby "2.3.4"
