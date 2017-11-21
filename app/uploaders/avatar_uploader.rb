@@ -12,11 +12,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   
 
   def store_dir
-    '/mayflower-data/images'
+    'images'
+    #/mayflower-data/images
   end
   
   def cache_dir
-    '/mayflower-data/images'
+    'images'
+    #/mayflower-data/images
   end
   
   #stuff in comments can be commented out if we need them later
