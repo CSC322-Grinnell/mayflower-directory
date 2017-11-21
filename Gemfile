@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+#fog gem
+gem 'fog', '~> 1.38'
+
+ruby "2.3.4"
+
 #Gem for getting stuff from AWS
 gem 'carrierwave', '~> 1.0'
 
@@ -54,6 +59,8 @@ gem 'rubocop'
 gem 'simplecov'
 gem 'masonry-rails'
 gem 'table_print'
+gem 'sqlite3'
+
 
 # Normalize.css is a customisable CSS file that makes browsers render all
 #   elements more consistently and in line with modern standards.
@@ -70,7 +77,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'test-unit'
-  gem 'sqlite3'
+
+
 end
 
 #moved this group to :development
@@ -101,10 +109,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
   
 end
-
-#fog gem
-gem 'fog', '~> 1.38'
-
-ruby "2.3.4"
