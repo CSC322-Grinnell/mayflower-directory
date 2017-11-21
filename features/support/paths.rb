@@ -25,8 +25,8 @@ module NavigationHelpers
     when /^the search page$/ then '/'
     when /^the help page$/ then '/static_pages/help'
     when /^the about page$/ then '/static_pages/about'
-    when /^the signup page$/ then "/auth/register/cmon_let_me_in"
-    when /^the new user page$/ then '/signup'
+    when /^the signup page$/ then "/auth/register/sign_up"
+    #when /^the new user page$/ then '/signup'
     when /^the login page$/ then user_session_path
     when /^the users page$/ then '/static_pages/display'
     when /^the classroom details page for \"(.*)\"/i
