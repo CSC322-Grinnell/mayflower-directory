@@ -2,8 +2,15 @@
   <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
 </div>
 
-<!-- Testing line -->
-<%= image_tag "https://s3.us-east-2.amazonaws.com/mayflower-data/images/Agnew%2C+Dan.png", size: 200 %>
+
+<script> require 'aws-sdk-s3'  </script>
+
+<% uploader = AvatarUploader.new %>
+<% uploader.retrieve_from_store!("Agnew,Dan.png") %>
+<img src="<%= uploader.url %>", height= "300", width= "300" />
+
+<!-- Testing lines -->
+<!-- %= image_tag "https://s3.us-east-2.amazonaws.com/mayflower-data/images/Agnew%2C+Dan.png", size: 200 %> -->
 
 <!-- %= image_tag @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png", size: 200 %> -->
 
