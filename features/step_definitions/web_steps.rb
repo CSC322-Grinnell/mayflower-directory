@@ -74,6 +74,18 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^(?:|I )press "([^"]*)" for "([^"]*)"$/ do |button, person|
+  within(:person) do
+    click_button(button)
+  end
+end
+
+When /^(?:|I )follow "([^"]*)" for "([^"]*)"$/ do |link, id|
+  within("//p[@id='Resident-#{id}']") do
+    click_link(link)
+  end
+end
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
