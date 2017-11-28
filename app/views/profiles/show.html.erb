@@ -7,7 +7,21 @@
 
 <% uploader = AvatarUploader.new %>
 <% uploader.retrieve_from_store!(@profile.last_name.to_s + ", " + @profile.first_name.to_s+".png") %>
-<img src="<%= uploader.url %>", height= "300", width= "300" />
+<% imageURL = uploader.url %>
+
+
+<%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+<% bucket =  s3.bucket('mayflower-data') %>
+
+<% file = uploader.url %>
+<% if bucket.object("images/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
+  imageURL = uploader.url
+else
+  imageURL = "http://images.all-free-download.com/images/graphiclarge/gaillardia_blanket_flowers_perennial_221655.jpg"
+end
+%>
+
+<img src="<%= imageURL%>", height= "300", width= "300" />
 
 <p>
 
