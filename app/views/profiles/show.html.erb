@@ -6,13 +6,8 @@
 <script> require 'aws-sdk-s3'  </script>
 
 <% uploader = AvatarUploader.new %>
-<% uploader.retrieve_from_store!("Agnew,Dan.png") %>
+<% uploader.retrieve_from_store!(@profile.last_name.to_s + ", " + @profile.first_name.to_s+".png") %>
 <img src="<%= uploader.url %>", height= "300", width= "300" />
-
-<!-- Testing lines -->
-<!-- %= image_tag "https://s3.us-east-2.amazonaws.com/mayflower-data/images/Agnew%2C+Dan.png", size: 200 %> -->
-
-<!-- %= image_tag @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png", size: 200 %> -->
 
 <p>
 
