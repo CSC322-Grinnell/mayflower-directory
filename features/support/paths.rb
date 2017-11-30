@@ -20,17 +20,19 @@ module NavigationHelpers
     when /^the user details page for Joseph Nice$/ then '/profiles/1'
     when /^the user details page for Baddest User$/ then '/profiles/2'
     when /^the user details page for Laddy Buck$/ then '/profiles/3'
+    when /^the edit details page for Joseph Nice$/ then '/profiles/1/edit'
     when /^the text page$/ then '/text'
     when /^the home page$/ then '/home'
     when /^the search page$/ then '/'
     when /^the help page$/ then '/static_pages/help'
     when /^the about page$/ then '/static_pages/about'
     when /^the signup page$/ then "/auth/register/cmon_let_me_in"
-    when /^the new user page$/ then '/signup'
+    when /^the new user page$/ then '/auth/register/sign_up'
     when /^the login page$/ then user_session_path
     when /^the users page$/ then '/static_pages/display'
-    when /^the classroom details page for \"(.*)\"/i
-       classroom_path(Classroom.find_by_name($1))
+    when /^the new resident page$/ then '/profiles/new'
+    when /^the change password page$/ then '/auth/register/edit'
+  
  
     else
       begin
