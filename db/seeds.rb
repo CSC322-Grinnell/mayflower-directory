@@ -12,10 +12,14 @@ user = User.create! :email => 'admin@admin.com', :password => 'password', :passw
 
 
 require 'csv'
- 
- csv_data = File.read('MayflowerDirectory1.csv')
- csv = CSV.parse(csv_data, :headers => true)
- csv.each do |row|
+s3 = Aws::S3::Resource.new(
+  region: 'us-east-2',
+  access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+)
+obj = s3.bucket(ENV['AWS_BUCKET_NAME']).object('MayflowerDirectory-2017-11-30.csv').get
+csv = CSV.parse(obj.body, :headers => true)
+csv.each do |row|
      row = row.to_hash.with_indifferent_access
      bob = row.to_hash.symbolize_keys
      Profile.create!(bob)
