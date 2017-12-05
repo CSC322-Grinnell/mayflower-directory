@@ -14,7 +14,7 @@
 <% bucket =  s3.bucket('mayflower-data') %>
 
 <% file = uploader.url %>
-<% if bucket.object("images/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
+<% if bucket.object("images-new/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
   imageURL = uploader.url
 else
   imageURL = "http://images.all-free-download.com/images/graphiclarge/gaillardia_blanket_flowers_perennial_221655.jpg"
