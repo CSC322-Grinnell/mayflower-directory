@@ -31,35 +31,48 @@ end
   <font size = 3>
   
   
-  
+  <% if @profile.email.present? %>
     <b>Email: </b>
   <%= @profile.email %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
+  <% if @profile.landline.present? %>
     <b>Landline:</b>
   <%= @profile.landline %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
+   <% if @profile.cell.present? %>
     <b>Cell:</b>
   <%= @profile.cell %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
+ <% if @profile.neighborhood.present? %>
    <b>Neighborhood:</b>
   <%= @profile.neighborhood %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
+   <% if @profile.nickname.present? %>
    <b>Nickname:</b>
   <%= @profile.nickname %>
-  <br/>
+    <br/>
+  <% end %>
   
+   <% if @profile.address.present? %>
    <b>Address:</b>
   <%= @profile.address %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
+   <% if @profile.spouse.present? %>
   <b>Spouse:</b>
   <%= @profile.spouse %>
-  <br/>
-  
+    <br/>
+  <% end %>
+
   <font/>
   
 </p>
