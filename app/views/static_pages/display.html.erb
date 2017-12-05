@@ -2,7 +2,7 @@
  <div class="one">
   <br/>
 <br/>
-  <p> <font size="6"> All Residents: (hold "Ctrl" and press "F" to search for one specific residents)<br/><br/></font></p>
+  <p> <font size="6"> All Residents: <br/><br/></font></p>
    <% @allProfiles.each do |person| %>
 <p> <font size="5"> 
 <br/>
@@ -10,12 +10,12 @@
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
 <font/>
 <br/>
-<%= person.email %>
-<%= person.landline %>
-<%= person.cell %>
-<%= person.nickname %>
-<%= person.address %>
-<%= person.spouse %>
+Email: <%= person.email %> <br/>
+Landline: <%= person.landline %> <br/>
+Cell: <%= person.cell %> <br/>
+Nickname: <%= person.nickname %> <br/>
+Address: <%= person.address %> <br/>
+Spouse: <%= person.spouse %> <br/>
 <% if current_user.admin %>
  <%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
 <% end %>
