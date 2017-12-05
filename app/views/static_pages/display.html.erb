@@ -10,12 +10,31 @@
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
 <font/>
 <br/>
+
+<% if person.email.present? %>
 Email: <%= person.email %> <br/>
+<% end %>
+
+<% if person.landline.present? %>
 Landline: <%= person.landline %> <br/>
+<% end %>
+
+<% if person.cell.present? %>
 Cell: <%= person.cell %> <br/>
+<% end %>
+
+<% if person.nickname.present? %>
 Nickname: <%= person.nickname %> <br/>
+<% end %>
+
+<% if person.address.present? %>
 Address: <%= person.address %> <br/>
+<% end %>
+
+<% if person.spouse.present? %>
 Spouse: <%= person.spouse %> <br/>
+<% end %>
+
 <% if current_user.admin %>
  <%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
 <% end %>
