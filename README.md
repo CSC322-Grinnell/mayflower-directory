@@ -28,6 +28,7 @@ Links from past teams:
     Fall 2017 Team's Google Slides
         https://docs.google.com/presentation/d/1KqmDjSqzYSs7QuO1QVgaVKArPO2P7_NTjr2TN88mWIM/edit#slide=id.p
         https://docs.google.com/presentation/d/1qf7VvQlvfgZK39O7cuS5852ypNCjBLp9kQgYAGpRiI8/edit#slide=id.p
+        https://docs.google.com/presentation/d/1s0hZl9CJ3HiLw7Ek5VSHu1OCMrWThQ3EI0k_ayZQ9vk/edit#slide=id.p
    
     Please contact a Fall 2017 member for links, passwords &/or invitations. (Trello, Slack, Heroku App)
     
