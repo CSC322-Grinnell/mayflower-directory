@@ -17,7 +17,7 @@
 <% if bucket.object("images/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
   imageURL = uploader.url
 else
-  imageURL = "http://images.all-free-download.com/images/graphiclarge/gaillardia_blanket_flowers_perennial_221655.jpg"
+  imageURL = image_url("flower.jpg")
 end
 %>
 
