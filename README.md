@@ -42,6 +42,24 @@ onetimesecret. The rest of you can then copy those keys in person.
     
     
 #### Deploying to Heroku:
+Before you start, you need to make sure that you are authenticated into
+Heroku. For setting up the CLI and credentials, you can refer to the
+[official guide](https://devcenter.heroku.com/articles/heroku-cli).
+You'll also need to contact me at **\[pandeyan\]** to transfer ownership
+of the applications and pipeline to you.
+
+After cloning the application, run
+`heroku git:remote -a mayflower-grinnell-staging` in the root of the
+project to add a `heroku` git remote. You can then deploy changes that
+you have committed by pushing to the `heroku` remote with
+`git push heroku master`. These changes will be available at the
+`mayflower-grinnell-staging` Heroku app.
+
+From the Heroku dashboard, under the `mayflower` pipeline, you can then
+deploy the changes you made from `mayflower-grinnell-staging` to
+`mayflower-grinnell`. This is the app that is will be used by the
+Mayflower residents, and so you should be careful in making sure all the
+changes you made to the staging app work correctly.
     
     
     
