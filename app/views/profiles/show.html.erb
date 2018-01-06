@@ -1,3 +1,6 @@
+<%# Note: This is a workaround. %>
+<%# Heroku isn't properly calling ProfilesController#show %>
+<% @profile = Profile.find(params[:id]) %>
 <div class="page-header">
   <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
 </div>
