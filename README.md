@@ -22,7 +22,7 @@
 * Mackenzie McFate
 
 #### Spring 2018
-* Faizaan Ali
+* Faizan Ali
 
 
 ### Links from past teams: 
