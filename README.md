@@ -21,6 +21,8 @@
 * Ana Segebre
 * Mackenzie McFate
 
+#### Spring 2018
+* Faizaan Ali
 
 
 ### Links from past teams: 
