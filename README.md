@@ -23,11 +23,15 @@
 
 #### Spring 2018
 * Faizaan Ali
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 * Rachel Swoap
 * Sophie Gaschott
 >>>>>>> Stashed changes
+=======
+* Rachel Swoap
+>>>>>>> master
 
 
 ### Links from past teams: 
