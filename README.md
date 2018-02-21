@@ -23,6 +23,7 @@
 
 #### Spring 2018
 * Faizaan Ali
+* Rachel Swoap
 
 
 ### Links from past teams: 
