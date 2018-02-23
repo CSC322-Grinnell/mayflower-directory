@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-#fog gem
-gem 'fog', '~> 1.38'
+
 
 ruby "2.3.4"
 
