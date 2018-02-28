@@ -561,6 +561,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.41.0)
@@ -966,6 +968,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  figaro
   fog (~> 1.38)
   haml-rails
   heroku
