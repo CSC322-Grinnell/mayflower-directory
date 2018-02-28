@@ -17,3 +17,6 @@ MayflowerDirectory1.csv
 
 # Ignore misc. files
 .DS_Store
+
+# Ignore application configuration
+/config/application.yml
