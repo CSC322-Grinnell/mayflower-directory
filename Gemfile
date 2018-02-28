@@ -76,6 +76,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'test-unit'
   gem 'sqlite3'
+  gem 'figaro'
 
 
 end
