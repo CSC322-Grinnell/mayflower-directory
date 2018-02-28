@@ -660,6 +660,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    figaro (1.1.1)
+      thor (~> 0.14)
     gherkin (5.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -907,6 +909,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  figaro
   haml-rails
   heroku
   jbuilder (~> 2.0)
