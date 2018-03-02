@@ -111,6 +111,9 @@ group :development do
   gem 'spring'
 end
 
+#fog gem                                                                                                                          
+gem 'fog', '~> 1.38'
+
 #AWS Gem
 gem 'aws-sdk', '~> 3'
 
