@@ -25,6 +25,8 @@
 * Faizaan Ali
 * Rachel Swoap
 * Sophie Gaschott
+* Maisy Dodge
+* Pat Min
 
 
 ### Links from past teams: 
