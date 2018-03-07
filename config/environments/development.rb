@@ -41,5 +41,9 @@ Rails.application.configure do
   
   # devise mailer environ
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
+s3 = Aws::S3::Resource.new(
+ region: 'us-east-2',
+ access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+ secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+ )
 end
