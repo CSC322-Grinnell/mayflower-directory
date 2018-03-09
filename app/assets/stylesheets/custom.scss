@@ -24,24 +24,9 @@ textarea {
 }
 
 /* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #87CEEB;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
- font-family: 'Lato', sans-serif;
+.navbar {
+  background-color:#ffffff;
 }
-
-#logo:hover {
-  color: 000080;
-  text-decoration: none;
-}
-
 /* footer */
 
 footer {
