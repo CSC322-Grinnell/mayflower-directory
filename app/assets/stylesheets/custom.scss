@@ -25,8 +25,36 @@ textarea {
 
 /* header */
 .navbar {
-  background-color:#ffffff;
+  /*navbar color*/
+  background-color: #4eacdf; /*light mayflower blue*/
+  
+/*behind text (kinda?)*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
+li {
+    float: left;
+}
+/*text*/
+li a{
+    display: block;
+    color: #860601; /*mayflower red*/
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+/*hover over text*/
+li a:hover{
+    color: white;
+    background-color: #860601; /*mayflower red*/
+  } 
+}
+
+
 /* footer */
 
 footer {
