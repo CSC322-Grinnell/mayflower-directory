@@ -48,7 +48,7 @@ end
 
    <% if @profile.cell.present? %>
     <b>Cell:</b>
-  <a href="<%= @profile.cell %>"><%= @profile.cell %></a>
+  <a href="tel:<%= @profile.cell %>"><%= @profile.cell %></a>
     <br/>
   <% end %>
 
