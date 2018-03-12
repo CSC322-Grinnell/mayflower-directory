@@ -36,19 +36,19 @@ end
   
   <% if @profile.email.present? %>
     <b>Email: </b>
-  <%= @profile.email %>
+  <a href=“mailto:<%= @profile.email %>”> <%= @profile.email %> </a>
     <br/>
   <% end %>
 
   <% if @profile.landline.present? %>
     <b>Landline:</b>
-  <%= @profile.landline %>
+  <a href="<%= @profile.landline %>"><%= @profile.landline %></a>
     <br/>
   <% end %>
 
    <% if @profile.cell.present? %>
     <b>Cell:</b>
-  <%= @profile.cell %>
+  <a href="<%= @profile.cell %>"><%= @profile.cell %></a>
     <br/>
   <% end %>
 
