@@ -42,7 +42,7 @@ end
 
   <% if @profile.landline.present? %>
     <b>Landline:</b>
-  <a href="<%= @profile.landline %>"><%= @profile.landline %></a>
+  <a href="tel:<%= @profile.landline %>"><%= @profile.landline %></a>
     <br/>
   <% end %>
 
