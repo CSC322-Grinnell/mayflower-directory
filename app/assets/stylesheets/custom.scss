@@ -26,7 +26,7 @@ textarea {
 /* header */
 .navbar {
   /*navbar color*/
-  background-color: #4eacdf; /*light mayflower blue*/
+  background-color: #376e8c; 
   
 /*behind text (kinda?)*/
 ul {
@@ -41,7 +41,7 @@ li {
 /*text*/
 li a{
     display: block;
-    color: #860601; /*mayflower red*/
+    color: white; 
     font-size: 20px;
     text-align: center;
     padding: 20px 20px;
@@ -49,8 +49,8 @@ li a{
 }
 /*hover over text*/
 li a:hover{
-    color: white;
-    background-color: #860601; /*mayflower red*/
+    color: #376e8c;
+    background-color: white; 
   } 
 }
 
