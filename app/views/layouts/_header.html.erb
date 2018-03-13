@@ -8,16 +8,15 @@
   </div>
   
   <ul class="nav navbar-nav navbar-right">
-
+   <%if user_signed_in?%> 
+    <li><%= link_to "Search",   '/static_pages/search' %></li>
+    <%end%>
     <% if user_signed_in? && current_user.admin %>
       <li><%= link_to "Create Users",  '/profiles/new' %></li>
     <% end %>
     <% if user_signed_in? && current_user.admin %>
       <li><%= link_to "Edit Residents", '/static_pages/display' %></li>
     <% end %>
-   <%if user_signed_in?%> 
-    <li><%= link_to "Search",   '/static_pages/search' %></li>
-    <%end%>
     <%if user_signed_in?%>
     <li><%= link_to "Home",   '/static_pages/home' %></li>
     <%end%>
