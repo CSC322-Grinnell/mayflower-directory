@@ -13,7 +13,7 @@
 <% imageURL = uploader.url %>
 
 
-<%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+<%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
 <% bucket =  s3.bucket('mayflower-data') %>
 
 <% file = uploader.url %>
@@ -36,19 +36,19 @@ end
   
   <% if @profile.email.present? %>
     <b>Email: </b>
-  <%= @profile.email %>
+  <a href=“mailto:<%= @profile.email %>”> <%= @profile.email %> </a>
     <br/>
   <% end %>
 
   <% if @profile.landline.present? %>
     <b>Landline:</b>
-  <%= @profile.landline %>
+  <a href="tel:<%= @profile.landline %>"><%= @profile.landline %></a>
     <br/>
   <% end %>
 
    <% if @profile.cell.present? %>
     <b>Cell:</b>
-  <%= @profile.cell %>
+  <a href="tel:<%= @profile.cell %>"><%= @profile.cell %></a>
     <br/>
   <% end %>
 
