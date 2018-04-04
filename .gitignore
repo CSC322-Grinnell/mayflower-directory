@@ -20,3 +20,6 @@ MayflowerDirectory1.csv
 
 # Ignore application configuration
 /config/application.yml
+
+# Passwords
+MayflowerEmailPW.csv
