@@ -2,8 +2,10 @@
 @import "bootstrap";
 
 /* universal */
+
 body {
-  padding: 60px;
+  padding-top: 100px;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 section {
@@ -20,6 +22,18 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+.container {
+  background:#ffffff;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+
+.title {
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-decoration:underline;
 }
 
 /* header */
@@ -51,6 +65,10 @@ li a:hover{
     color: #376e8c;
     background-color: white; 
   } 
+  
+.icon-bar{
+  background-color:#ffffff;
+}
 }
 
 
@@ -112,3 +130,29 @@ footer ul li {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/*Search form*/
+.form-group{
+  width: 100%;
+  font-size: 16pt;
+}
+
+.btn-large{
+  height: 30%;
+  width: 30%;
+  font-size: 200%;
+  background-color:#376e8c;
+}
+.btn-large:hover{
+  background-color: #860601;
+}
+
+.form-control{
+  font-size: 14pt;
+  height:50px;
+}
+
+.custom-select{
+  height:50px;
+}
+
