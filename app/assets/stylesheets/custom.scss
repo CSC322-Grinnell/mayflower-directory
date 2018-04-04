@@ -2,13 +2,8 @@
 @import "bootstrap";
 
 /* universal */
-
 body {
-  padding-top: 60px;
-  background-image:url(http://www.mayflowerhomes.com/wp-content/uploads/2013/02/mf_logo3.jpg);
-  background-position: 50% 40%; ;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  padding: 60px;
 }
 
 section {
@@ -28,23 +23,36 @@ textarea {
 }
 
 /* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #87CEEB;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
- font-family: 'Lato', sans-serif;
+.navbar {
+  /*navbar color*/
+  background-color: #376e8c; 
+  
+/*behind text (kinda?)*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+li {
+    float: left;
+}
+/*text*/
+li a{
+    display: block;
+    color: white; 
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+/*hover over text*/
+li a:hover{
+    color: #376e8c;
+    background-color: white; 
+  } 
 }
 
-#logo:hover {
-  color: 000080;
-  text-decoration: none;
-}
 
 /* footer */
 
