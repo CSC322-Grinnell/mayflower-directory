@@ -42,13 +42,13 @@ end
 
   <% if @profile.landline.present? %>
     <b>Landline:</b>
-  <a href="tel:<%= @profile.landline %>"><%= @profile.landline %></a>
+  <a href="tel:<%= @profile.landline %>"><%= number_to_phone(@profile.landline,area_code: true) %></a>  
     <br/>
-  <% end %>
+  <% end %> 
 
    <% if @profile.cell.present? %>
     <b>Cell:</b>
-  <a href="tel:<%= @profile.cell %>"><%= @profile.cell %></a>
+  <a href="tel:<%= @profile.cell %>"><%= number_to_phone(@profile.cell,area_code: true) %></a>
     <br/>
   <% end %>
 
