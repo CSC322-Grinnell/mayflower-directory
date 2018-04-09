@@ -16,8 +16,7 @@
  <br/> If you provide no information, all residents will be shown.</font>
  <br/>
  <br/>
-</body>
-</html>
+
 
 <% @search = Profile.search(params[:q]) %>
 <form>
@@ -32,12 +31,21 @@
   <div class="form-horizontal", style="text-align:left">
   <div class="form-group">
   <%= f.label "Neighborhood", class: "col control-label" %>
-  <br/>
     <select class="custom-select">
      <option selected>Select Neighborhood</option>
-     <option value="1">Neighborhood1</option>
-     <option value="2">Neighborhood2</option>
-     <option value="3">Neighborhood3</option>
+     <option value="1">Altemeier</option>
+     <option value="2">Buckley 1st</option>
+     <option value="3">Buckley 2nd</option>
+     <option value="3">Buckley 3rd</option>
+     <option value="3">Edwards</option>
+     <option value="3">Montgomery</option>
+     <option value="3">Pearson</option>
+     <option value="3">Harwich East</option>
+     <option value="3">Harwich North</option>
+     <option value="3">Harwich South</option>
+     <option value="3">Harwich Southeast</option>
+     <option value="3">Watertower 1st</option>
+     <option value="3">Watertower 2nd & 3rd</option>
     </select>
     </div>
  </div>
@@ -57,13 +65,15 @@
    <font size="7"> Results </font>
    </div>
    <% @results.each do |person| %>
-<p> <font size="5">
-<a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
-<br/>
-<font/>
+    <p> <font size="5">
+    <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+   <br/>
+<font/> </p>
 <% end %>
 <% else %>
  <div class="two">No results. Try searching for something else.</div>
 <% end %>
 </div>
 </div>
+</body>
+</html>
