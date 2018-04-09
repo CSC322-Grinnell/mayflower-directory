@@ -77,6 +77,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'sqlite3'
   gem 'figaro'
+  gem 'phony_rails'
 
 
 end
