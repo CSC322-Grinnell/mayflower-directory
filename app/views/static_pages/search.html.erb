@@ -1,76 +1,69 @@
 <!DOCTYPE html>
 <html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+ </head>
 <body>
  <br/>
-<font size="7">Search Page</font>
+ <div class="container">
+ <div class="row">
+<div class="col-md-6", style="text-align:center">
+ <div class="title">
+<font size="7">Search</font>
+</div>
  <br/>
- <font size="4">You don't have to fill in all these information to search. Fill in as much as you wish.
- <br/> If you provide no information, all residents will be shown. The result section is further down the page.</font>
- <br/>
- <br/>
- <font size="4"> If you wish to change your account password, there is a link on the home page.</font>
+ <font size="4">Enter a full or partial name (first or last or nickname), and/or select a neighborhood.
+ <br/> If you provide no information, all residents will be shown.</font>
  <br/>
  <br/>
 </body>
 </html>
 
 <% @search = Profile.search(params[:q]) %>
-
+<form>
 <%= search_form_for @search, url: '/static_pages/search' do |f| %>
 
-  <%= f.label :first_name_cont %>
-  <%= f.search_field :first_name_cont %>
+ <div class="form-horizontal", style="text-align:left">
+  <div class="form-group">
+  <%= f.label "Search for resident:", class: "col control-label" %>
+    <%= f.search_field :first_name_or_last_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
+   </div>
+  </div>
+  <div class="form-horizontal", style="text-align:left">
+  <div class="form-group">
+  <%= f.label "Neighborhood", class: "col control-label" %>
   <br/>
+    <select class="custom-select">
+     <option selected>Select Neighborhood</option>
+     <option value="1">Neighborhood1</option>
+     <option value="2">Neighborhood2</option>
+     <option value="3">Neighborhood3</option>
+    </select>
+    </div>
+ </div>
   <br/>
-  <%= f.label :last_name_cont %>
-  <%= f.search_field :last_name_cont %>
-  <br/>
-  <br/>
-  <%= f.label :email_cont %>
-  <%= f.search_field :email_cont %>
-  <br/>
-  <br/>
-  <%= f.label :landline_cont %>
-  <%= f.search_field :landline_cont %>
-  <br/>
-  <br/>
-  <%= f.label :cell_cont %>
-  <%= f.search_field :cell_cont %>
-  <br/>
-  <br/>
-  <%= f.label :neighborhood_cont %>
-  <%= f.search_field :neighborhood_cont %>
-  <br/>
-  <br/>
-  <%= f.label :nickname_cont %>
-  <%= f.search_field :nickname_cont %>
-  <br/>
-  <br/>
-  <%= f.label :address_cont %>
-  <%= f.search_field :address_cont %>
-  <br/>
-  <br/>
-  <%= f.label :spouse_cont %>
-  <%= f.search_field :spouse_cont %>
-  <br/>
-  <br/>
-  <%= f.submit %>
-  <br/>
+  <%=f.submit "Search", class: "btn btn-primary btn-large"%>
   <br/>
   <br/>
 <% end %>
+</form>
+</div>
+
+<div class="col-md-6", style="text-align:center">
 
 <% @results = Profile.ransack(params[:q]).result %>
 <% if @results.length > 0 %>
- <div class="one">
-  <p> <font size="6"> Results: </font></p>
+   <div class=title>
+   <font size="7"> Results </font>
+   </div>
    <% @results.each do |person| %>
-<p> <font size="5"> 
+<p> <font size="5">
 <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
 <br/>
 <font/>
 <% end %>
-   </div>
 <% else %>
  <div class="two">No results. Try searching for something else.</div>
 <% end %>
+</div>
+</div>
