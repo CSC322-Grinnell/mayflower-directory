@@ -18,6 +18,9 @@
  <br/>
 
 
+</body>
+</html>
+
 <% @search = Profile.search(params[:q]) %>
 <form>
 <%= search_form_for @search, url: '/static_pages/search' do |f| %>
@@ -46,6 +49,13 @@
      <option value="3">Harwich Southeast</option>
      <option value="3">Watertower 1st</option>
      <option value="3">Watertower 2nd & 3rd</option>
+=======
+  <br/>
+    <select class="custom-select">
+     <option selected>Select Neighborhood</option>
+     <option value="1">Neighborhood1</option>
+     <option value="2">Neighborhood2</option>
+     <option value="3">Neighborhood3</option>
     </select>
     </div>
  </div>
@@ -69,6 +79,10 @@
     <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
    <br/>
 <font/> </p>
+<p> <font size="5">
+<a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+<br/>
+<font/>
 <% end %>
 <% else %>
  <div class="two">No results. Try searching for something else.</div>
