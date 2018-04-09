@@ -22,5 +22,5 @@ MayflowerDirectory1.csv
 /config/application.yml
 /config/secrets.yml
 
-#passwords
+#passwords 
 MayflowerEmailPW.csv
