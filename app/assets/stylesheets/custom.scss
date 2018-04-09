@@ -70,6 +70,17 @@ li a:hover{
   background-color:#ffffff;
 }
 }
+/*hover over text*/
+li a:hover{
+    color: #376e8c;
+    background-color: white; 
+  } 
+  
+.icon-bar{
+  background-color:#ffffff;
+}
+}
+
 
 
 /* footer */
@@ -152,6 +163,20 @@ footer ul li {
   height:50px;
 }
 
+/*home*/
+
+.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+=======
 .custom-select{
   height:50px;
 }
@@ -244,3 +269,4 @@ transform:translatey(0);
 -webkit-transition-delay:.2s;
 transition-delay:.2s;
 }
+
