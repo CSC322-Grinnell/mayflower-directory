@@ -885,6 +885,10 @@ GEM
     parser (2.5.0.2)
       ast (~> 2.4.0)
     pg (1.0.0)
+    phony (2.16.3)
+    phony_rails (0.14.6)
+      activesupport (>= 3.0)
+      phony (> 2.15)
     poltergeist (1.17.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -1079,6 +1083,7 @@ DEPENDENCIES
   mini_magick
   normalize-rails
   pg
+  phony_rails
   poltergeist
   pry-byebug
   rails (= 5.0.1)

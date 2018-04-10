@@ -39,16 +39,30 @@ end
   <a href=“mailto:<%= @profile.email %>”> <%= @profile.email %> </a>
     <br/>
   <% end %>
+  
+  <%if @profile.landline.present?
+  if @profile.landline.length < 10
+  @profile.landline = "641" + @profile.landline
+  end
+end
+  %>
 
   <% if @profile.landline.present? %>
     <b>Landline:</b>
-  <a href="tel:<%= @profile.landline %>"><%= @profile.landline %></a>
+  <a href="tel:<%= @profile.landline %>"><%= number_to_phone(@profile.landline,area_code: true) %></a>  
     <br/>
-  <% end %>
+  <% end %> 
+  
+   <%if @profile.cell.present?
+   if @profile.cell.length < 10
+  @profile.cell = "641" + @profile.cell
+  end
+end
+  %>
 
    <% if @profile.cell.present? %>
     <b>Cell:</b>
-  <a href="tel:<%= @profile.cell %>"><%= @profile.cell %></a>
+  <a href="tel:<%= @profile.cell %>"><%= number_to_phone(@profile.cell,area_code: true) %></a>
     <br/>
   <% end %>
 
