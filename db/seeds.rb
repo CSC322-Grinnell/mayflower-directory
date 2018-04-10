@@ -17,20 +17,6 @@ s3 = Aws::S3::Resource.new(
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 )
-obj = s3.bucket(ENV['AWS_BUCKET_NAME']).object('MayflowerDirectory-2017-11-30.csv').get
-csv = CSV.parse(obj.body, :headers => true)
-csv.each do |row|
-     row = row.to_hash.with_indifferent_access
-     bob = row.to_hash.symbolize_keys
-     Profile.create!(bob)
- end
 
-csv_data = File.read('MayflowerEmailPw.csv')
- csv = CSV.parse(csv_data, :headers => true)
- csv.each do |row|
-     row = row.to_hash.with_indifferent_access
-     bob = row.to_hash.symbolize_keys
-     User.create!(bob)
- end
 
 #Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
