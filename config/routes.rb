@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/search'
   get 'static_pages/display'
-  
-  resources :profiles
+  resources :profiles do
+    collection { post :import }
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -95,3 +96,4 @@ Rails.application.routes.draw do
     #end
     
 end
+
