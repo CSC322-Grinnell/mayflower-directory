@@ -32,48 +32,44 @@
   <div class="form-horizontal", style="text-align:left">
   <div class="form-group">
   <%= f.label "Neighborhood", class: "col control-label" %>
+     <%= f.collection_select(:neighborhood_eq, Profile.all, :neighborhood, :neighborhood, :include_blank => true) %>
   <br/>
-    <select class="custom-select">
-     <option selected>Select Neighborhood</option>
-     <option value="1">Altemeier</option>
-     <option value="2">Buckley 1st</option>
-     <option value="3">Buckley 2nd</option>
-     <option value="3">Buckley 3rd</option>
-     <option value="3">Edwards</option>
-     <option value="3">Montgomery</option>
-     <option value="3">Pearson</option>
-     <option value="3">Harwich East</option>
-     <option value="3">Harwich North</option>
-     <option value="3">Harwich South</option>
-     <option value="3">Harwich Southeast</option>
-     <option value="3">Watertower 1st</option>
-     <option value="3">Watertower 2nd & 3rd</option>
-    </select>
     </div>
  </div>
   <br/>
   <%=f.submit "Search", class: "btn btn-primary btn-large"%>
   <br/>
   <br/>
+
+  <div class = "row"><form><input type="button" onClick="location.href='/static_pages/search';"  value="Search Again"></form> </div>
+
+  <br/>
+  <br/>
 <% end %>
 </form>
 </div>
 
+
 <div class="col-md-6", style="text-align:center">
 
-<% @results = Profile.ransack(params[:q]).result %>
-<% if @results.length > 0 %>
-   <div class=title>
+
+ <% if params[:q].present? %>
+  <div class=title>
    <font size="7"> Results </font>
-   </div>
-   <% @results.each do |person| %>
-<p> <font size="5">
-<a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
-<br/>
-<font/>
+ </div>
+  <% @results = Profile.ransack(params[:q]).result %>
+  <% if Profile.ransack(params[:q]).result.blank? %>
+    <div class="two">No results. Try searching for something else.</div>
+  <% else %>
+    <% @results.each do |person| %>
+      <p> <font size="5">
+      <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+      <br/>
+      <font/>
+    <% end %>
+  <% end %>
 <% end %>
-<% else %>
- <div class="two">No results. Try searching for something else.</div>
-<% end %>
+
+
 </div>
 </div>
