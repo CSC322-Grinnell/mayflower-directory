@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
   
+  def import
+    Profile.import(params[:file])
+    redirect_to root_url, notice: "Profiles imported."
+  end
+  
   def new
     @user = Profile.new
   end
@@ -44,6 +49,7 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
+
   # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user.admin
@@ -68,3 +74,4 @@ class ProfilesController < ApplicationController
     redirect_to '/static_pages/display'
   end
 end
+
