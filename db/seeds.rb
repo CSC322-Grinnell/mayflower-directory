@@ -18,4 +18,5 @@ s3 = Aws::S3::Resource.new(
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 )
 
+
 #Profile.create!(:first_name=>"Yetter", :last_name=>"Bob")
