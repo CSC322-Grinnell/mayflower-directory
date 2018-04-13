@@ -34,6 +34,13 @@
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
-
+  </div>    
+   <h3>Import a CSV File</h3>
+    <%= form_tag users_import_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
   </div>
+
+
 </div>
