@@ -52,7 +52,6 @@ class ProfilesController < ApplicationController
      end
    end
   
-
   
   def show
     @profile = Profile.find(params[:id])
@@ -66,5 +65,10 @@ class ProfilesController < ApplicationController
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
     redirect_to '/static_pages/display'
+  end
+  
+  def import_users
+    User.import(params[:file])
+    redirect_to static_pages_search_path, notice: "User data imported!"
   end
 end
