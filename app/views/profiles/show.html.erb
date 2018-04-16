@@ -20,7 +20,7 @@
 <% if bucket.object("images/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
   imageURL = uploader.url
 else
-  imageURL = image_url("mayflower_half.png")
+  imageURL = image_url("Mayflower_Default_Photo.jpg")
 end
 %>
 
