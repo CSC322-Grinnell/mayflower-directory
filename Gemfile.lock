@@ -884,7 +884,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.0.2)
       ast (~> 2.4.0)
-    pg (1.0.0)
+    pg (0.20.0)
     phony (2.16.3)
     phony_rails (0.14.6)
       activesupport (>= 3.0)
@@ -1082,7 +1082,7 @@ DEPENDENCIES
   masonry-rails
   mini_magick
   normalize-rails
-  pg
+  pg (= 0.20.0)
   phony_rails
   poltergeist
   pry-byebug
