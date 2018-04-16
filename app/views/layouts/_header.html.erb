@@ -1,50 +1,51 @@
-<body>
-
-<div class="navbar-wrapper"
-  <div class="container-fluid">
-  <nav class="navbar navbar-fixed-top justify-content-between">
-    <div class="navbar-header"
-      <a class="navbar-brand" href="#">
-            <%= link_to image_tag("mf_white_half.png", height: '60', width: '360'), 'http://www.mayflowerhomes.com/', id: "logo" %>
-      </a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded-"false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    
+<html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+ </head>
+ 
+ <body>
+  <div class="navbar-wrapper"
+    <div class="container-fluid">
+      <nav class="navbar navbar-fixed-top justify-content-between">
+        <div class="navbar-header"
+          <a class="navbar-image" href="#">
+                <%= link_to image_tag("mf_white_half.png", height: '60', width: '360'), 'http://www.mayflowerhomes.com/', id: "logo" %>
+          </a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded-"false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+        </div>
+      
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %> 
+              <li><%= link_to "Search",   '/static_pages/search' %></li>
+            <% end %>
+            <% if user_signed_in? && current_user.admin %>
+              <li><%= link_to "Create Users",  '/profiles/new' %></li>
+            <% end %>
+            <% if user_signed_in? && current_user.admin %>
+              <li><%= link_to "Edit Residents", '/static_pages/display' %></li>
+            <% end %>
+            <%if user_signed_in?%>
+              <li><%= link_to "Home",   '/static_pages/home' %></li>
+            <% end %>
+            <% if user_signed_in? && !current_user.admin %>
+              <li><%= link_to "All Residents",   '/static_pages/display' %></li>
+            <% end %>
+            <% if user_signed_in?%>
+              <li><%= link_to "Log out", '/auth/logout', :method => :delete  %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="nav navbar-nav navbar-right">
-         <%if user_signed_in?%> 
-          <li><%= link_to "Search",   '/static_pages/search' %></li>
-          <%end%>
-        <% if user_signed_in? && current_user.admin %>
-          <li><%= link_to "Create Profile",  '/profiles/new' %></li>
-        <% end %>
-        <% if user_signed_in? && current_user.admin %>
-          <li><%= link_to "Edit Residents", '/static_pages/display' %></li>
-        <% end %>
-        <%if user_signed_in?%>
-          <li><%= link_to "Home",   '/static_pages/home' %></li>
-        <%end%>
-        <% if user_signed_in? && !current_user.admin %>
-          <li><%= link_to "All Residents",   '/static_pages/display' %></li>
-        <% end %>
-        <%if user_signed_in?%>
-         <li><%= link_to "Log out", '/auth/logout', :method => :delete  %></li>
-         <% end %>
-    </ul>
   </div>
-  </div>
-  </nav>
-</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-
-</body>
+  </body>
+</html>
