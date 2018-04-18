@@ -1,13 +1,18 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :logged_in_admin, only: [:create,:new]
-  before_action :require_no_authentication, only: [:create,:new]
-  
-   #before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  # before_action :require_no_authentication, only: [:create,:new]
 
+  #before_action :configure_sign_up_params, only: [:create]
+  #before_action :configure_account_update_params, only: [:update]
+
+
+# Is no authentication required?
+   def require_no_authentication
+   end
+   
 # Confirms a logged-in user as admin.
    def logged_in_admin
-     unless current_user.admin
+     unless current_user && current_user.admin
        flash[:danger] = "Please log in as admin."
        redirect_to '/static_pages/home'
      end
@@ -15,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   super
+  #    super
   # end
 
   # POST /resource
