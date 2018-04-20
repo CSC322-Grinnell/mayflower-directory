@@ -34,14 +34,6 @@ class ProfilesController < ApplicationController
     puts "Params hash:  " + profile_params.to_unsafe_h.to_s
     avatar = profile_params.delete(:avatar)
     puts "Avatar:       " + avatar.to_s
-    fname = "images/" + profile_params.fetch(:last_name) + ", " + profile_params.fetch(:first_name) + ".png"
-    puts "Fname:        " + fname
-    s3 = Aws::S3::Resource.new(region: ENV['AWS_DEFAULT_REGION'], credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']))
-    bucket =  s3.bucket(ENV['AWS_BUCKET_NAME'])
-    puts "* Attempting to upload #{avatar.path} as #{fname}*"
-    # bucket.objects.create(fname, avatar.read)
-    bucket.object(fname).upload_file(avatar.path)
-    puts "Done uploading"
 
     @user = Profile.new(profile_params)
     #puts "User is "
