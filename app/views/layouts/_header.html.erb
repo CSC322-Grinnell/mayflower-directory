@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %> 
-              <li><%= link_to "Search",   '/static_pages/search' %></li>
+              <li><%= link_to "Search",   '/search' %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create Profile",  '/profiles/new' %></li>
@@ -32,10 +32,10 @@
               <li><%= link_to "Create User",   '/auth/register/sign_up' %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
-              <li><%= link_to "Edit Residents", '/static_pages/display' %></li>
+              <li><%= link_to "Edit Residents", '/display' %></li>
             <% end %>
             <%if user_signed_in?%>
-              <li><%= link_to "Resources",   '/static_pages/home' %></li>
+              <li><%= link_to "Resources",   '/home' %></li>
             <% end %>
             <% if user_signed_in?%>
               <li><%= link_to "Log out", '/auth/logout', :method => :delete  %></li>
