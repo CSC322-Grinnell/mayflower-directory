@@ -73,10 +73,6 @@ class ProfilesController < ApplicationController
     flash[:success] = "Profile deleted"
     redirect_to '/static_pages/display'
   end
-  
-  def import_users
-    User.import(params[:file])
-    redirect_to static_pages_search_path, notice: "User data imported!"
-  end
+
 end
 

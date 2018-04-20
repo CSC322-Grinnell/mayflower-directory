@@ -17,6 +17,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
        redirect_to '/static_pages/home'
      end
    end
+   
+     
+  def import_users
+    User.import(params[:file])
+    redirect_to static_pages_search_path, notice: "User data imported!"
+  end
 
   # GET /resource/sign_up
   # def new

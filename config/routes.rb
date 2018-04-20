@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'search', to: 'static_pages#search'
   get 'display', to: 'static_pages#display'
   
-  post 'users/import', to: 'profiles#import_users'
   
   resources :profiles do
     collection { post :import }
@@ -25,11 +24,17 @@ Rails.application.routes.draw do
   
   root 'static_pages#search'
 
+ devise_scope :users do
+      post 'users/import', to: 'registrations#import_users'
+  end
+
+
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', 
                   confirmation: 'verification', unlock: 'unblock', 
                   registration: 'register', sign_up: 'sign_up' }
-
+    
+               
 end
 
