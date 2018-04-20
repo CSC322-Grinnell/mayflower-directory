@@ -40,16 +40,8 @@
       <%= f.submit "Save", class: "btn btn-primary btn-large" %>
      </center>
     <% end %>
-  </div>    
-   <h3>Import a CSV File</h3>
-    <%= form_tag users_import_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "Import CSV" %>
-    <% end %>
-  </div>
-
-
 </div>
+
 <!--This code is used for batch importing profile information from a CSV file-->
 <!--The CSV must not have blank space at the end of the document, and column names -->
 <!--must match those in the code-->
