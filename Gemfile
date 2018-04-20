@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
+gem 'devise-security'
+gem 'rails_email_validator'
 gem 'bootstrap-sass', '3.3.6'
 
 # 
@@ -77,6 +79,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'sqlite3'
   gem 'figaro'
+  gem 'phony_rails'
 
 
 end
@@ -92,7 +95,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.20.0'
   gem 'heroku'
 end
 

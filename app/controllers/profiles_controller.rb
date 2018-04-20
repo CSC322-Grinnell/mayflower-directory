@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
   
+  def import
+    Profile.import(params[:file])
+    redirect_to root_url, notice: "Profiles imported."
+  end
+  
   def new
     @user = Profile.new
   end
@@ -10,7 +15,7 @@ class ProfilesController < ApplicationController
   end
   
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse)
+    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :avatar)
   end
    
   def update
@@ -25,7 +30,7 @@ class ProfilesController < ApplicationController
   
   def create
     puts "*** CREATING A NEW USER ****"
-    puts profile_params
+    puts profile_params.to_unsafe_h.to_s
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
@@ -33,8 +38,9 @@ class ProfilesController < ApplicationController
       flash[:notice] = "profile sucessfully added"
       redirect_to '/profiles/' + @user[:id].to_s
     else 
+      puts "** Could not save profile"
       flash[:notice] = "there was a problem creating the new profile"
-      render action 'profile/new'
+      redirect_to '/profiles/new'
     end
   end
   
@@ -44,6 +50,7 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
+
   # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user.admin
@@ -72,3 +79,4 @@ class ProfilesController < ApplicationController
     redirect_to static_pages_search_path, notice: "User data imported!"
   end
 end
+
