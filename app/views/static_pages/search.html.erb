@@ -1,71 +1,61 @@
 <!DOCTYPE html>
 <html>
-<body>
- <br/>
- <div class="row">
-<div class="col-md-5">
-<font size="7">Search</font>
- <br/>
- <font size="4">Fill in as much as you wish.
- <br/> If you provide no information, all residents will be shown. The results are further down the page.</font>
- <br/>
- <br/>
-</body>
-</html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+ </head>
+ 
+ <body>
+  <br/>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-6", style="text-align:center">
+     <div class="title">
+      <font size="7">Search</font>
+     </div>
+     <br/>
+     <font size="4">Enter a full or partial name (first or last or nickname), and/or select a neighborhood.
+     <br/> If you provide no information, all residents will be shown.
+     <br/> Click 'Reset' to clear your search and search again.</font>
+     <br/>
+     <br/>
 
-<% @search = Profile.search(params[:q]) %>
-<form>
-<%= search_form_for @search, url: '/static_pages/search' do |f| %>
-<div class="form-horizontal">
- <div class="form-group">
-  <%= f.label "First name", class: "col control-label"%>
-   <div class="col">
-    <%= f.search_field :first_name_cont, class:"form-control", placeholder: 'Enter first name' %>
+     <% @search = Profile.search(params[:q]) %>
+     <form> <%= search_form_for @search, url: '/static_pages/search' do |f| %>
+      <div class="form-horizontal", style="text-align:left">
+        <div class="form-group">
+          <%= f.label "Search for resident:", class: "col control-label" %>
+          <%= f.search_field :first_name_or_last_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
+          <br/>
+          <%= f.label "Neighborhood", class: "col control-label" %>
+          <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq, :neighborhood, :neighborhood, :include_blank => true) %>
+          <br/>
+        </div>
+      </div>
+      <br/>
+      <%=f.submit "Search", class: "btn btn-primary btn-large"%>
+      <br/>
+      <br/>
+      <a class="reset" href="/static_pages/search">Reset</a>
+    <% end %>
    </div>
-   </div>
-</div>
- <div class="form-horizontal">
-  <div class="form-group">
-  <%= f.label "Last name", class: "col control-label" %>
-   <div class="col">
-    <%= f.search_field :last_name_cont, class: "form-control", placeholder: 'Enter last name' %>
-    </div>
+
+   <div class="col-md-6", style="text-align:center">
+    <% if params[:q].present? %>
+      <div class=title>
+       <font size="7"> Results </font>
+      </div>
+     <% @results = Profile.ransack(params[:q]).result %>
+     <% if Profile.ransack(params[:q]).result.blank? %>
+      <div class="two">No results. Try searching for something else.</div>
+     <% else %>
+      <% @results.each do |person| %>
+       <p> <font size="5">
+        <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+       <font/></p>
+      <% end %>
+     <% end %>
+    <% end %>
    </div>
   </div>
-  <div class="form-horizontal">
-  <div class="form-group">
-  <%= f.label "Neighborhood", class: "col control-label" %>
-   <div class="col">
-    <select class="custom-select">
-     <option selected>Select Neighborhood</option>
-     <option value="1">Neighborhood1</option>
-     <option value="2">Neighborhood2</option>
-     <option value="3">Neighborhood3</option>
-    </select>
-    </div>
-    </div>
- </div>
-  <br/>
-  <%=f.submit "Search", class: "btn btn-primary btn-large"%>
-  <br/>
-  <br/>
-<% end %>
-</form>
-</div>
-
-<% @results = Profile.ransack(params[:q]).result %>
-<div class="col-md-5" style="text-align:center"
-<% if @results.length > 0 %>
- <div class="one">
-  <p> <font size="7"> Results: </font></p>
-   <% @results.each do |person| %>
-<p> <font size="5"> 
-<a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
-<br/>
-<font/>
-<% end %>
-   </div>
-<% else %>
- <div class="two">No results. Try searching for something else.</div>
-<% end %>
-</div>
+ </body>
+</html>
