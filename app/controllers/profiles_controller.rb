@@ -30,7 +30,19 @@ class ProfilesController < ApplicationController
   
   def create
     puts "*** CREATING A NEW USER ****"
-    puts profile_params.to_unsafe_h.to_s
+    puts "Params object:" + profile_params.to_s
+    puts "Params hash:  " + profile_params.to_unsafe_h.to_s
+    avatar = profile_params.delete(:avatar)
+    puts "Avatar:       " + avatar.to_s
+    fname = "images/" + profile_params.fetch(:last_name) + ", " + profile_params.fetch(:first_name) + ".png"
+    puts "Fname:        " + fname
+    s3 = Aws::S3::Resource.new(region: ENV['AWS_DEFAULT_REGION'], credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']))
+    bucket =  s3.bucket(ENV['AWS_BUCKET_NAME'])
+    puts "* Attempting to upload #{avatar.path} as #{fname}*"
+    # bucket.objects.create(fname, avatar.read)
+    bucket.object(fname).upload_file(avatar.path)
+    puts "Done uploading"
+
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
@@ -39,6 +51,7 @@ class ProfilesController < ApplicationController
       redirect_to '/profiles/' + @user[:id].to_s
     else 
       puts "** Could not save profile"
+      puts @user.errors.full_messages
       flash[:notice] = "there was a problem creating the new profile"
       redirect_to '/profiles/new'
     end
