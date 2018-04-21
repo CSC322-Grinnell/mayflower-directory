@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   
   root 'static_pages#search'
 
- devise_scope :users do
-      post 'users/import', to: 'registrations#import_users'
+  devise_scope :user do
+    post 'users/import', to: 'users/registrations#import_users'
   end
 
 
