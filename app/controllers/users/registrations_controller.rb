@@ -18,10 +18,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
      end
    end
    
-     
   def import_users
-    User.import(params[:file])
-    redirect_to static_pages_search_path, notice: "User data imported!"
+    file = params[:file]
+    if ! file
+      flash[:danger] = "No file specified"
+      redirect_to '/auth/register/sign_up'
+    else
+      User.import(file)
+      redirect_to static_pages_search_path, notice: "User data imported!"
+    end
   end
 
   # GET /resource/sign_up
