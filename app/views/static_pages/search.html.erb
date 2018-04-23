@@ -20,7 +20,7 @@
      <br/>
 
      <% @search = Profile.search(params[:q]) %>
-     <form> <%= search_form_for @search, url: '/static_pages/search' do |f| %>
+     <form> <%= search_form_for @search, url: '/search' do |f| %>
       <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
           <%= f.label "Search for resident:", class: "col control-label" %>
@@ -35,7 +35,7 @@
       <%=f.submit "Search", class: "btn btn-primary btn-large"%>
       <br/>
       <br/>
-      <a class="reset" href="/static_pages/search">Reset</a>
+      <a class="reset" href="/search">Reset</a>
     <% end %>
    </div>
 

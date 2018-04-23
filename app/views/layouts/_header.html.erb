@@ -10,9 +10,7 @@
       <nav class="navbar navbar-fixed-top justify-content-between">
         <div class="navbar-header"
           <a class="navbar-image" href="#">
-
-                <%= link_to image_tag("mf_white_half.png", height: '60', width: '228'), 'http://www.mayflowerhomes.com/', id: "logo" %>
-
+                <%= link_to image_tag("mf_white_half.png", height: '60', width: '186'), 'http://www.mayflowerhomes.com/', id: "logo" %>
           </a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -32,9 +30,6 @@
             <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create User",   '/auth/register/sign_up' %></li>
-            <% end %>
-            <% if user_signed_in? && current_user.admin %>
-              <li><%= link_to "Edit Residents", '/display' %></li>
             <% end %>
             <%if user_signed_in?%>
               <li><%= link_to "Resources",   '/home' %></li>
