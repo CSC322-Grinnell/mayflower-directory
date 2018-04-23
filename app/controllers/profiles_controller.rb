@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to '/static_pages/search'
+      redirect_to '/search'
     else
       render 'edit'
     end
@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
    def logged_in_admin
      unless current_user.admin
        flash[:danger] = "Please log in as admin."
-       redirect_to '/static_pages/home'
+       redirect_to '/home'
      end
    end
   
@@ -77,7 +77,7 @@ class ProfilesController < ApplicationController
   def destroy
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
-    redirect_to '/static_pages/display'
+    redirect_to '/search'
   end
 end
 

@@ -39,7 +39,7 @@
       
         <% if @profile.email.present? %>
           <b>Email: </b>
-        <a href=“mailto:<%= @profile.email %>”> <%= @profile.email %> </a>
+        <a href="mailto:<%= @profile.email %>"> <%= @profile.email %> </a>
           <br/>
         <% end %>
       
@@ -90,6 +90,11 @@
           <b>Spouse:</b>
           <%= @profile.spouse %>
           <br/>
+        <% end %>
+        
+        </br>
+        <% if current_user.admin %>
+         <%= link_to "Edit profile", "/profiles/" + @profile.id.to_s + "/edit"  %>
         <% end %>
         <font/>
         </p>

@@ -21,7 +21,7 @@ Spouse: <%= person.spouse %> <br/>
 <% end %>
 <% if current_user.admin %>
     | <%= link_to "delete", @user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+                                  data: { confirm: "Are you sure?" } %>
   <% end %>
 <br/>
 <br/>
