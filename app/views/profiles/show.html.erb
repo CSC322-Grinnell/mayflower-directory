@@ -91,6 +91,11 @@
           <%= @profile.spouse %>
           <br/>
         <% end %>
+        
+        </br>
+        <% if current_user.admin %>
+         <%= link_to "Edit profile", "/profiles/" + @profile.id.to_s + "/edit"  %>
+        <% end %>
         <font/>
         </p>
       </div>
