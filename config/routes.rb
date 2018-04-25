@@ -6,16 +6,16 @@ Rails.application.routes.draw do
 
   get 'profiles/new'
   get 'residents/new'
-  get '/about'
-  get '/home'
-  get '/help'
-  get '/search'
-  get '/display'
-  get 'home', to: '#home'
-  get 'about', to: '#about'
-  get 'help', to: '#help'
-  get 'search', to: '#search'
-  get 'display', to: '#display'
+  get 'static_pages/about'
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get 'static_pages/search'
+  get 'static_pages/display'
+  get 'home', to: 'static_pages#home'
+  get 'about', to: 'static_pages#about'
+  get 'help', to: 'static_pages#help'
+  get 'search', to: 'static_pages#search'
+  get 'display', to: 'static_pages#display'
   resources :profiles do
     collection { post :import }
   end
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   
-  root '#search'
+  root 'static_pages#search'
   
   #devise_for :users, path: 'users'
   #path_names :{ sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     controllers: {registrations: "users/registrations"},
     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up'  }
   #devise_for :users, path_names: {sign_up: 'sign_up'}
-  #after_sign_in_path_for '/home'
+  #after_sign_in_path_for 'static_pages/home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -93,7 +93,7 @@ Rails.application.routes.draw do
   
   
 
-  #get '/about'
+  #get 'static_pages/about'
 
    ##    sessions: 'users/sessions'
      # }
