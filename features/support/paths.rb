@@ -24,12 +24,12 @@ module NavigationHelpers
     when /^the text page$/ then '/text'
     when /^the home page$/ then '/home'
     when /^the search page$/ then '/'
-    when /^the help page$/ then '/static_pages/help'
-    when /^the about page$/ then '/static_pages/about'
+    when /^the help page$/ then '/help'
+    when /^the about page$/ then '/about'
     when /^the signup page$/ then "/auth/register/cmon_let_me_in"
     when /^the new user page$/ then '/auth/register/sign_up'
     when /^the login page$/ then user_session_path
-    when /^the users page$/ then '/static_pages/display'
+    when /^the users page$/ then '/display'
     when /^the new resident page$/ then '/profiles/new'
     when /^the change password page$/ then '/auth/register/edit'
   
