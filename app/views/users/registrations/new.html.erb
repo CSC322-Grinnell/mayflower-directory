@@ -6,7 +6,10 @@
   <body>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 style="text-align:center;">Register New User</h1>
+        <div class="title">
+          <center><font size=7>Register New User</font></center>
+          </br>
+        </div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         
