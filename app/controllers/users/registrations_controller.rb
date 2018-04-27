@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def logged_in_admin
      unless current_user && current_user.admin
        flash[:danger] = "Please log in as admin."
-       redirect_to '/static_pages/home'
+       redirect_to '/home'
      end
    end
 
