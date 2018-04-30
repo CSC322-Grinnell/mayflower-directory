@@ -55,13 +55,13 @@
         <!--The CSV must not have blank space at the end of the document, and column names -->
         <!--must match those in the code-->
         <!--Profiles will be duplicated if uploaded more than once-->
-        <!--<div>-->
-        <!--  <h3>Import a CSV File</h3>-->
-        <!--  <%= form_tag import_profiles_path, multipart: true do %>-->
-        <!--    <%= file_field_tag :file %>-->
-        <!--    <%= submit_tag "Import CSV" %>-->
-        <!--  <% end %>-->
-        <!--</div>-->
+        <div>
+          <h3>Import a CSV File</h3>
+          <%= form_tag import_profiles_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import CSV" %>
+          <% end %>
+        </div>
         
       </div>
     </div>
