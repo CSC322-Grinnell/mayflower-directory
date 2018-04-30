@@ -64,7 +64,6 @@ class ProfilesController < ApplicationController
      end
    end
   
-
   
   def show
     @profile = Profile.find(params[:id])
@@ -81,5 +80,6 @@ class ProfilesController < ApplicationController
     redirect_to '/display'
 
   end
+
 end
 
