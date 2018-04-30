@@ -20,14 +20,14 @@
      <br/>
 
      <% @search = Profile.search(params[:q]) %>
-     <form> <%= search_form_for @search, url: '/static_pages/search' do |f| %>
+     <form> <%= search_form_for @search, url: '/search' do |f| %>
       <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
           <%= f.label "Search for resident:", class: "col control-label" %>
           <%= f.search_field :first_name_or_last_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
           <br/>
           <%= f.label "Neighborhood", class: "col control-label" %>
-          <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq, :neighborhood, :neighborhood, :include_blank => true) %>
+          <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, :include_blank => true) %>
           <br/>
         </div>
       </div>
@@ -35,7 +35,7 @@
       <%=f.submit "Search", class: "btn btn-primary btn-large"%>
       <br/>
       <br/>
-      <a class="reset" href="/static_pages/search">Reset</a>
+      <a class="reset" href="/search">Reset</a>
     <% end %>
    </div>
 
@@ -50,7 +50,7 @@
      <% else %>
       <% @results.each do |person| %>
        <p> <font size="5">
-        <a href= <%= "/profiles/" + person.id.to_s %> >   <%= person.first_name %> <%= person.last_name %></a> 
+        <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a> 
        <font/></p>
       <% end %>
      <% end %>
