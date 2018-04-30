@@ -27,7 +27,7 @@
           <%= f.search_field :first_name_or_last_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
           <br/>
           <%= f.label "Neighborhood", class: "col control-label" %>
-          <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq, :neighborhood, :neighborhood, :include_blank => true) %>
+          <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, :include_blank => true) %>
           <br/>
         </div>
       </div>
