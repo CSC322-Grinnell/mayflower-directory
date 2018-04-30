@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to '/static_pages/search'
+      redirect_to '/search'
     else
       render 'edit'
     end
@@ -30,7 +30,11 @@ class ProfilesController < ApplicationController
   
   def create
     puts "*** CREATING A NEW USER ****"
-    puts profile_params.to_unsafe_h.to_s
+    puts "Params object:" + profile_params.to_s
+    puts "Params hash:  " + profile_params.to_unsafe_h.to_s
+    avatar = profile_params.delete(:avatar)
+    puts "Avatar:       " + avatar.to_s
+
     @user = Profile.new(profile_params)
     #puts "User is "
     #puts @user.to_s
@@ -39,6 +43,7 @@ class ProfilesController < ApplicationController
       redirect_to '/profiles/' + @user[:id].to_s
     else 
       puts "** Could not save profile"
+      puts @user.errors.full_messages
       flash[:notice] = "there was a problem creating the new profile"
       redirect_to '/profiles/new'
     end
@@ -55,7 +60,7 @@ class ProfilesController < ApplicationController
    def logged_in_admin
      unless current_user.admin
        flash[:danger] = "Please log in as admin."
-       redirect_to '/static_pages/home'
+       redirect_to '/home'
      end
    end
   
@@ -71,7 +76,9 @@ class ProfilesController < ApplicationController
   def destroy
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
-    redirect_to '/static_pages/display'
+
+    redirect_to '/display'
+
   end
 
 end

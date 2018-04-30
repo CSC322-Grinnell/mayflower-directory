@@ -15,22 +15,23 @@
         </br>
         </br>
         <script> require 'aws-sdk-s3'  </script>
-        <% uploader = AvatarUploader.new %>
-        <% uploader.retrieve_from_store!(@profile.last_name.to_s + ", " + @profile.first_name.to_s+".png") %>
-        <% imageURL = uploader.url %>
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
-    
-        <% file = uploader.url %>
-        <% if bucket.object("images/" + @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png").exists?
+
+        <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
+        <% if ! @profile.avatar.file.nil?
+          imageURL = @profile.avatar.url
+        elsif bucket.object("images/" + oldname).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname)
           imageURL = uploader.url
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
     
-        <img src="<%= imageURL%>", height= "300", width= "300" %>
+        <img src="<%= imageURL %>", height= "300", width= "300" %>
         </div>
-  
+ 
       <div class="col-md-8">
         <p>
         </br> </br> </br> </br> </br> </br> </br>
@@ -38,7 +39,7 @@
       
         <% if @profile.email.present? %>
           <b>Email: </b>
-        <a href=“mailto:<%= @profile.email %>”> <%= @profile.email %> </a>
+        <a href="mailto:<%= @profile.email %>"> <%= @profile.email %> </a>
           <br/>
         <% end %>
       
@@ -89,6 +90,15 @@
           <b>Spouse:</b>
           <%= @profile.spouse %>
           <br/>
+        <% end %>
+        
+        </br>
+        <% if current_user.admin %>
+           <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
+        <% end %>
+        <% if current_user.admin %>
+            | <%= link_to "Delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
         <% end %>
         <font/>
         </p>
