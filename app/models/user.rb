@@ -13,3 +13,5 @@ class User < ActiveRecord::Base
       User.create! row.to_hash
     end
   end
+end
+
