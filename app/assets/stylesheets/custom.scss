@@ -103,6 +103,8 @@ li a:hover{
 footer {
   margin-top: 100px;
   padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top: 1px solid #eaeaea;
   color: #777;
   font-size: 13pt;
@@ -225,7 +227,7 @@ footer ul li {
   color:#860601;
 }
 
-@media (min-width: 400px) and (max-width: 1180px) {
+@media (min-width: 400px) and (max-width: 1000px) {
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -251,5 +253,8 @@ footer ul li {
     }
     .btn-large{
       font-size: 170%;
+    }
+    .col-md-8{
+      padding-top:10%;
     }
 }
