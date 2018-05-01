@@ -169,7 +169,6 @@ footer ul li {
   height: 30%;
   width: 30%;
   font-size: 200%;
-  font-size: 18pt;
   background-color:#376e8c;
 }
 .btn-large:hover{
@@ -249,5 +248,8 @@ footer ul li {
     }
     body{
       padding-left: 10px;
+    }
+    .btn-large{
+      font-size: 170%;
     }
 }
