@@ -25,6 +25,7 @@
               <% end %>
             <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Enter password' %>
 
+
             <%= f.label :password_confirmation, class: "col control-label"%>
             <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm password' %>
             
@@ -36,6 +37,13 @@
               <%= render "users/shared/links" %>
            </center>
            <% end %>
+</div>    
+   <h3>Import a CSV File</h3>
+    <%= form_tag users_import_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
+  </div>
       </div>
     </div>
   </body>
