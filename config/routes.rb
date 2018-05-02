@@ -1,21 +1,18 @@
 Rails.application.routes.draw do
   
   get 'password_resets/new'
-
   get 'password_resets/edit'
 
   get 'profiles/new'
   get 'residents/new'
-  get 'static_pages/about'
-  get 'static_pages/home'
-  get 'static_pages/help'
-  get 'static_pages/search'
-  get 'static_pages/display'
+  
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
   get 'search', to: 'static_pages#search'
   get 'display', to: 'static_pages#display'
+  
+  
   resources :profiles do
     collection { post :import }
   end
@@ -25,79 +22,19 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   
-  
   root 'static_pages#search'
-  
-  #devise_for :users, path: 'users'
-  #path_names :{ sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+
+  devise_scope :user do
+    post 'users/import', to: 'users/registrations#import_users'
+  end
+
 
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
-    path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up'  }
-  #devise_for :users, path_names: {sign_up: 'sign_up'}
-  #after_sign_in_path_for 'static_pages/home'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-  
-  # Rails.application.routes.draw do
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-  
-  
-
-  #get 'static_pages/about'
-
-   ##    sessions: 'users/sessions'
-     # }
-    #end
+    path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', 
+                  confirmation: 'verification', unlock: 'unblock', 
+                  registration: 'register', sign_up: 'sign_up' }
     
+               
 end
 
