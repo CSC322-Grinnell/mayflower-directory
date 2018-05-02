@@ -8,102 +8,106 @@
 
   <body>
     <div class="container">
-      <div class="row">
+    <div class="row">
+      <div class="col-md-4">
         <% @profile = Profile.find(params[:id]) %>
         <h1><%= @profile.first_name %> <%= @profile.last_name%></h1>
         </br>
         </br>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <script> require 'aws-sdk-s3'  </script>
-          <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
-          <% bucket =  s3.bucket('mayflower-data') %>
-  
-          <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
-          <% if ! @profile.avatar.file.nil?
-            imageURL = @profile.avatar.url
-          elsif bucket.object("images/" + oldname).exists?
-            uploader = AvatarUploader.new
-            uploader.retrieve_from_store!(oldname)
-            imageURL = uploader.url
-          else
-            imageURL = image_url("Mayflower_Default_Photo.jpg")
-          end %>
-      
-          <img src="<%= imageURL %>", height= "300", width= "300" %>
-          </div>
-   
-        <div class="col-md-8">
-          <p>
-          <font size = 5>
-        
-          <% if @profile.email.present? %>
-            <b>Email: </b>
-          <a href="mailto:<%= @profile.email %>"> <%= @profile.email %> </a>
-            <br/>
-          <% end %>
-        
-          <%if @profile.landline.present?
-              if @profile.landline.length < 10
-                @profile.landline = "641" + @profile.landline
-              end
-            end %>
-      
-          <% if @profile.landline.present? %>
-            <b>Landline:</b>
-          <a href="tel:<%= @profile.landline %>"><%= number_to_phone(@profile.landline,area_code: true) %></a>  
-            <br/>
-          <% end %> 
-        
-           <%if @profile.cell.present?
-               if @profile.cell.length < 10
-                @profile.cell = "641" + @profile.cell
-                end
-              end
-            %>
-      
-           <% if @profile.cell.present? %>
-            <b>Cell:</b>
-            <a href="tel:<%= @profile.cell %>"><%= number_to_phone(@profile.cell,area_code: true) %></a>
-            <br/>
-          <% end %>
-      
-          <% if @profile.neighborhood.present? %>
-            <b>Neighborhood:</b>
-            <%= @profile.neighborhood %>
-            <br/>
-          <% end %>
-      
-          <% if @profile.nickname.present? %>
-            <b>Nickname:</b>
-            <%= @profile.nickname %>
-            <br/>
-          <% end %>
-        
-          <% if @profile.address.present? %>
-            <b>Address:</b>
-            <%= @profile.address %>
-            <br/>
-          <% end %>
-      
-          <% if @profile.spouse.present? %>
-            <b>Spouse:</b>
-            <%= @profile.spouse %>
-            <br/>
-          <% end %>
-          
-          </br>
-          <% if current_user.admin %>
-             <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
-          <% end %>
-          <% if current_user.admin %>
-              | <%= link_to "Delete", @user, method: :delete,
-                                    data: { confirm: "You sure?" } %>
-          <% end %>
-          <font/>
-          </p>
+        <script> require 'aws-sdk-s3'  </script>
+        <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+        <% bucket =  s3.bucket('mayflower-data') %>
+
+        <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
+        <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
+        <% if ! @profile.avatar.file.nil?
+          imageURL = @profile.avatar.url
+        elsif bucket.object("images/" + oldname).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname)
+          imageURL = uploader.url
+        #Refactor this condition later
+        elsif bucket.object("images/" + oldname2).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname2)
+          imageURL = uploader.url
+        else
+          imageURL = image_url("Mayflower_Default_Photo.jpg")
+        end %>
+    
+        <img src="<%= imageURL %>", height= "300", width= "300" %>
         </div>
+ 
+      <div class="col-md-8">
+        <p>
+        </br> </br> </br> </br> </br> </br> </br>
+        <font size = 5>
+      
+        <% if @profile.email.present? %>
+          <b>Email: </b>
+        <a href="mailto:<%= @profile.email %>"> <%= @profile.email %> </a>
+          <br/>
+        <% end %>
+      
+        <%if @profile.landline.present?
+            if @profile.landline.length < 10
+              @profile.landline = "641" + @profile.landline
+            end
+          end %>
+    
+        <% if @profile.landline.present? %>
+          <b>Landline:</b>
+        <a href="tel:<%= @profile.landline %>"><%= number_to_phone(@profile.landline,area_code: true) %></a>  
+          <br/>
+        <% end %> 
+      
+         <%if @profile.cell.present?
+             if @profile.cell.length < 10
+              @profile.cell = "641" + @profile.cell
+              end
+            end
+          %>
+    
+         <% if @profile.cell.present? %>
+          <b>Cell:</b>
+          <a href="tel:<%= @profile.cell %>"><%= number_to_phone(@profile.cell,area_code: true) %></a>
+          <br/>
+        <% end %>
+    
+        <% if @profile.neighborhood.present? %>
+          <b>Neighborhood:</b>
+          <%= @profile.neighborhood %>
+          <br/>
+        <% end %>
+    
+        <% if @profile.nickname.present? %>
+          <b>Nickname:</b>
+          <%= @profile.nickname %>
+          <br/>
+        <% end %>
+      
+        <% if @profile.address.present? %>
+          <b>Address:</b>
+          <%= @profile.address %>
+          <br/>
+        <% end %>
+    
+        <% if @profile.spouse.present? %>
+          <b>Spouse:</b>
+          <%= @profile.spouse %>
+          <br/>
+        <% end %>
+        
+        </br>
+        <% if current_user.admin %>
+           <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
+        <% end %>
+        <% if current_user.admin %>
+            | <%= link_to "Delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        <% end %>
+        <font/>
+        </p>
       </div>
     </div>
     </div>
