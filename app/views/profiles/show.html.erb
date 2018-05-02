@@ -19,11 +19,17 @@
         <% bucket =  s3.bucket('mayflower-data') %>
 
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
+        <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
         <% if ! @profile.avatar.file.nil?
           imageURL = @profile.avatar.url
         elsif bucket.object("images/" + oldname).exists?
           uploader = AvatarUploader.new
           uploader.retrieve_from_store!(oldname)
+          imageURL = uploader.url
+        #Refactor this condition later
+        elsif bucket.object("images/" + oldname2).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname2)
           imageURL = uploader.url
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
