@@ -6,6 +6,7 @@
 body {
   padding-top: 100px;
   font-family: 'Libre Franklin', sans-serif;
+  padding-left: 5px;
 }
 
 section {
@@ -103,6 +104,8 @@ li a:hover{
 footer {
   margin-top: 100px;
   padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top: 1px solid #eaeaea;
   color: #777;
   font-size: 13pt;
@@ -169,7 +172,6 @@ footer ul li {
   height: 30%;
   width: 30%;
   font-size: 200%;
-  font-size: 18pt;
   background-color:#376e8c;
 }
 .btn-large:hover{
@@ -197,12 +199,24 @@ footer ul li {
 
 /*home*/
 
+.container1{
+  display: inline;
+  justify-content: center;
+}
+
+.container1.row{
+  align-self:center;
+  position: relative;
+  text-align:center;
+}
+
 .gallery {
     margin: 5px;
     border: 2px solid #ccc;
     float: left;
     max-width: 30%;
     min-width: 350px;
+    display:inline-block;
 }
 
 .gallery:hover {
@@ -211,7 +225,7 @@ footer ul li {
 }
 
 .gallery img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -226,7 +240,7 @@ footer ul li {
   color:#860601;
 }
 
-@media (min-width: 400px) and (max-width: 1180px) {
+@media (min-width: 300px) and (max-width: 1000px) {
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -238,5 +252,40 @@ footer ul li {
     }
     .navbar-header {
         float:none;
+    }
+    select {
+        -webkit-appearance: menulist;
+        align-items: center;
+        white-space: pre;
+        -webkit-rtl-ordering: logical;
+        cursor: default;
+        border-color: initial;
+    }
+    body{
+      padding-left: 10px;
+    }
+    .btn-large{
+      height: 50%;
+      width: 50%;
+      font-size: 150%;
+    }
+    .col-md-8{
+      padding-top:10%;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 400px){
+    .gallery img{
+      width: 100% ;
+      max-width: 100% ;
+      height: auto ;
+    }
+    .gallery{
+      margin: auto;
+      max-width: 100%;
+      border:none;
+    }
+    .info{
+      font-size: 150%;
     }
 }
