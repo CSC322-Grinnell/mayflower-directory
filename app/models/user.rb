@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
 
    devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :secure_validatable
+         :recoverable, :rememberable, :trackable, :secure_validatable
  
 
  require 'csv'
