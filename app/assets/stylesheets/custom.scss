@@ -6,6 +6,7 @@
 body {
   padding-top: 100px;
   font-family: 'Libre Franklin', sans-serif;
+  padding-left: 5px;
 }
 
 section {
@@ -239,7 +240,7 @@ footer ul li {
   color:#860601;
 }
 
-@media (min-width: 400px) and (max-width: 1000px) {
+@media (min-width: 300px) and (max-width: 1000px) {
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -264,14 +265,27 @@ footer ul li {
       padding-left: 10px;
     }
     .btn-large{
-      font-size: 170%;
+      height: 50%;
+      width: 50%;
+      font-size: 150%;
     }
     .col-md-8{
       padding-top:10%;
     }
+}
+
+@media (min-width: 300px) and (max-width: 400px){
     .gallery img{
-      width: auto ;
+      width: 100% ;
       max-width: 100% ;
       height: auto ;
+    }
+    .gallery{
+      margin: auto;
+      max-width: 100%;
+      border:none;
+    }
+    .info{
+      font-size: 150%;
     }
 }
