@@ -26,6 +26,7 @@
           uploader = AvatarUploader.new
           uploader.retrieve_from_store!(oldname)
           imageURL = uploader.url
+        #Refactor this condition later
         elsif bucket.object("images/" + oldname2).exists?
           uploader = AvatarUploader.new
           uploader.retrieve_from_store!(oldname2)
