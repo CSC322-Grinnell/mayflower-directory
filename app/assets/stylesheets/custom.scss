@@ -198,12 +198,24 @@ footer ul li {
 
 /*home*/
 
+.container1{
+  display: inline;
+  justify-content: center;
+}
+
+.container1.row{
+  align-self:center;
+  position: relative;
+  text-align:center;
+}
+
 .gallery {
     margin: 5px;
     border: 2px solid #ccc;
     float: left;
     max-width: 30%;
     min-width: 350px;
+    display:inline-block;
 }
 
 .gallery:hover {
@@ -212,7 +224,7 @@ footer ul li {
 }
 
 .gallery img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -256,5 +268,10 @@ footer ul li {
     }
     .col-md-8{
       padding-top:10%;
+    }
+    .gallery img{
+      width: auto ;
+      max-width: 100% ;
+      height: auto ;
     }
 }
