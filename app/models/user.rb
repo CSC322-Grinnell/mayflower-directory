@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :secure_validatable
  
 
-  require 'csv'
-  def self.import(file)
+ require 'csv'
+ def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       User.create! row.to_hash
     end
