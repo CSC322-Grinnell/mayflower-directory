@@ -96,7 +96,6 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
-  gem 'heroku'
 end
 
 #  gem 'cucumber-rails', :require => true
