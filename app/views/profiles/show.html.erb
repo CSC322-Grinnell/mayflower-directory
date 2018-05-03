@@ -97,19 +97,6 @@
           <%= @profile.spouse %>
           <br/>
         <% end %>
-        
-
-          <% if @profile.address.present? %>
-            <b>Address:</b>
-            <%= @profile.address %>
-            <br/>
-          <% end %>
-      
-          <% if @profile.spouse.present? %>
-            <b>Spouse:</b>
-            <%= @profile.spouse %>
-            <br/>
-          <% end %>
           
           </br>
           <% if current_user.admin %>
