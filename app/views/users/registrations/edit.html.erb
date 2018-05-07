@@ -51,6 +51,13 @@
               </div>
               </br>
             
+            <% if user_signed_in? && current_user.admin %>
+              <div class="radio">
+              <label><input type="radio" name="optradio">Admin</label>
+            </div>
+            <% end %>
+            
+            
             </font>
             </div>
                 <%= f.submit "Update", class: "btn btn-primary btn-large" %>
