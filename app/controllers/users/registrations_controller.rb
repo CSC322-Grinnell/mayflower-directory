@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :logged_in_admin, only: [:create,:new]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :require_no_authentication, only: [:create,:new]
 
   #before_action :configure_sign_up_params, only: [:create]
@@ -35,9 +36,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+        if params[:admin]
+            puts 'hi'
+        end
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -67,9 +71,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+   def configure_sign_up_params
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:admin])
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
