@@ -51,10 +51,11 @@
               </div>
               </br>
             
-            <% if user_signed_in? && current_user.admin %>
-              <div class="radio">
-              <label><input type="radio" name="optradio">Admin</label>
-            </div>
+            <!--<div class="field">-->
+            <!--<% if user_signed_in? && current_user.admin %>-->
+            <!--  <%= f.label :admin, class: "col control-label"%>-->
+            <!--  <%= f.check_box :admin, {}, "admin" %>-->
+            <!--</div>-->
             <% end %>
             
             
