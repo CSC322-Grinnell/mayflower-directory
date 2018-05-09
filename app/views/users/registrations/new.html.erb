@@ -29,9 +29,8 @@
             <%= f.label :password_confirmation, class: "col control-label"%>
             <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm password' %>
             
-            <div class="radio">
-              <label><input type="radio" name="optradio">Admin</label>
-            </div>
+            <%= f.label :admin, class: "col control-label"%>
+            <%= f.check_box :admin, {}, "admin" %>
             
             </div>
             </div>
