@@ -28,6 +28,12 @@
 * Maisy Dodge
 * Pat Min
 
+#### Fall 2018
+* Maisy Dodge
+* Sam Stickels
+* Nhi Ngo
+* Cameron Chen
+* Saung Thuya
 
 ### Links from past teams: 
 
