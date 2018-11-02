@@ -9,5 +9,5 @@
 
 Also:
 - Mayflower meeting every 2 weeks
-- Team video standup every Friday at 5pm central
+- Team video standup every Friday at 5pm central (demo what you've been working on, what you're working on next, who can help you with what you're working on next)
 - Please let Terian know if you have any questions via slack, any time of day
