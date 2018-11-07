@@ -80,8 +80,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'figaro'
   gem 'phony_rails'
-
-
+  gem "minitest", "5.10.1"
 end
 
 #moved this group to :development
