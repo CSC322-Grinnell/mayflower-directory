@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
   end
   
   def create
-    puts "*** CREATING A NEW USER ****"
+    puts "*** CREATING A NEW PROFILE ****"
     puts "Params object:" + profile_params.to_s
     puts "Params hash:  " + profile_params.to_unsafe_h.to_s
     avatar = profile_params.delete(:avatar)
