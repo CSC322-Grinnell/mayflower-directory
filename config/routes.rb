@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/import', to: 'users/registrations#import_users'
   end
+  
+  resources :users
+  root 'users#index'
 
 
   devise_for :users, path: 'auth', 
