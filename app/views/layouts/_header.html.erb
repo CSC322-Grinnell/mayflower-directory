@@ -24,13 +24,13 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %> 
               <li><%= link_to "Search",   '/search' %></li>
-              <li><%= link_to "Users", users_path %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create Profile",  '/profiles/new' %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create User",   '/auth/register/sign_up' %></li>
+              <li><%= link_to "Users", users_path %></li>
             <% end %>
             <%if user_signed_in?%>
               <li><%= link_to "Resources",   '/home' %></li>
