@@ -1,7 +1,8 @@
 <li>
    <% if current_user.admin %>
    <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "Are you sure you want to delete this user?" } %>
+                                  data: { confirm: "Are you sure you want to delete this user?" } unless user.admin %> |
+   <%= link_to "reset password", edit_user_path(user) %>
   <% end %>
   | <%= user.email %>
 </li>
