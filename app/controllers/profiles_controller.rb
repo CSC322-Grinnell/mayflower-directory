@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update]
   
   def import
     Profile.import(params[:file])
@@ -56,9 +55,6 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
-  def index_user
-    @users = User.all
-  end
 
   # Confirms a logged-in user as admin.
    def logged_in_admin

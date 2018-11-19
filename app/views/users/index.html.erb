@@ -1,6 +1,24 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<!--function to search for user emails using the input typed into the search box-->
+<script>
+    function searchOnPage() {
+        var searchInput = document.getElementById('search').value;
+        window.find(searchInput);
+        return true;
+    }
+</script>
+
 <ul class="users">
-  <%= render @users %>
+  <div class="search_feature">
+    <form action="" id="form1">
+        <div>
+            <input size="42" placeholder="Enter email address to search" type="text" id="search">
+            <input type="button" id="submit_form" onclick="searchOnPage()" value="Next">
+        </div>
+    </form>
+  </div>
+
+  <%= render @users.order("email ASC") %>
 </ul>
