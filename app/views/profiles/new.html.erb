@@ -17,8 +17,8 @@
               
           <%= f.label :first_name, class: "col control-label" %>
           <%= f.text_field :first_name, class: 'form-control', placeholder: 'Enter first name' %>
-    
-          <%= f.label "Last Name", class: "col control-label" %>
+
+          <%= f.label :last_name, class: "col control-label" %>
           <%= f.text_field :last_name, class: 'form-control', placeholder: 'Enter last name' %>
           
           <%= f.label :nickname , class: "col control-label"%>
@@ -41,6 +41,9 @@
           
           <%= f.label :spouse , class: "col control-label"%>
           <%= f.text_field :spouse, class: 'form-control', placeholder: 'Enter spouse' %>
+          
+          <%= f.label :biography , class: "col control-label"%>
+          <%= f.text_area :biography, class: 'form-control', placeholder: 'Enter biography' %>
           
           <!--This is for uploading resident photos, it doesn't work yet-->
           <!--<%= f.label :photograph , class: "col control-label"%>-->
