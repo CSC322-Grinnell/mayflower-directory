@@ -14,6 +14,10 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
   end
   
+  def search
+    @user = Profile.search(params[:search])
+  end
+  
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
   end
