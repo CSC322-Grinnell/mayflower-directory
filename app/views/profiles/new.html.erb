@@ -17,8 +17,8 @@
               
           <%= f.label :first_name, class: "col control-label" %>
           <%= f.text_field :first_name, class: 'form-control', placeholder: 'Enter first name' %>
-
-          <%= f.label :last_name, class: "col control-label" %>
+    
+          <%= f.label "Last Name", class: "col control-label" %>
           <%= f.text_field :last_name, class: 'form-control', placeholder: 'Enter last name' %>
           
           <%= f.label :nickname , class: "col control-label"%>
@@ -37,15 +37,16 @@
           <%= f.text_field :address, class: 'form-control', placeholder: 'Enter address' %>
           
           <%= f.label :neighborhood , class: "col control-label"%>
-          <%= f.text_field :neighborhood, class: 'form-control', placeholder: 'Enter neighborhood' %>
-          
+          <br>
+          <%= f.collection_select(:neighborhood, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, :include_blank => true) %>
+          <!--<%= f.text_field :neighborhood, class: 'form-control', placeholder: 'Enter neighborhood' %>-->
+          <br>
           <%= f.label :spouse , class: "col control-label"%>
           <%= f.text_field :spouse, class: 'form-control', placeholder: 'Enter spouse' %>
           
           <%= f.label :biography %>
           <%= f.text_area :biography, class: 'form-control', placeholder: 'Enter biography',id: "word_count", size: '50x10'%>
           <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
-          
           
           <!--This is for uploading resident photos, it doesn't work yet-->
           <!--<%= f.label :photograph , class: "col control-label"%>-->
