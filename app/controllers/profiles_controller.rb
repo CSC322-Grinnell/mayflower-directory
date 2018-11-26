@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to '/search'
+      redirect_to action: "show", id: @user
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
     #puts "User is "
     #puts @user.to_s
     if @user.save
-      flash[:notice] = "profile sucessfully added"
+      flash[:notice] = "Profile sucessfully added"
       redirect_to '/profiles/' + @user[:id].to_s
     else 
       puts "** Could not save profile"
