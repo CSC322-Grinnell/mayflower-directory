@@ -18,6 +18,7 @@
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
 
+        <% if false %>
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
         <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
         <% if ! @profile.avatar.file.nil?
@@ -34,13 +35,16 @@
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
-    
-        <img src="<%= imageURL %>", height= "300", width= "300" %>
-        </div>
+        <% end %>
+        <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
+        <img src="<%= imageURL %>", height= "400", width= "300" %>
+        </div> 
+        
+        
  
       <div class="col-md-8">
         <p>
-        </br> </br> </br> </br> </br> </br> </br>
+        <%# </br> </br> </br> </br> </br> </br> %> </br>
         <font size = 5>
       
         <% if @profile.email.present? %>
@@ -103,7 +107,7 @@
             <%= simple_format(@profile.biography) %>
           <br/>
         <% end %>
-
+    
           </br>
           <% if current_user.admin %>
              <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
