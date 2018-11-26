@@ -14,8 +14,12 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
   end
   
+  def search
+    @user = Profile.search(params[:search])
+  end
+  
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
+    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :avatar)
   end
    
   def update
@@ -55,9 +59,6 @@ class ProfilesController < ApplicationController
     @user = Profile.all
   end 
   
-  def index_user
-    @users = User.all
-  end
 
   # Confirms a logged-in user as admin.
    def logged_in_admin

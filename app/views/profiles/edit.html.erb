@@ -37,7 +37,10 @@
             <%= f.text_field :address, class: 'form-control', placeholder: 'Enter address' %>
             
             <%= f.label :neighborhood %>
-            <%= f.text_field :neighborhood, class: 'form-control', placeholder: 'Enter class' %>
+            <br>
+            <%= f.collection_select(:neighborhood, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, :include_blank => true) %>
+            <br>
+            <!--<%= f.text_field :neighborhood, class: 'form-control', placeholder: 'Enter class' %>-->
             
             <%= f.label :spouse %>
             <%= f.text_field :spouse, class: 'form-control', placeholder: 'Enter spouse' %>
@@ -45,6 +48,7 @@
             <%= f.label :biography %>
             <%= f.text_area :biography, class: 'form-control', placeholder: 'Enter biography',id: "word_count", size: '50x10'%>
             <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
+
             </div>
             </div>
       
