@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 
-#ruby "2.3.4"
+ruby "2.3.4"
 
 #Gem for getting stuff from AWS
 gem 'carrierwave', '~> 1.0'
