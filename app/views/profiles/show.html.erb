@@ -103,11 +103,18 @@
           <br/>
         <% end %>
         
+       
         <% if @profile.biography.present? %>
-          <b>Biography:</b>
-          <%= @profile.biography %>
+          <b>Biography:</b><br>
+          <%= truncate @profile.biography, length: 160 %>
+          <%= link_to 'read more', './' %>   `
+          <!--<div class="longtext"> -->
+            <!--<%= simple_format(@profile.biography) %>-->
+          <!--</div>-->
           <br/>
         <% end %>
+        
+        
           </br>
           <% if current_user.admin %>
              <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
@@ -126,3 +133,36 @@
     </div>
   </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var nInitialCount = 150; //Intial characters to display
+  var moretext = "Read more >";
+  var lesstext = "Read less";
+
+  $('.longtext').each(function() {
+    var paraText = $(this).html();
+
+    if (paraText.length > nInitialCount) {
+      var sText = paraText.substr(0, nInitialCount);
+      var eText = paraText.substr(nInitialCount, paraText.length - nInitialCount);
+      var newHtml = sText + '...' + eText + '' + moretext + '';
+
+      $(this).html(newHtml);
+    }
+  });
+
+  $(".links").on('click', function(e) {
+    var lnkHTML = $(this).html();
+
+    if (lnkHTML == lesstext) {
+      $(this).html(moretext);
+    } else {
+      $(this).html(lesstext);
+    }
+
+    $(this).prev().toggle();
+    e.preventDefault();
+  });
+});
+</script>
