@@ -101,12 +101,13 @@
           <%= @profile.spouse %>
           <br/>
         <% end %>
-        
+          
         <% if @profile.biography.present? %>
-          <b>Biography:</b>
-          <%= @profile.biography %>
+          <b>Biography:</b><br>
+            <%= simple_format(@profile.biography) %>
           <br/>
         <% end %>
+    
           </br>
           <% if current_user.admin %>
              <%= link_to "Edit", "/profiles/" + @profile.id.to_s + "/edit"  %>
