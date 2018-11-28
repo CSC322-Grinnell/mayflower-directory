@@ -11,6 +11,7 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'ransack'
 # Use ransack for basic and advanced search function
@@ -119,3 +120,5 @@ gem 'fog', '~> 1.38'
 gem 'aws-sdk', '~> 3'
 
 ruby "2.3.4"
+
+

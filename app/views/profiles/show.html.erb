@@ -17,6 +17,14 @@
         <script> require 'aws-sdk-s3'  </script>
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
+        
+        <% if current_user.admin %>  
+          <%= form_for @profile, :html => {:multipart => true} do |f| %>
+            <p><%= f.file_field :avatar %></p>
+            <p><%= f.submit 'Update Photo' %></p>
+          <% end %> 
+        <% end %>
+          
 
         <% if false %>
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
@@ -39,9 +47,9 @@
         <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
         <img src="<%= imageURL %>", height= "400", width= "300" %>
         </div> 
-        
-        
- 
+      
+      
+      
       <div class="col-md-8">
         <p>
         <%# </br> </br> </br> </br> </br> </br> %> </br>
