@@ -11,3 +11,8 @@ one:
 #
 two: 
   email: test2@test.com
+  encrypted_password: Passw0rd!
+  
+three: 
+  email: test3@test.com
+  encrypted_password: Passw0rd!
