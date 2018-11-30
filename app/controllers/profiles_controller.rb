@@ -82,7 +82,14 @@ class ProfilesController < ApplicationController
     flash[:success] = "Profile deleted"
 
     redirect_to '/search'
-
+  end
+  
+  def directory
+    @allProfiles = Profile.all
+  end
+  
+  def get_dataset
+    render json: { data: Profile.all }
   end
 
 end
