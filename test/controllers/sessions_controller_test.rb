@@ -1,9 +1,16 @@
-# require 'test_helper'
+require 'test_helper'
 
-# class SessionsControllerTest < ActionDispatch::IntegrationTest
-#   test "should get search" do
-#     get sessions_search_url
-#     assert_response :success
-#   end
+class SessionsControllerTest < ActionDispatch::IntegrationTest
+    include Devise::Test::IntegrationHelpers
 
-# end
+  setup do
+    @user       = users(:one)
+    sign_in(@user)
+  end
+  
+  test "should get search" do
+    get search_url
+    assert_response :success
+  end
+
+end
