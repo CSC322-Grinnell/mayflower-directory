@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="printableArea">
+    <h1>Directory</h1>
+      <div class="container">
+          <div class="row-md-4">
+            <% @allProfiles.each do |person| %>
+            <div class="col-md-3">
+                <p> <font size="5"> 
+                        <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
+        <div class="img_container">
+        <img src="<%= imageURL %>">
+        </div>
+            <a href= <%= "/profiles/" + person.id.to_s %> ><%= person.last_name %>, <%= person.first_name %></a> 
+        <font/> </p>
+        </div>
+            <% end %>
+          </div>
+      </div>
+      </div>
+    </body>
+</html>

@@ -25,6 +25,9 @@
             <% if user_signed_in? %> 
               <li><%= link_to "Search",   '/search' %></li>
             <% end %>
+            <% if user_signed_in? && current_user.admin %> 
+              <li><%= link_to "Directory",   '/directory' %></li>
+            <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create Profile",  '/profiles/new' %></li>
             <% end %>

@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .img_container {
-    width: 300px;
-    height: 400px;
+    width: 200;
 }
 
 /* resize images */
@@ -13,18 +12,6 @@
     height: auto;
 }
 
-/*
-.read_more, .read_less {  
-  font-family: 'Verdana';
-  font-size: 16px;
-  background-color: #376e8c;
-  color: white;
-  border-radius: 8px;
-  padding: 8px 8px;
-  text-align: center;
-  display: inline-block;
-}
-*/
 .read_more, .read_less {  
   font-size: 20px;
   font-style: normal;
@@ -32,4 +19,10 @@
 
 .bio{
   white-space: pre-wrap;
+}
+
+@media print {
+      body, html, #wrapper {
+          width: 100%;
+      }
 }
