@@ -11,8 +11,8 @@ class Profile < ActiveRecord::Base
         parent.table[:last_name]
       )
     end
-    
-
+  
+  
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       Profile.create!(row.to_hash)
