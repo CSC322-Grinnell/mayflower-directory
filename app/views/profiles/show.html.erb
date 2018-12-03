@@ -18,6 +18,7 @@
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
 
+        <% if false %>
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
         <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
         <% if ! @profile.avatar.file.nil?
@@ -34,9 +35,12 @@
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
+        <% end %>
 
-        <!--% imageURL = image_url("Mayflower_Default_Photo.jpg") %-->
-        <img src="<%= imageURL %>", height= "400", width= "300" %>
+        <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
+        <div class="img_container">
+        <img src="<%= imageURL %>">
+        </div>
         </div> 
         
         
@@ -102,9 +106,10 @@
         <% end %>
           
         <% if @profile.biography.present? %>
-          <b>Biography:</b><br>
-            <%= simple_format(@profile.biography) %>
-          <br/>
+          <b>Biography:</b>
+            <div id="bio", style="font-size:20px; white-space: pre-line; text-align:justify"s>
+              <%= @profile.biography %>
+            </div>
         <% end %>
     
           </br>
@@ -115,13 +120,44 @@
               | <%= link_to "Delete", @user, method: :delete,
                                     data: { confirm: "Are you sure you want to delete this profile?" } %>
           <% end %>
-          <font/>
+          
           </br>
           </br>
           <%= link_to "Back to search", :back %>
+          </font>
           </p>
         </div>
       </div>
     </div>
   </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var minimized_elements = $("#bio");
+  var minimize_character_count = 100;    
+  
+  minimized_elements.each(function(){    
+    var t = $(this).text();        
+    if(t.length < minimize_character_count ) return;
+  
+    $(this).html(
+        t.slice(0,minimize_character_count )+
+        '<span>... </span><a href="#" class="read_more">Read more</a>'+
+        '<span style="display:none;">'+ t.slice(minimize_character_count, t.length) + ' ' +
+        '<a href="#" class="read_less">Read less</a></span>'
+      );  
+  });
+  
+  $('a.read_more', minimized_elements).click(function(event){
+    event.preventDefault();
+    $(this).hide().prev().hide();
+    $(this).next().show();        
+  });
+  
+  $('a.read_less', minimized_elements).click(function(event){
+    event.preventDefault();
+    $(this).parent().hide().prev().show().prev().show();    
+  });
+});
+</script>
