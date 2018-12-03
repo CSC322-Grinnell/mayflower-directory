@@ -1,12 +1,13 @@
 <% provide(:title, "Reset Password") %>
-<h1>Reset user password</h1>
+<h1>Reset User Password | <%= @user.email %> </h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
       
-      <%= f.label :password %>
+      <br> <br> 
+      <%= f.label :password, "New Password" %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
