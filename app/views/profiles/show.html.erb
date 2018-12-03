@@ -15,7 +15,7 @@
         </br>
         </br>
         <script> require 'aws-sdk-s3'  </script>
-        <% s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+        <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
 
         <% if false %>
@@ -106,8 +106,8 @@
         <% end %>
           
         <% if @profile.biography.present? %>
-          <b>Biography:
-            <div id="bio", style="font-size:24px; white-space: pre-line; text-align:justify"s>
+          <b>Biography:</b>
+            <div id="bio", style="font-size:20px; white-space: pre-line; text-align:justify"s>
               <%= @profile.biography %>
             </div>
         <% end %>
