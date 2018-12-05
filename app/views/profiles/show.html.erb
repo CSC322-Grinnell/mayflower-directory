@@ -18,7 +18,7 @@
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
 
-        <% if false %>
+        
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
         <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
         <% if ! @profile.avatar.file.nil?
@@ -35,9 +35,7 @@
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
-        <% end %>
-
-        <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
+        
         <div class="img_container">
         <img src="<%= imageURL %>">
         </div>
