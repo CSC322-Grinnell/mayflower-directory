@@ -8,20 +8,60 @@
     <div id="printableArea">
     <h1>Directory</h1>
       <div class="container">
-          <div class="row-md-4">
-            <% @allProfiles.each do |person| %>
+            <% @allProfiles.each do |profile| %>
             <div class="col-md-3">
-                <p> <font size="5"> 
-                        <% imageURL = image_url("Mayflower_Default_Photo.jpg") %>
-        <div class="img_container">
+                <font size="5"> 
+                <script> require 'aws-sdk-s3'  </script>
+        <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', 
+        credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+        <% bucket =  s3.bucket('mayflower-data') %>
+        
+        <% oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png" %>
+        <% oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg" %>
+        <% if ! profile.avatar.file.nil?
+          imageURL = profile.avatar.url
+        elsif bucket.object("images/" + oldname).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname)
+          imageURL = uploader.url
+        #Refactor this condition later
+        elsif bucket.object("images/" + oldname2).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname2)
+          imageURL = uploader.url
+        else
+          imageURL = image_url("Mayflower_Default_Photo.jpg")
+        end %>
+                  
+        <div class="crop">
         <img src="<%= imageURL %>">
-        </div>
-            <a href= <%= "/profiles/" + person.id.to_s %> ><%= person.last_name %>, <%= person.first_name %></a> 
-        <font/> </p>
+        </div style="center">
+            <p align="center"><a href= <%= "/profiles/" + profile.id.to_s %>>
+            <%= profile.last_name %>, <%= profile.first_name %></a></p>
+        <font/> 
         </div>
             <% end %>
-          </div>
+
       </div>
       </div>
     </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#cmd').click(function () {
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+});
+});
+</script>

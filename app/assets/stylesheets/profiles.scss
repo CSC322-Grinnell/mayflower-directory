@@ -3,13 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .img_container {
-    width: 200;
+    width: 300;
 }
 
 /* resize images */
 .img_container img {
-    width: 100%;
-    height: auto;
+    width: 90%;
 }
 
 .read_more, .read_less {  
@@ -21,8 +20,31 @@
   white-space: pre-wrap;
 }
 
+        
+.crop {
+  width: 250px;
+  height: 250px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.crop img {
+  width: 100%;
+}
+
+
 @media print {
-      body, html, #wrapper {
-          width: 100%;
-      }
+     body {
+    margin: 0;
+    color: #000;
+    background-color: #fff;
+  }
+  
+  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+  display: none;
+}
+
+
+
 }
