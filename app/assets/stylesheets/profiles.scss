@@ -41,10 +41,13 @@
     background-color: #fff;
   }
   
-  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot,  {
   display: none;
 }
-
+ 
+a[href]:after {
+    content: none !important;
+  }
 
 
 }
