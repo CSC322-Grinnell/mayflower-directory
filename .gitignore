@@ -24,3 +24,6 @@ MayflowerDirectory1.csv
 
 #passwords 
 MayflowerEmailPW.csv
+
+#credential files
+/.aws/credentials
