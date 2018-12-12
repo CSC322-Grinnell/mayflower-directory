@@ -83,6 +83,7 @@ class ProfilesController < ApplicationController
 
     redirect_to '/search'
 
+
   end
 
 end

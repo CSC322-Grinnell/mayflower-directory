@@ -1,4 +1,4 @@
-require 'test_helper'
+# require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
     include Devise::Test::IntegrationHelpers
@@ -12,5 +12,4 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get search_url
     assert_response :success
   end
-
-end
+# end
