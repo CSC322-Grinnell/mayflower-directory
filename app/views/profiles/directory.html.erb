@@ -2,18 +2,20 @@
 <html>
   <head>  
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <script> require 'aws-sdk-s3'  </script>
   </head>
+  
   <body>
-        <h1>Directory</h1>
+    <h1>Directory</h1>
     <div class="row">
-            <% @allProfiles.each do |profile| %>
-                <script> require 'aws-sdk-s3'  </script>
+      <% @allProfiles.each do |profile| %>
+        <!-- Connect to s3 and generate photos-->
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', 
-        credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
+                                      credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
-        
         <% oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png" %>
         <% oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg" %>
+        
         <% if ! profile.avatar.file.nil?
           imageURL = profile.avatar.url
         elsif bucket.object("images/" + oldname).exists?
@@ -28,18 +30,19 @@
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
+        
+        <!--Display each profile-->
         <a href= <%= "/profiles/" + profile.id.to_s %>>
-        <div class="column">  
-        <div class="crop">
-          
-        <img src="<%= imageURL %>">
-        </div>
-        <p style="font-size:1.25vmax;" align="center">
-                   <%= profile.last_name %>, <%= profile.first_name %></p>
-        </div>
-        </a>
-            <% end %>
+          <div class="column">  
+            <div class="crop">
+              <img src="<%= imageURL %>">
             </div>
-    </body>
+            <p style="font-size:1.25vmax;" align="center">
+              <%= profile.last_name %>, <%= profile.first_name %>
+            </p>
+            </div>
+        </a>
+      <% end %>
+    </div>
+  </body>
 </html>
-

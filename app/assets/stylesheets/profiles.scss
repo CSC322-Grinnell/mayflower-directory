@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Fixing different size images
 .img_container {
     width: 300;
 }
@@ -20,7 +21,7 @@
   white-space: pre-wrap;
 }
 
-        
+// Croping images for directory        
 .crop {
   position: relative;
   width: 100%;
@@ -33,25 +34,25 @@
   width: 100%;
 }
 
+//Displaying images in directory
 * {
   box-sizing: border-box;
 }
 
 .column {
-  float: left;
   width: 25%;
-  padding: 5px;
+  float: left;
+  padding-right: 5px;
+  
 }
 
 @media only screen {
-.column:hover {
-  opacity: 0.7;
-  border: 1px solid #860601;
-  color: #860601;
+  .column:hover {
+    opacity: 0.7;
+    border: 1px solid #860601;
+    color: #860601;
+  }
 }
-
-}
-
 
 /* Clearfix (clear floats) */
 .row:after {
@@ -61,24 +62,31 @@
 }
 
 
+//Printing format
 @media print {
   body {
     width: 100%;
-    padding-top: 0px;
     color: #000;
     background-color: #fff;
-    margin: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
   }
   
   header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
-  display: none;
-}
-
-  .page-break  { display:block; page-break-after:avoid; }
-
+    display: none;
+  }
+  
+  @page {
+    size: letter; 
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+  
   .column {
-     page-break-inside: avoid;
-   }
+    page-break-inside: avoid;
+  }
   
   a[href]:after {
     content: none !important;
