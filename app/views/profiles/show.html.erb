@@ -17,7 +17,7 @@
         <script> require 'aws-sdk-s3'  </script>
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
         <% bucket =  s3.bucket('mayflower-data') %>
-        
+      
         <% oldname = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".png" %>
         <% oldname2 = @profile.last_name.to_s + ", " + @profile.first_name.to_s+".jpg" %>
         <% if ! @profile.avatar.file.nil?
@@ -39,12 +39,10 @@
         <img src="<%= imageURL %>">
         </div>
         </div> 
-        
-        
  
       <div class="col-md-8">
         <p>
-         </br> </br> </br> </br> </br>
+        <%# </br> </br> </br> </br> </br> </br> %> </br>
         <font size = 5>
       
         <% if @profile.email.present? %>
@@ -103,7 +101,7 @@
         <% end %>
           
         <% if @profile.biography.present? %>
-          <b>Biography:
+          <b>Biography:</b>
             <div id="bio", style="font-size:27px; white-space: pre-line; text-align:justify"s>
               <%= @profile.biography %>
             </div>
@@ -120,7 +118,7 @@
           
           </br>
           </br>
-          <%= link_to "Back to Search", "/search" %>
+          <%= link_to "Back to search", :back %>
           </font>
           </p>
         </div>
@@ -128,7 +126,6 @@
     </div>
   </body>
 </html>
-
 <script type="text/javascript">
 $(document).ready(function() {
   var minimized_elements = $("#bio");

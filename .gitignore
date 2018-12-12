@@ -25,5 +25,5 @@ MayflowerDirectory1.csv
 #passwords 
 MayflowerEmailPW.csv
 
-#credential files
+#Ignore aws credentials
 /.aws/credentials

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'display', to: 'static_pages#display'
   get 'directory', to: 'profiles#directory'
   
-  
   resources :profiles do
     collection { post :import }
   end
