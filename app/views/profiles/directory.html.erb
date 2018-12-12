@@ -2,28 +2,10 @@
 <html>
   <head>  
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-    <style>
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  float: left;
-  width: 25%;
-  padding: 5px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
   </head>
-
   <body>
-    <h1>Directory</h1>
+        <h1>Directory</h1>
+    <div class="row">
             <% @allProfiles.each do |profile| %>
                 <script> require 'aws-sdk-s3'  </script>
         <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', 
@@ -46,11 +28,18 @@
         else
           imageURL = image_url("Mayflower_Default_Photo.jpg")
         end %>
-        <div class="column">      
-        <img src="<%= imageURL %>" style="width:100%">
-        <figcaption align="center"><%=profile.last_name %>, <%= profile.first_name%></figcaption>
+        <a href= <%= "/profiles/" + profile.id.to_s %>>
+        <div class="column">  
+        <div class="crop">
+          
+        <img src="<%= imageURL %>">
         </div>
+        <p style="font-size:1.25vmax;" align="center">
+                   <%= profile.last_name %>, <%= profile.first_name %></p>
+        </div>
+        </a>
             <% end %>
-        
+            </div>
     </body>
 </html>
+

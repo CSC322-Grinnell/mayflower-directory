@@ -22,31 +22,65 @@
 
         
 .crop {
-  width: 250px;
-  height: 250px;
-  background-position: center center;
-  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
   overflow: hidden;
 }
 
 .crop img {
+  position: absolute;
   width: 100%;
-  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+@media only screen {
+.column:hover {
+  opacity: 0.7;
+  border: 1px solid #860601;
+  color: #860601;
+}
+
+}
+
+
+/* Clearfix (clear floats) */
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 
 @media print {
-     body {
-    margin: 0;
+  body {
+    width: 100%;
+    padding-top: 0px;
     color: #000;
     background-color: #fff;
+    margin: 0px;
   }
   
-  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot,  {
+  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
   display: none;
 }
- 
-a[href]:after {
+
+  .page-break  { display:block; page-break-after:avoid; }
+
+  .column {
+     page-break-inside: avoid;
+   }
+  
+  a[href]:after {
     content: none !important;
   }
 }
