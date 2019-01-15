@@ -85,7 +85,7 @@ class ProfilesController < ApplicationController
   end
   
   def directory
-    @allProfiles = Profile.all
+    @allProfiles = Profile.all.order("last_name ASC, first_name ASC")
   end
   
   def get_dataset

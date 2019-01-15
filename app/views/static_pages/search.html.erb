@@ -44,7 +44,7 @@
       <div class=title>
        <font size="7"> Results </font>
       </div>
-     <% @results = Profile.ransack(params[:q]).result %>
+     <% @results = Profile.ransack(params[:q]).result.order("last_name ASC, first_name ASC") %>
      <% if Profile.ransack(params[:q]).result.blank? %>
       <div class="two">No results. Try searching for something else.</div>
      <% else %>

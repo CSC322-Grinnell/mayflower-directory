@@ -102,7 +102,7 @@
           
         <% if @profile.biography.present? %>
           <b>Biography:</b>
-            <div id="bio", style="font-size:27px; white-space: pre-line; text-align:justify"s>
+            <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify">
               <%= @profile.biography %>
             </div>
         <% end %>
@@ -137,9 +137,9 @@ $(document).ready(function() {
   
     $(this).html(
         t.slice(0,minimize_character_count )+
-        '<span>... </span><a href="#" class="read_more">Read more</a>'+
+        '<span>... </span><a href="#" class="read_more" style="font-size:25px">Read more</a>'+
         '<span style="display:none;">'+ t.slice(minimize_character_count, t.length) + ' ' +
-        '<a href="#" class="read_less">Read less</a></span>'
+        '<a href="#" class="read_less" style="font-size:25px">Read less</a></span>'
       );  
   });
   
