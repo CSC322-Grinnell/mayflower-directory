@@ -26,7 +26,4 @@ MayflowerDirectory1.csv
 MayflowerEmailPW.csv
 
 #Ignore aws credentials
-config/application.yml
-
-
 /.aws/credentials
