@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
-  get 'search', to: 'static_pages#search'
+  get 'directory', to: 'static_pages#search'
   get 'display', to: 'static_pages#display'
-  get 'directory', to: 'profiles#directory'
+  get 'profiles', to: 'profiles#directory'
   
   resources :profiles do
     collection { post :import }
