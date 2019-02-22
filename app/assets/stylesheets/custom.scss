@@ -7,6 +7,8 @@ body {
   padding-top: 100px;
   font-family: 'Libre Franklin', sans-serif;
   padding-left: 5px;
+  padding-right: 5px;
+
 }
 
 section {
@@ -213,7 +215,6 @@ footer ul li {
 .gallery {
     margin: 5px;
     border: 2px solid #ccc;
-    float: left;
     max-width: 30%;
     min-width: 350px;
     display:inline-block;
@@ -264,6 +265,7 @@ footer ul li {
     }
     body{
       padding-left: 10px;
+      padding-right: 10px;
     }
     .btn-large{
       height: 50%;
