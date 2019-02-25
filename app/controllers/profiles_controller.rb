@@ -84,7 +84,7 @@ class ProfilesController < ApplicationController
     redirect_to '/search'
   end
   
-  def directory
+  def profiles
     @allProfiles = Profile.all.order("last_name ASC, first_name ASC")
   end
   
