@@ -7,9 +7,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @user       = users(:one)
     sign_in(@user)
   end
-  
+
   test "should get search" do
     get search_url
     assert_response :success
   end
-# end
+end
