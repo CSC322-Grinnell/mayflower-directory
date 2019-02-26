@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
   get 'directory', to: 'static_pages#directory'
   get 'display', to: 'static_pages#display'
-  get 'profiles', to: 'profiles#pictures'
+  get 'pictures', to: 'profiles#pictures'
   
   resources :profiles do
     collection { post :import }
