@@ -6,7 +6,7 @@
   </head>
   
   <body>
-    <h1>Profiles</h1>
+    <h1>Pictures</h1>
     <!-- Connect to s3 and generate photos-->
     <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', 
                                       credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
