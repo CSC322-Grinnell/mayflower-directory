@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   resources :users
   root 'users#index'
 
-
+  resources :users do
+    get 'users/editemail', to: 'users#edit_email'
+  end 
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', 
