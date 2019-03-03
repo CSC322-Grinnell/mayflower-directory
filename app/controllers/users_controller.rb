@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  def edit_email
+  def update_email
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User email updated"

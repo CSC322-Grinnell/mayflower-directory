@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   get 'password_resets/new'
   get 'password_resets/edit'
-
   get 'profiles/new'
   get 'residents/new'
   
@@ -29,11 +28,12 @@ Rails.application.routes.draw do
   end
   
   resources :users
-  root 'users#index'
+    root 'users#index'
+    
+  resources :users do 
+    get 'update_email' ,to: 'users#update_email'
+  end
 
-  resources :users do
-    get 'users/editemail', to: 'users#edit_email'
-  end 
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', 
