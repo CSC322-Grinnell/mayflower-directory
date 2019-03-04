@@ -16,17 +16,21 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def edit_email
+    @user = User.find(params[:user_id])
+  end
+  
   def edit
     @user = User.find(params[:id])
   end
   
   def update_email
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     if @user.update_attributes(user_params)
       flash[:success] = "User email updated"
       redirect_to users_url
     else
-      render 'editemail'
+      render 'update_email'
     end
   end  
   
@@ -47,7 +51,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:id, :email, :password,
+      params.require(:user).permit(:id, :name, :email, :password,
                                    :password_confirmation)
     end
   
