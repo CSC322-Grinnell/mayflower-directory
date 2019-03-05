@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     root 'users#index'
     
   resources :users do 
-    get 'edit_email' ,to: 'users#edit_email'
+    get 'edit_info' ,to: 'users#edit_info', on: :member
   end
 
   devise_for :users, path: 'auth', 

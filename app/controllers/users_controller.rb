@@ -16,21 +16,21 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def edit_email
-    @user = User.find(params[:user_id])
+  def edit_info
+    @user = User.find(params[:id])
   end
   
   def edit
     @user = User.find(params[:id])
   end
   
-  def update_email
-    @user = User.find(params[:user_id])
+  def update_info
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User email updated"
       redirect_to users_url
     else
-      render 'update_email'
+      render 'edit_info'
     end
   end  
   
