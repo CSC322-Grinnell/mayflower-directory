@@ -38,7 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
         if params[:admin]
-            puts "hi\n\n"
         end
      super
    end
@@ -50,7 +49,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
-     puts "******* CALLING UPDATE"
      super
    end
 
