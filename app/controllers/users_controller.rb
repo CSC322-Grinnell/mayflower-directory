@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  def edit
+  def edit_password
     @user = User.find(params[:id])
   end
   
@@ -34,13 +34,13 @@ class UsersController < ApplicationController
     end
   end  
   
-  def update
+  def update_password
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User password updated"
       redirect_to users_url
     else
-      render 'edit'
+      render 'edit_password'
     end
   end
   

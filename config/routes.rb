@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     
   resources :users do 
     get 'edit_info' ,to: 'users#edit_info', on: :member
+    get 'edit_password' ,to: 'users#edit_password', on: :member
   end
 
   devise_for :users, path: 'auth', 
