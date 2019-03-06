@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>  
+  <head>
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-    <script> require 'aws-sdk-s3'  </script>
+    <script> require 'aws-sdk-s3' </script>
   </head>
-  
+
   <body>
     <h1>Pictures</h1>
     <!-- Connect to s3 and generate photos-->
-    <%  s3 = Aws::S3::Resource.new(region: 'us-east-2', 
+    <%  s3 = Aws::S3::Resource.new(region: 'us-east-2',
                                       credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])) %>
     <% bucket =  s3.bucket('mayflower-data') %>
     <div class="row">
       <% @allProfiles.each do |profile| %>
         <% oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png" %>
         <% oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg" %>
-        
-        <% if ! profile.avatar.file.nil?
-          imageURL = profile.avatar.url
-        elsif bucket.object("images/" + oldname).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(oldname)
-          imageURL = uploader.url
-        #Refactor this condition later
-        elsif bucket.object("images/" + oldname2).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(oldname2)
-          imageURL = uploader.url
-        else
+
+        <%
+        begin
+          if not profile.avatar.file.nil?
+            imageURL = profile.avatar.url
+          elsif bucket.object("images/" + oldname).exists?
+            uploader = AvatarUploader.new
+            uploader.retrieve_from_store!(oldname)
+            imageURL = uploader.url
+          #Refactor this condition later
+          elsif bucket.object("images/" + oldname2).exists?
+            uploader = AvatarUploader.new
+            uploader.retrieve_from_store!(oldname2)
+            imageURL = uploader.url
+          else
+            imageURL = image_url("Mayflower_Default_Photo.jpg")
+          end
+        rescue Aws::S3::Errors::BadRequest
           imageURL = image_url("Mayflower_Default_Photo.jpg")
-        end %>
-        
+        end
+        %>
+
         <!--Display each profile-->
         <a href= <%= "/profiles/" + profile.id.to_s %>>
-          <div class="column">  
+          <div class="column">
             <div class="crop">
               <img src="<%= imageURL %>">
             </div>
