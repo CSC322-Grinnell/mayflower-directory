@@ -1,27 +1,27 @@
 class ProfilesController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
-  
+
   def import
     Profile.import(params[:file])
     redirect_to root_url, notice: "Profiles imported."
   end
-  
+
   def new
     @user = Profile.new
   end
-  
+
   def edit
     @user = Profile.find(params[:id])
   end
-  
+
   def search
     @user = Profile.search(params[:search])
   end
-  
+
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
   end
-   
+
   def update
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def create
     puts "*** CREATING A NEW PROFILE ****"
     puts "Params object:" + profile_params.to_s
@@ -45,20 +45,20 @@ class ProfilesController < ApplicationController
     if @user.save
       flash[:notice] = "Profile sucessfully added"
       redirect_to '/profiles/' + @user[:id].to_s
-    else 
+    else
       puts "** Could not save profile"
       puts @user.errors.full_messages
       flash[:notice] = "there was a problem creating the new profile"
       redirect_to '/profiles/new'
     end
   end
-  
+
   def index
     @search = Profile.search(params[:id])
     @profiles = @search.result
     @user = Profile.all
-  end 
-  
+  end
+
 
   # Confirms a logged-in user as admin.
    def logged_in_admin
@@ -67,64 +67,68 @@ class ProfilesController < ApplicationController
        redirect_to '/home'
      end
    end
-  
-  
+
+
   def show
     @profile = Profile.find(params[:id])
   end
-  
+
   def display
     @allProfiles = Profile.all
   end
-  
+
   def destroy
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
 
     redirect_to '/search'
   end
-  
+
   def pictures
-    s3 = Aws::S3::Resource.new(region: 'us-east-2',
-                                      credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']))
-    bucket =  s3.bucket('mayflower-data') 
-    
-    @allProfiles = Profile.all.order("last_name ASC, first_name ASC")
-    @viewableProfiles = []
-    
-    @allProfiles.each do |profile|
+    s3 = Aws::S3::Resource.new(
+      region: 'us-east-2',
+      credentials: Aws::Credentials.new(
+        ENV['AWS_ACCESS_KEY_ID'],
+        ENV['AWS_SECRET_ACCESS_KEY']
+      )
+    )
+
+    bucket = s3.bucket('mayflower-data')
+
+    all_profiles = Profile.all.order("last_name ASC, first_name ASC")
+
+    @profiles = []
+    all_profiles.each do |profile|
         oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png"
         oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg"
-        
+
          begin
           if not profile.avatar.file.nil?
-            imageURL = profile.avatar.url
+            image_url = profile.avatar.url
           elsif bucket.object("images/" + oldname).exists?
             uploader = AvatarUploader.new
             uploader.retrieve_from_store!(oldname)
-            imageURL = uploader.url
+            image_url = uploader.url
           #Refactor this condition later
           elsif bucket.object("images/" + oldname2).exists?
             uploader = AvatarUploader.new
             uploader.retrieve_from_store!(oldname2)
-            imageURL = uploader.url
+            image_url = uploader.url
           else
-            imageURL = view_context.image_url("Mayflower_Default_Photo.jpg")
+            image_url = view_context.image_url("Mayflower_Default_Photo.jpg")
           end
         rescue Aws::S3::Errors::BadRequest
-          imageURL = view_context.image_url("Mayflower_Default_Photo.jpg")
+          image_url = view_context.image_url("Mayflower_Default_Photo.jpg")
         end
-        
-        viewableProfile = 
-        { :name => profile.last_name + ", " + profile.first_name,
-          :imageURL => imageURL,
-          :link => "/profiles/" + profile.id.to_s
-        }
-        
-        @viewableProfiles.push(viewableProfile)
+
+        @profiles.push({
+          :name => profile.last_name + ", " + profile.first_name,
+          :image_url => image_url,
+          :link => profile_path(profile.id)
+        })
       end
   end
-  
+
   def get_dataset
     render json: { data: Profile.all }
   end

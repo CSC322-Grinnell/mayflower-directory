@@ -8,17 +8,17 @@
   <body>
     <h1>Pictures</h1>
     <div class="row">
-        <!--Display each profile-->
-        <% @viewableProfiles.each do |profile|%>
-        <a href= <%= profile[:link] %>
+      <!-- Display each profile -->
+      <% @profiles.each do |profile|%>
+        <a href="<%= profile[:link] %>">
           <div class="column">
             <div class="crop">
-              <img src="<%=profile[:imageURL] %>">
+              <img src="<%=profile[:image_url] %>">
             </div>
             <p style="font-size:1.25vmax;" align="center">
               <%= profile[:name] %>
             </p>
-            </div>
+          </div>
         </a>
       <% end %>
     </div>
