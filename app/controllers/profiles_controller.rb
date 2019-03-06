@@ -85,11 +85,47 @@ class ProfilesController < ApplicationController
   end
   
   def pictures
+    s3 = Aws::S3::Resource.new(region: 'us-east-2',
+                                      credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']))
+    bucket =  s3.bucket('mayflower-data') 
+    
     @allProfiles = Profile.all.order("last_name ASC, first_name ASC")
+    @viewableProfiles = []
+    
+    @allProfiles.each do |profile|
+        oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png"
+        oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg"
+        
+         begin
+          if not profile.avatar.file.nil?
+            imageURL = profile.avatar.url
+          elsif bucket.object("images/" + oldname).exists?
+            uploader = AvatarUploader.new
+            uploader.retrieve_from_store!(oldname)
+            imageURL = uploader.url
+          #Refactor this condition later
+          elsif bucket.object("images/" + oldname2).exists?
+            uploader = AvatarUploader.new
+            uploader.retrieve_from_store!(oldname2)
+            imageURL = uploader.url
+          else
+            imageURL = view_context.image_url("Mayflower_Default_Photo.jpg")
+          end
+        rescue Aws::S3::Errors::BadRequest
+          imageURL = view_context.image_url("Mayflower_Default_Photo.jpg")
+        end
+        
+        viewableProfile = 
+        { :name => profile.last_name + ", " + profile.first_name,
+          :imageURL => imageURL,
+          :link => "/profiles/" + profile.id.to_s
+        }
+        
+        @viewableProfiles.push(viewableProfile)
+      end
   end
   
   def get_dataset
     render json: { data: Profile.all }
   end
 end
-
