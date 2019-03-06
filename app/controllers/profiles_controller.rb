@@ -71,6 +71,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @image_url = profile_image(@profile, get_bucket)
   end
 
   def display
@@ -85,51 +86,59 @@ class ProfilesController < ApplicationController
   end
 
   def pictures
-    s3 = Aws::S3::Resource.new(
-      region: 'us-east-2',
-      credentials: Aws::Credentials.new(
-        ENV['AWS_ACCESS_KEY_ID'],
-        ENV['AWS_SECRET_ACCESS_KEY']
-      )
-    )
-
-    bucket = s3.bucket('mayflower-data')
+    bucket = get_bucket
 
     all_profiles = Profile.all.order("last_name ASC, first_name ASC")
 
     @profiles = []
     all_profiles.each do |profile|
-        oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png"
-        oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg"
-
-         begin
-          if not profile.avatar.file.nil?
-            image_url = profile.avatar.url
-          elsif bucket.object("images/" + oldname).exists?
-            uploader = AvatarUploader.new
-            uploader.retrieve_from_store!(oldname)
-            image_url = uploader.url
-          #Refactor this condition later
-          elsif bucket.object("images/" + oldname2).exists?
-            uploader = AvatarUploader.new
-            uploader.retrieve_from_store!(oldname2)
-            image_url = uploader.url
-          else
-            image_url = view_context.image_url("Mayflower_Default_Photo.jpg")
-          end
-        rescue Aws::S3::Errors::BadRequest
-          image_url = view_context.image_url("Mayflower_Default_Photo.jpg")
-        end
-
-        @profiles.push({
-          :name => profile.last_name + ", " + profile.first_name,
-          :image_url => image_url,
-          :link => profile_path(profile.id)
-        })
-      end
+      @profiles.push({
+        :name => profile.last_name + ", " + profile.first_name,
+        :image_url => profile_image(profile, bucket),
+        :link => profile_path(profile.id)
+      })
+    end
   end
 
   def get_dataset
     render json: { data: Profile.all }
   end
+
+  private
+    def get_bucket
+      s3 = Aws::S3::Resource.new(
+        region: 'us-east-2',
+        credentials: Aws::Credentials.new(
+          ENV['AWS_ACCESS_KEY_ID'],
+          ENV['AWS_SECRET_ACCESS_KEY']
+        )
+      )
+
+      s3.bucket('mayflower-data')
+    end
+
+    def profile_image(profile, bucket)
+      oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png"
+      oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg"
+      default_url = view_context.image_url("Mayflower_Default_Photo.jpg")
+
+      begin
+        if not profile.avatar.file.nil?
+          return profile.avatar.url
+        elsif bucket.object("images/" + oldname).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname)
+          return uploader.url
+        #Refactor this condition later
+        elsif bucket.object("images/" + oldname2).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(oldname2)
+          return uploader.url
+        else
+          return default_url
+        end
+      rescue Aws::S3::Errors::BadRequest
+        return default_url
+      end
+    end
 end
