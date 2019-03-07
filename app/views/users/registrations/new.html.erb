@@ -15,7 +15,9 @@
         
         <div class="form-horizontal", style="text-align:left">
           <div class="form-group">
-    
+            <%= f.label :name, class: "col control-label"%>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Enter name' %>
+  
             <%= f.label :email, class: "col control-label"%>
             <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Enter email' %>
 

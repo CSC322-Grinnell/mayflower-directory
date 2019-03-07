@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   get 'password_resets/new'
   get 'password_resets/edit'
-
   get 'profiles/new'
   get 'residents/new'
   
@@ -29,8 +28,11 @@ Rails.application.routes.draw do
   end
   
   resources :users
-  root 'users#index'
-
+    root 'users#index'
+    
+  resources :users do 
+    get 'edit_info' ,to: 'users#edit_info', on: :member
+  end
 
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
