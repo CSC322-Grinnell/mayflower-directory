@@ -23,24 +23,16 @@ class UsersController < ApplicationController
   def edit_password
     @user = User.find(params[:id])
   end
-  
-  def update_info
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "User email updated"
-      redirect_to users_url
-    else
-      render 'edit_info'
-    end
-  end  
-  
-  def update_password
+
+  def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User password updated"
       redirect_to users_url
-    else
+    elsif user_params.include?(:password)
       render 'edit_password'
+    else 
+      render 'edit_info'
     end
   end
   
