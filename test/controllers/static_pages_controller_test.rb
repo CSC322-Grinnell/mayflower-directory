@@ -25,8 +25,8 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get search" do
-    get :search
+  test "should get directory" do
+    get :directory
     assert_response :success
   end
   

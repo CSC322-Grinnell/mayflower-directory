@@ -16,10 +16,10 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   
-  test "should redirect to search after delete" do 
+  test "should redirect to directory after delete" do 
     login_as(@user)
     @profile1.destroy
-    get search_url
+    get directory_url
     assert_response :success
   end
    
@@ -32,7 +32,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect to search after update" do 
     login_as(@user)
     @profile1.update({first_name: "Bob"})
-    get search_url
+    get directory_url
     assert_response :success
   end
   
