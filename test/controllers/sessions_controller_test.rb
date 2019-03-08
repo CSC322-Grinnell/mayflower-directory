@@ -8,8 +8,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
   end
 
-  test "should get search" do
-    get search_url
+  test "should get directory" do
+    get directory_url
     assert_response :success
   end
 end
