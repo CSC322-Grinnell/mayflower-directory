@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Fixing different size images
+
+.pictures {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.profile {
+  width: 200px;
+}
+
+.profile__picture {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+
+//old legacy code~~~
 .img_container {
     width: 300;
 }
