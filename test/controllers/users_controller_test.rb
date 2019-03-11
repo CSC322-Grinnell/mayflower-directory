@@ -52,12 +52,25 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil @user.errors[:email]
   end
   
+  test "should update name" do
+    login_as(@admin)
+    @user.update({name: "New Person"})
+    assert_match(@user.name, "New Person")
+  end
+  
+  test "should update email" do 
+    login_as(@admin)
+    @user.update({email: "person@gmail.com"})
+    assert_match(@user.email, "person@gmail.com")
+  end
+  
+  
   #Error
-  # test "should update password" do 
-  #   login_as(@user)
-  #   @user.update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
-  #   assert_match(@user.password, "Passw0rd!!")
-  # end
+   test "should update password" do 
+     login_as(@admin)
+     @user.update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
+     assert_match(@user.password, "Passw0rd!!")
+   end
   
     #This is a failure
   # test "user should be nil after deleting" do
