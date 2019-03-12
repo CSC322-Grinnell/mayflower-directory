@@ -30,8 +30,10 @@ class UsersController < ApplicationController
       flash[:success] = "User password updated"
       redirect_to users_url
     elsif user_params.include?(:password)
+      flash[:notice] = "Password is invalid."
       render 'edit_password'
     else 
+      flash[:notice] = "Either name or email is invalid."
       render 'edit_info'
     end
   end

@@ -44,8 +44,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get users_url
       assert_response :success
   end
-  
-  
+
   test 'invalid without email' do
     @user.email = nil
     refute @user.valid?
