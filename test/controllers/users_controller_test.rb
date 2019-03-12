@@ -28,7 +28,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                   user: { password:              "",
                                           password_confirmation: "",
                                           admin: true } }
-  assert_not @other_user.reload.admin?
+    assert_not @other_user.reload.admin?
   end
   
   test "should redirect to users page after deleting a user" do
@@ -51,6 +51,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     refute @user.valid?
     assert_not_nil @user.errors[:email]
   end
+  
+  
   
   #Error
   # test "should update password" do 
