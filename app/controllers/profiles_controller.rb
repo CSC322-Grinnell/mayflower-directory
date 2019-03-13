@@ -118,21 +118,21 @@ class ProfilesController < ApplicationController
     end
 
     def profile_image(profile, bucket)
-      oldname = profile.last_name.to_s + ", " + profile.first_name.to_s+".png"
-      oldname2 = profile.last_name.to_s + ", " + profile.first_name.to_s+".jpg"
+      bucket_base_filename = "images/#{profile.last_name}, #{profile.first_name}"
+      png_filename = "#{bucket_base_filename}.png"
+      jpg_filename = "#{bucket_base_filename}.jpg"
       default_url = view_context.image_url("Mayflower_Default_Photo.jpg")
 
       begin
         if not profile.avatar.file.nil?
           return profile.avatar.url
-        elsif bucket.object("images/" + oldname).exists?
+        elsif bucket.object(jpg_filename).exists?
           uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(oldname)
+          uploader.retrieve_from_store!(jpg_filename)
           return uploader.url
-        #Refactor this condition later
-        elsif bucket.object("images/" + oldname2).exists?
+        elsif bucket.object(png_filename).exists?
           uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(oldname2)
+          uploader.retrieve_from_store!(png_filename)
           return uploader.url
         else
           return default_url
