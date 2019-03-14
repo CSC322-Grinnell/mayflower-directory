@@ -38,7 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
         if params[:admin]
-            puts 'hi'
         end
      super
    end
@@ -50,7 +49,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
-     puts "******* CALLING UPDATE"
      super
    end
 
@@ -71,10 +69,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:admin])
-   end
-
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up) do |user|
+    user.permit(:id, :name, :email, :password, :password_confirmation)
+    end
+  end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
