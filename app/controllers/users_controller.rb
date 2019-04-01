@@ -16,17 +16,25 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def edit
+  def edit_info
     @user = User.find(params[:id])
   end
   
+  def edit_password
+    @user = User.find(params[:id])
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User password updated"
       redirect_to users_url
-    else
-      render 'edit'
+    elsif user_params.include?(:password)
+      flash[:notice] = "Password is invalid."
+      render 'edit_password'
+    else 
+      flash[:notice] = "Either name or email is invalid."
+      render 'edit_info'
     end
   end
   
@@ -37,7 +45,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:id, :email, :password,
+      params.require(:user).permit(:id, :name, :email, :password,
                                    :password_confirmation)
     end
   
