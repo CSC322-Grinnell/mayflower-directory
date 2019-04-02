@@ -86,7 +86,7 @@ class ProfilesController < ApplicationController
 
     all_profiles = Profile.all.order("last_name ASC, first_name ASC")
 
-    @profiles = all_profiles.each do |profile|
+    @profiles = all_profiles.map do |profile|
       {
         :name => profile.last_name + ", " + profile.first_name,
         :image_url => profile_image(profile, bucket),
