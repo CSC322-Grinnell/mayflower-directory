@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-    <script> require 'aws-sdk-s3' </script>
-  </head>
+<h1>Pictures</h1>
+<main class="pictures">
+  <!-- Display each profile -->
+  <% @profiles.each do |profile|%>
+    <!--<article class="">-->
+      <a class="profile" href="<%= profile[:link] %>">
+        <img class="profile__picture" src="<%=profile[:image_url] %>">
+        <h2 class="profile__name">
+          <%= profile[:name] %>
+        </h2>
+      </a>
+    <!--</article>-->
+  <% end %>
+</main>
 
-  <body>
-    <h1>Pictures</h1>
-    <div class="row">
-      <!-- Display each profile -->
-      <% @profiles.each do |profile|%>
-        <a href="<%= profile[:link] %>">
-          <div class="column">
-            <div class="crop">
-              <img src="<%=profile[:image_url] %>">
-            </div>
-            <p style="font-size:1.25vmax;" align="center">
-              <%= profile[:name] %>
-            </p>
-          </div>
-        </a>
-      <% end %>
-    </div>
-  </body>
-</html>
+<% provide(:image_credit, raw('
+  Default profile icon made by <a href="https://www.freepik.com/">Freepik</a>
+  from <a href="https://www.flaticon.com/">www.flaticon.com</a>
+')) %>

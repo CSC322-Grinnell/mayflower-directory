@@ -32,11 +32,8 @@
         </div>
       </div>
       <br/><center>
-      <%=f.submit "Search", class: "btn btn-primary btn-large"%>
-      <br/>
-      <br/>
-      <a class="reset" href="/search">Reset</a></center>
-    <% end %>
+      <%=f.submit "Search", class: "btn btn-primary btn-large"%><% end %>
+        <a class="btn btn-primary btn-large" href= <%= directory_path %>>Reset</a></center>
    </div>
 
    <div class="col-md-6", style="text-align:center">
@@ -49,9 +46,9 @@
       <div class="two">No results. Try searching for something else.</div>
      <% else %>
       <% @results.each do |person| %>
-       <p> <font size="5">
+       <p style="font-size: x-large"> 
         <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a> 
-       <font/></p>
+       </p>
       <% end %>
      <% end %>
     <% end %>

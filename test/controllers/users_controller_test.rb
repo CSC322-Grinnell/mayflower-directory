@@ -28,7 +28,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                   user: { password:              "",
                                           password_confirmation: "",
                                           admin: true } }
-  assert_not @other_user.reload.admin?
+    assert_not @other_user.reload.admin?
   end
   
   test "should redirect to users page after deleting a user" do
@@ -44,20 +44,31 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get users_url
       assert_response :success
   end
-  
-  
+
   test 'invalid without email' do
     @user.email = nil
     refute @user.valid?
     assert_not_nil @user.errors[:email]
   end
   
+  test "should update name" do
+    login_as(@admin)
+    @user.update({name: "New Person"})
+    assert_match(@user.name, "New Person")
+  end
+  
+  test "should update email" do 
+    login_as(@admin)
+    @user.update({email: "person@gmail.com"})
+    assert_match(@user.email, "person@gmail.com")
+  end
+  
   #Error
-  # test "should update password" do 
-  #   login_as(@user)
-  #   @user.update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
-  #   assert_match(@user.password, "Passw0rd!!")
-  # end
+   test "should update password" do 
+     login_as(@admin)
+     @user.update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
+     assert_match(@user.password, "Passw0rd!!")
+   end
   
     #This is a failure
   # test "user should be nil after deleting" do

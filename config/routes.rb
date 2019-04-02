@@ -26,12 +26,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/import', to: 'users/registrations#import_users'
   end
-  
-  resources :users
-    root 'users#index'
     
   resources :users do 
+    root 'users#index'
     get 'edit_info' ,to: 'users#edit_info', on: :member
+    get 'edit_password' ,to: 'users#edit_password', on: :member
   end
 
   devise_for :users, path: 'auth', 

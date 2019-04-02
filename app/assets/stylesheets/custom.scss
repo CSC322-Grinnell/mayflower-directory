@@ -98,7 +98,7 @@ li a:hover {
 
 /* footer */
 
-footer {
+.footer {
   margin-top: 100px;
   padding-top: 5px;
   padding-left: 10px;
@@ -108,24 +108,24 @@ footer {
   font-size: 13pt;
 }
 
-footer p {
+.footer p {
   float: left;
 }
 
-footer a {
+.footer a {
   color: #555;
 }
 
-footer a:hover {
+.footer a:hover {
   color: #860601;
 }
 
-footer ul {
+.footer ul {
   float: right;
   list-style: none;
 }
 
-footer ul li {
+.footer ul li {
   float: left;
   margin-left: 18px;
   text-decoration: underline;
@@ -170,6 +170,8 @@ footer ul li {
   width: 30%;
   font-size: 200%;
   background-color: #376e8c;
+  color: white;
+  margin: 5px;
 }
 .btn-large:hover {
   background-color: #860601;
