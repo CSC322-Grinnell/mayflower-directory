@@ -90,13 +90,12 @@ class ProfilesController < ApplicationController
 
     all_profiles = Profile.all.order("last_name ASC, first_name ASC")
 
-    @profiles = []
-    all_profiles.each do |profile|
-      @profiles.push({
+    @profiles = all_profiles.each do |profile|
+      {
         :name => profile.last_name + ", " + profile.first_name,
         :image_url => profile_image(profile, bucket),
         :link => profile_path(profile.id)
-      })
+      }
     end
   end
 
