@@ -2,21 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Fixing different size images
+
+.pictures {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+$profile-size: 250px;
+
+.profile {
+  width: $profile-size;
+  margin: 5px;
+}
+
+.profile__picture {
+  display: block;
+  width: $profile-size;
+  height: $profile-size;
+}
+
+.profile__name {
+  margin: 5px 0;
+  font-size: 3rem;
+  text-align: center;
+}
+
+//old legacy code~~~
 .img_container {
-    width: 300;
+  width: 300;
 }
 
 /* resize images */
 .img_container img {
-    width: 90%;
+  width: 90%;
 }
 
-.read_more, .read_less {  
+.read_more,
+.read_less {
   font-size: 20px;
   font-style: normal;
 }
 
-// Croping images for directory        
+// Croping images for directory
 .crop {
   position: relative;
   width: 100%;
@@ -38,7 +66,6 @@
   width: 25%;
   float: left;
   padding-right: 5px;
-  
 }
 
 @media only screen {
@@ -56,7 +83,6 @@
   display: table;
 }
 
-
 //Printing format
 @media print {
   body {
@@ -66,23 +92,31 @@
     padding-top: 0px;
     padding-left: 0px;
   }
-  
-  header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+
+  header,
+  footer,
+  aside,
+  nav,
+  form,
+  iframe,
+  .menu,
+  .hero,
+  .adslot {
     display: none;
   }
-  
+
   @page {
-    size: letter; 
+    size: letter;
     margin-top: 20px;
     margin-bottom: 0px;
     margin-left: 45px;
     margin-right: 45px;
   }
-  
+
   .column {
     page-break-inside: avoid;
   }
-  
+
   a[href]:after {
     content: none !important;
   }
