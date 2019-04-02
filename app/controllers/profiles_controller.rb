@@ -18,10 +18,6 @@ class ProfilesController < ApplicationController
     @user = Profile.search(params[:search])
   end
 
-  def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
-  end
-
   def update
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
@@ -141,4 +137,11 @@ class ProfilesController < ApplicationController
         return default_url
       end
     end
+    
+    
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, 
+                            :nickname, :landline, :cell, :email, :address, 
+                            :neighborhood, :spouse, :biography, :avatar)
+  end
 end
