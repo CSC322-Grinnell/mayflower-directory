@@ -86,17 +86,18 @@ class ProfilesController < ApplicationController
   end
 
   def pictures
+    @search = Profile.search(params[:q])
+
+    all_results = Profile.ransack(params[:q])
+      .result.order("last_name ASC, first_name ASC")
+
     bucket = get_bucket
-
-    all_profiles = Profile.all.order("last_name ASC, first_name ASC")
-
-    @profiles = []
-    all_profiles.each do |profile|
-      @profiles.push({
+    @results = all_results.map do |profile|
+      {
         :name => profile.last_name + ", " + profile.first_name,
         :image_url => profile_image(profile, bucket),
         :link => profile_path(profile.id)
-      })
+      }
     end
   end
 
