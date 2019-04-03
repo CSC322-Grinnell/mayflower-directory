@@ -9,9 +9,7 @@
   <div class="container">
    <div class="row">
     <div class="col-md-6">
-     <div class="title">
-      <center><font size="7">Directory</font></center>
-     </div>
+     <h1>Directory</h1>
      <br/>
      <font size="4">Enter a full or partial name (first or last or nickname), and/or select a neighborhood.
            If you provide no information, all residents will be shown.
@@ -32,23 +30,24 @@
         </div>
       </div>
       <br/><center>
-      <%=f.submit "Search", class: "btn btn-primary btn-large"%><% end %>
-        <a class="btn btn-primary btn-large" href= <%= directory_path %>>Reset</a></center>
+      <%=f.submit "Search", class: "btn btn-primary btn-large"%>
+      <br/>
+      <br/>
+      <a class="reset" href="/search">Reset</a></center>
+    <% end %>
    </div>
 
    <div class="col-md-6", style="text-align:center">
     <% if params[:q].present? %>
-      <div class=title>
-       <font size="7"> Results </font>
-      </div>
+      <h1>Results</h1>
      <% @results = Profile.ransack(params[:q]).result.order("last_name ASC, first_name ASC") %>
      <% if Profile.ransack(params[:q]).result.blank? %>
       <div class="two">No results. Try searching for something else.</div>
      <% else %>
       <% @results.each do |person| %>
-       <p style="font-size: x-large"> 
+       <p> <font size="5">
         <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a> 
-       </p>
+       <font/></p>
       <% end %>
      <% end %>
     <% end %>
