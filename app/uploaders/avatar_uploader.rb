@@ -7,19 +7,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :fog
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  
-
-  def store_dir
-    'images'
-    #/mayflower-data/images
-  end
-  
-  def cache_dir
-    'images'
-  end
-  
   #stuff in comments can be commented out if we need them later
 
 
@@ -68,13 +55,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
    version :thumb do
      process resize_to_fill: [200,200]
    end
-
-
-   
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
 
 end
