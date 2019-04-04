@@ -53,21 +53,13 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def index
-    @search = Profile.search(params[:id])
-    @profiles = @search.result
-    @user = Profile.all
-  end
-
-
   # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user.admin
        flash[:danger] = "Please log in as admin."
        redirect_to '/home'
      end
-   end
-
+  end
 
   def show
     @profile = Profile.find(params[:id])
@@ -85,7 +77,7 @@ class ProfilesController < ApplicationController
     redirect_to '/search'
   end
 
-  def pictures
+  def directory
     @search = Profile.search(params[:q])
 
     all_results = Profile.ransack(params[:q])
