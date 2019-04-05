@@ -6,7 +6,7 @@
   <%= f.label "Neighborhood", class: "col control-label" %>
   <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, include_blank: true) %>
   <%= f.submit "Search", class: "btn btn-primary btn-large" %>
-  <a class="btn btn-primary btn-large" href="<%= pictures_path %>">Reset</a>
+  <a class="btn btn-primary btn-large" href="<%= directory_path %>">Reset</a>
 <% end %>
 
 <main class="pictures">

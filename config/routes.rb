@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
   get 'display', to: 'static_pages#display'
-  get 'pictures', to: 'profiles#pictures'
+  get 'directory', to: 'profiles#directory'
 
   resources :profiles do
     collection { post :import }
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'static_pages#directory'
+  root 'profiles#directory'
 
   devise_scope :user do
     post 'users/import', to: 'users/registrations#import_users'
