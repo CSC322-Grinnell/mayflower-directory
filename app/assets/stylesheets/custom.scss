@@ -28,6 +28,15 @@ h1 {
   font-weight: bold;
 }
 
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text: underline;
+}
+p {
+  font-size: 2rem;
+}
+
 .center h1 {
   margin-bottom: 10px;
 }
@@ -38,11 +47,22 @@ h1 {
   word-spacing: 3px;
 }
 
-.title {
-  letter-spacing: 2px;
+.question {
+  font-size: 2rem;
   font-weight: bold;
 }
 
+.answer {
+  font-size: 2rem;
+}
+
+.form-horizontal {
+  text-align:left;
+}
+
+.centered {
+  text-align:center;
+} 
 /* header */
 .navbar {
   /*navbar color*/

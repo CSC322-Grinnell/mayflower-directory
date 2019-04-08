@@ -19,7 +19,7 @@
 
      <% @search = Profile.search(params[:q]) %>
      <form> <%= search_form_for @search, url: '/search' do |f| %>
-      <div class="form-horizontal", style="text-align:left">
+      <div class="form-horizontal">
         <div class="form-group">
           <%= f.label "Search for resident:", class: "col control-label" %>
           <%= f.search_field :full_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
@@ -37,7 +37,7 @@
     <% end %>
    </div>
 
-   <div class="col-md-6", style="text-align:center">
+   <div class="col-md-6 centered">
     <% if params[:q].present? %>
       <h1>Results</h1>
      <% @results = Profile.ransack(params[:q]).result.order("last_name ASC, first_name ASC") %>
@@ -45,9 +45,9 @@
       <div class="two">No results. Try searching for something else.</div>
      <% else %>
       <% @results.each do |person| %>
-       <p> <font size="5">
+       <p>
         <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a> 
-       <font/></p>
+       </p>
       <% end %>
      <% end %>
     <% end %>
