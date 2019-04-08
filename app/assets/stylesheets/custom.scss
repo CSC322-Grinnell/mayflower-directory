@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
+
 /* universal */
 
 body {
@@ -18,27 +21,37 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
-}
 
 h1 {
   font-size: 5rem;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   font-weight: bold;
   text: underline;
 }
 
-p {
-  font-size: 2rem;
+h3 {
+  font-size: 4rem;
 }
 
-.center h1 {
-  margin-bottom: 10px;
+h4 {
+  font-size: 3.5rem;
+}
+
+h5 {
+  font-size: 3rem;
+}
+
+h6 {
+  font-size: 2.5rem;
+}
+
+p, ul {
+  font-size: 2rem;
 }
 
 .container {
@@ -56,9 +69,6 @@ p {
   text-align:left;
 }
 
-.centered {
-  text-align:center;
-} 
 /* header */
 .navbar {
   /*navbar color*/
@@ -149,7 +159,7 @@ li a:hover {
 
 .footer ul li {
   float: left;
-  margin-left: 18px;
+  margin-left: 12px;
   text-decoration: underline;
 }
 
@@ -330,3 +340,18 @@ li a:hover {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+
+/* div-speciifc CSS */
+
+ul {
+  list-style: none;
+}
+
+.contact {
+  margin-top: 40px;
+}
+
+.centered {
+  text-align:center;
+} 
