@@ -33,9 +33,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'auth', 
     controllers: {registrations: "users/registrations"},
-    path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', 
-                  confirmation: 'verification', unlock: 'unblock', 
-                  registration: 'register', sign_up: 'sign_up' }
+    path_names: { sign_in: 'login', sign_out: 'logout', registrations: 'register'}
     
                
 end
