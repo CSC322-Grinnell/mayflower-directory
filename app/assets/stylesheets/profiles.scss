@@ -3,32 +3,112 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Fixing different size images
 
-.pictures {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+.search {
+  @media print {
+    display: none;
+  }
 }
 
-$profile-size: 250px;
+.search__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search__neighborhood {
+  margin: 0.4rem;
+}
+
+.search__neighborhood-label {
+  margin: 0;
+}
+
+.search__button-container {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.search__button {
+  display: inline-block;
+  text-align: center;
+  flex: 1;
+  padding: 0.8rem;
+  margin: 0.4rem;
+  background-color: #376e8c;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  letter-spacing: inherit;
+  max-width: 25rem;
+
+  &:hover,
+  &:active {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.search__button--reset {
+  background-color: #666;
+}
+
+.pictures {
+  @media screen {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  @media print {
+    display: block;
+    text-align: justify;
+  }
+}
 
 .profile {
-  width: $profile-size;
-  margin: 5px;
+  @media screen {
+    width: 250px;
+    margin: 5px;
+  }
+
+  @media print {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(25% - 1em);
+    margin: 5px 0;
+  }
+}
+
+.profile__picture-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 100%;
+  position: relative;
 }
 
 .profile__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   display: block;
-  width: $profile-size;
-  height: $profile-size;
 }
 
 .profile__name {
   margin: 5px 0;
   font-size: 3rem;
   text-align: center;
+  color: #333;
+
+  @media print {
+    font-size: 1.5rem;
+  }
 }
 
 //old legacy code~~~
+
 .img_container {
   width: 300;
 }
@@ -91,6 +171,7 @@ $profile-size: 250px;
     background-color: #fff;
     padding-top: 0px;
     padding-left: 0px;
+    padding-right: 0px;
   }
 
   header,
@@ -108,7 +189,7 @@ $profile-size: 250px;
   @page {
     size: letter;
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     margin-left: 45px;
     margin-right: 45px;
   }

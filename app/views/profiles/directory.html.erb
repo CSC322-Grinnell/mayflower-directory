@@ -1,12 +1,25 @@
-<h1>Pictures</h1>
+<h1 class="heading">Pictures</h1>
 
-<%= search_form_for @search, url: "" do |f| %>
+<%= search_form_for @search, url: "", class: "search" do |f| %>
   <%= f.label "Search for resident:", class: "col control-label" %>
-  <%= f.search_field :full_name_or_nickname_cont, class: "form-control", placeholder: 'Enter name' %>
-  <%= f.label "Neighborhood", class: "col control-label" %>
-  <%= f.collection_select(:neighborhood_eq, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, include_blank: true) %>
-  <%= f.submit "Search", class: "btn btn-primary btn-large" %>
-  <a class="btn btn-primary btn-large" href="<%= directory_path %>">Reset</a>
+  <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
+                     placeholder: 'Enter name' %>
+  <div class="search__controls">
+    <div class="search__neighborhood">
+      <%= f.label "Neighborhood",
+                  class: "col control-label search__neighborhood-label" %>
+      <%= f.collection_select(:neighborhood_eq,
+        Profile.select(:neighborhood).uniq.order(:neighborhood),
+        :neighborhood, :neighborhood, include_blank: true) %>
+    </div>
+    <div class="search__button-container">
+      <%= f.submit "Search", class: "search__button" %>
+      <a class="search__button search__button--reset"
+         href="<%= directory_path %>">
+        Reset
+      </a>
+    </div>
+  </div>
 <% end %>
 
 <main class="pictures">
@@ -15,7 +28,9 @@
   <% else %>
     <% @results.each do |profile| %>
       <a class="profile" href="<%= profile[:link] %>">
-        <img class="profile__picture" src="<%=profile[:image_url] %>">
+        <div class="profile__picture-wrapper">
+          <img class="profile__picture" src="<%=profile[:image_url] %>">
+        </div>
         <h2 class="profile__name">
           <%= profile[:name] %>
         </h2>
