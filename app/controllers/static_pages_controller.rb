@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  
+  
   def home
   end
   
@@ -6,6 +8,15 @@ class StaticPagesController < ApplicationController
   end
   
   def about
+  end
+  
+  def departments
+  end
+  
+  def department1
+  end
+  
+  def department2
   end
   
   # def search
