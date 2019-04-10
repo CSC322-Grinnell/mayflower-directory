@@ -8,7 +8,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   storage :fog
 
   #stuff in comments can be commented out if we need them later
-
+  def store_dir
+    'images'
+    #/mayflower-data/images
+  end
+  
+  def cache_dir
+    'images'
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
