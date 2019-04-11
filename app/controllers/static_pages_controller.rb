@@ -1,13 +1,16 @@
 class StaticPagesController < ApplicationController
   def home
   end
-  
+
   def help
   end
-  
+
   def about
   end
-  
+
+  def library
+  end
+
   # def search
   #   if current_user.newUser != false
   #     current_user.newUser = false
@@ -15,5 +18,5 @@ class StaticPagesController < ApplicationController
   #     redirect_to "/auth/register/edit"
   #   end
   # end
-  
+
 end
