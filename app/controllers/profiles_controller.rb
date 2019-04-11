@@ -86,17 +86,26 @@ class ProfilesController < ApplicationController
   end
 
   def pictures
-    bucket = get_bucket
-
     all_profiles = Profile.all.order("last_name ASC, first_name ASC")
 
-    @profiles = []
-    all_profiles.each do |profile|
-      @profiles.push({
+    profile_threads = all_profiles.map do |profile|
+      # Be super careful about side-effects here.  Concurrency bugs are tricky.
+      Thread.new do
+        Thread.current[:profile] = profile
+        Thread.current[:image_url] = profile_image(profile, get_bucket)
+      end
+    end
+
+    @profiles = profile_threads.map do |thread|
+      thread.join
+      profile = thread[:profile]
+      image_url = thread[:image_url]
+
+      {
         :name => profile.last_name + ", " + profile.first_name,
-        :image_url => profile_image(profile, bucket),
+        :image_url => image_url,
         :link => profile_path(profile.id)
-      })
+      }
     end
   end
 
