@@ -37,9 +37,16 @@
 
     	<h2>Staff</h2>
     	<% @staff.each do |s| %>
-    	<div class="col-md-3 staff-profile center" style="background-color: #f6f6f6; border-style: solid; border-color: white; height: 150px;">
-    		<img src=<%= s.image %> width="100%" height="120px">
-    		<p><%= s.first_name %> <%= s.last_name %></p>
+    	<div class="row staff-profile">
+    		<div class="col-md-3" style="margin-left: -15px; margin-right: -15px;">
+    		  <img src=<%= s.image %> width="100%" height="150px">
+    		</div>
+    		<div class="col-md-8">
+    		  <h3><%= s.first_name %> <%= s.last_name %></h3>
+    		  <h4>Title</h4>
+    		</div>
+
+
     	</div>
     	<% end %>
 

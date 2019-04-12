@@ -209,29 +209,6 @@ li a:hover {
   text-align: center;
 }
 
-.galleries {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-
-.gallery {
-  margin: 5px;
-  border: 2px solid #ccc;
-  max-width: 30%;
-  min-width: 350px;
-  display: inline-block;
-}
-
-.gallery:hover {
-  border: 2px solid #860601;
-  color: #860601;
-}
-
-.gallery img {
-  max-width: 100%;
-  height: auto;
-}
 
 .info {
   padding: 15px;
@@ -307,4 +284,58 @@ li a:hover {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+
+/* Specific Classes */
+
+
+.galleries {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.gallery {
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 18px #d3d3d3;
+  max-width: 30%;
+  min-width: 350px;
+  display: inline-block;
+}
+
+.gallery:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+}
+
+.emergency-msg {
+  background-color: #f6f6f6;
+  border-style: dashed;
+  border-color: red;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.staff-profile {
+  background-color: #f6f6f6;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  min-height: 150px;
+  margin: 5px 0px 10px 00px;
+}
+
+.staff-profile:hover {
+  border: 2px solid #860601;
+  color: #860601;
 }
