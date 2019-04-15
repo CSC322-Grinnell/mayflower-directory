@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :services
+  resources :departments
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'profiles/new'
