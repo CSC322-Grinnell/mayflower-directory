@@ -1,20 +1,20 @@
 <h1 class="heading">Pictures</h1>
 
-<%= search_form_for @search, url: "", class: "search" do |f| %>
+<%= search_form_for @search, url: "", class: "directory-search" do |f| %>
   <%= f.label "Search for resident:", class: "col control-label" %>
   <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
                      placeholder: 'Enter name' %>
-  <div class="search__controls">
-    <div class="search__neighborhood">
+  <div class="directory-search__controls">
+    <div class="directory-search__neighborhood">
       <%= f.label "Neighborhood",
-                  class: "col control-label search__neighborhood-label" %>
+                  class: "col control-label directory-search__neighborhood-label" %>
       <%= f.collection_select(:neighborhood_eq,
         Profile.select(:neighborhood).uniq.order(:neighborhood),
         :neighborhood, :neighborhood, include_blank: true) %>
     </div>
-    <div class="search__button-container">
-      <%= f.submit "Search", class: "search__button" %>
-      <a class="search__button search__button--reset"
+    <div class="directory-search__button-container">
+      <%= f.submit "Search", class: "directory-search__button" %>
+      <a class="directory-search__button directory-search__button--reset"
          href="<%= directory_path %>">
         Reset
       </a>

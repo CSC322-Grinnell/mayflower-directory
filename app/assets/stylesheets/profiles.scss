@@ -3,38 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Fixing different size images
 
-.search {
+.directory-search {
   @media print {
     display: none;
   }
 }
 
-.search__controls {
+.directory-search__controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.search__neighborhood {
-  margin: 0.4rem;
+.directory-search__neighborhood {
+  margin: 0.8rem;
 }
 
-.search__neighborhood-label {
+.directory-search__neighborhood-label {
   margin: 0;
 }
 
-.search__button-container {
+.directory-search__button-container {
   display: flex;
   flex: 1;
   justify-content: flex-end;
 }
 
-.search__button {
+.directory-search__button {
   display: inline-block;
   text-align: center;
   flex: 1;
   padding: 0.8rem;
-  margin: 0.4rem;
+  margin: 0.8rem;
   background-color: #376e8c;
   color: white;
   border-radius: 2px;
@@ -49,7 +49,7 @@
   }
 }
 
-.search__button--reset {
+.directory-search__button--reset {
   background-color: #666;
 }
 
