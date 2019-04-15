@@ -2,9 +2,12 @@
 @import "bootstrap";
 
 
+/* Universal */
 
-
-/* universal */
+/* Keep the follwoing html style for correct rem sizing */
+html {
+  font-size: 62.5%; /* 62.5% of 16px (default font size) = 10px */
+}
 
 body {
   padding-top: 100px;
@@ -25,7 +28,7 @@ textarea {
 h1 {
   font-size: 5rem;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -54,14 +57,19 @@ p, ul {
   font-size: 2rem;
 }
 
+ul {
+  list-style: none;
+}
+
+
 .container {
   background: #ffffff;
   letter-spacing: 1px;
   word-spacing: 3px;
 }
 
-.question {
-  font-size: 2rem;
+.about-question {
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -112,21 +120,10 @@ p, ul {
 li a:hover {
   color: #376e8c;
   background-color: white;
+  text-decoration: none;
 }
 
-.icon-bar {
-  background-color: #ffffff;
-}
 
-/*hover over text*/
-li a:hover {
-  color: #376e8c;
-  background-color: white;
-}
-
-.icon-bar {
-  background-color: #ffffff;
-}
 
 /* footer */
 
@@ -341,17 +338,14 @@ li a:hover {
   }
 }
 
-
-/* div-speciifc CSS */
-
-ul {
-  list-style: none;
-}
-
 .contact {
   margin-top: 40px;
 }
 
 .centered {
   text-align:center;
-} 
+}
+
+.icon-bar {
+  background-color: #ffffff;
+}
