@@ -10,9 +10,14 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
+  get 'departments', to: 'static_pages#departments'
   get 'directory', to: 'static_pages#directory'
   get 'display', to: 'static_pages#display'
   get 'pictures', to: 'profiles#pictures'
+  
+  # Department Routes, remove when model is setup
+  get 'department1', to: 'static_pages#department1'
+  
   
   resources :profiles do
     collection { post :import }
