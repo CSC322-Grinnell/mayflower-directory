@@ -10,6 +10,9 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
+    @department = Department.find(params[:id])
+    @services = @department.services
+    @image_url = view_context.image_url("Mayflower_Default_Photo.jpg") #use default pic for now
   end
 
   # GET /departments/new
