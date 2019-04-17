@@ -1,4 +1,4 @@
-<h1 class="heading">Pictures</h1>
+<h1 class="heading">Directory</h1>
 
 <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
   <%= f.label "Search for resident:", class: "col control-label" %>
@@ -15,7 +15,7 @@
     <div class="directory-search__button-container">
       <%= f.submit "Search", class: "directory-search__button" %>
       <a class="directory-search__button directory-search__button--reset"
-         href="<%= directory_path %>">
+         href="<%= profiles_path %>">
         Reset
       </a>
     </div>

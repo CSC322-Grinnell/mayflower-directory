@@ -6,6 +6,22 @@ class ProfilesController < ApplicationController
     redirect_to root_url, notice: "Profiles imported."
   end
 
+  def index
+    @search = Profile.search(params[:q])
+
+    all_results = Profile.ransack(params[:q])
+      .result.order("last_name ASC, first_name ASC")
+
+    bucket = get_bucket
+    @results = all_results.map do |profile|
+      {
+        :name => profile.last_name + ", " + profile.first_name,
+        :image_url => profile_image(profile, bucket),
+        :link => profile_path(profile.id)
+      }
+    end
+  end
+
   def new
     @user = Profile.new
   end
@@ -75,22 +91,6 @@ class ProfilesController < ApplicationController
     flash[:success] = "Profile deleted"
 
     redirect_to '/search'
-  end
-
-  def directory
-    @search = Profile.search(params[:q])
-
-    all_results = Profile.ransack(params[:q])
-      .result.order("last_name ASC, first_name ASC")
-
-    bucket = get_bucket
-    @results = all_results.map do |profile|
-      {
-        :name => profile.last_name + ", " + profile.first_name,
-        :image_url => profile_image(profile, bucket),
-        :link => profile_path(profile.id)
-      }
-    end
   end
 
   def get_dataset
