@@ -1,5 +1,5 @@
 <% provide(:title, "Edit User Information") %>
-<h1>Reset User Information | <%= @user.email %></h1>
+<h1>Edit User Information | <%= @user.email %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -11,6 +11,9 @@
       <br>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
+      <br>
+      <%= f.label :admin, class: "col control-label"%>
+      <%= f.check_box :admin, {}, "admin" %>
       <br>
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
