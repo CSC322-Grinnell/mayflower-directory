@@ -82,7 +82,7 @@ class ProfilesController < ApplicationController
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
 
-    redirect_to '/pictures'
+    redirect_to directory_path
   end
 
   def pictures
