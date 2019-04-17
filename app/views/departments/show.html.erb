@@ -1,33 +1,35 @@
 
 <p id="notice"><%= notice %></p>
-<div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h1><%= @department.name%></h1>
-        </br>
-        </br>
-
-        <div class="img_container">
-          <img src="<%= @image_url %>">
+    <div class="container1">
+    	<div class="row">
+            <h1 class="center"><%= @name %></h1>
         </div>
-      </div>
+    </div>
 
-      <div class="col-md-8">
-        <p> </br>
+    <div class="row center">
+    	<p><a href="/departments">Departments</a> > <%= @department.name %></p>
+    </div>
 
-    <b>Description:</b>
-        <div id="des", style="font-size:25px; white-space: pre-line; text-align:justify">
-          <%= @department.description %>
-        </div>
-    
-    <b>Services:</b>
-    <div id="service", style="font-size:25px; white-space: pre-line; text-align:justify">
-    <%@services.each do |service|%>
-          <%= service.content %>
-        </div>
-    <%end%>
-        
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+    <div class="col-md-4" style="background-color: #f6f6f6; height: 100%; padding-bottom: 50px;">
+    	<h2>Contact</h2>
+    </div>
+
+    <div class="col-md-8" style="padding-left: 20px;">
+
+    	<h2>Description</h2>
+    	<p><%= @department.description %></p>
+
+    	<h2>Services</h2>
+    	<ul>
+    	  <% @services.each do |s| %>
+    		<li><%= s.content %></li>
+    		<% end %>
+    	</ul>
+
+    	<h2>Staff</h2>
+        <p> Not implemented</p>
+
+    	<br>
+    </div>
 
 
