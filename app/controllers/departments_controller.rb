@@ -22,6 +22,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/1/edit
   def edit
+    @department = Department.find(params[:id])
   end
 
   # POST /departments

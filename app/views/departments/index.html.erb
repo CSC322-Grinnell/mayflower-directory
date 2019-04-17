@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Departments</h1>
+<h1 class = "center">Departments</h1>
 
 <table>
   <thead>
@@ -12,9 +12,10 @@
   <tbody>
     <% @departments.each do |department| %>
       <tr>
-        <td><%= link_to 'Show', department %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="gallery">
+	    	        <a href= <%= "/departments/" + department.id.to_s %> >
+        			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
+           			<h2 class="info"> <%= department.name%> </h2></a>
       </tr>
     <% end %>
   </tbody>
