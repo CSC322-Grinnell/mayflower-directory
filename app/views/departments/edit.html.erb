@@ -17,17 +17,19 @@
             
             <%= f.label "Services" %>
             <ul>
-        	  <% @department.services.each do |s| %>
-        		<li><%= s.content %>
-        		<%= link_to 'Edit', edit_service_path(s) %>
-        		| <%= link_to 'Delete', s, method: :delete, data: { confirm: 'Are you sure?' } %>
-        		</li>
-        		<% end %>
+              <% @department.services.each do |service|%>
+              <li>
+              <%= service.content%>
+              <%= link_to 'Edit', edit_service_path(service)%>
+              |
+              <%end%>
+            </li>
+            
+        	 
         	<%=link_to 'Add a new service', new_service_path %>
         	</ul>
             </div>
         </div>
-  
       <center>
         <%= f.submit "Save", class: "btn btn-primary btn-large" %>
       </center>
