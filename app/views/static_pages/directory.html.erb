@@ -3,13 +3,13 @@
  <head>
   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
  </head>
- 
+
  <body>
   <br/>
   <div class="container">
    <div class="row">
     <div class="col-md-6">
-     <h1 class="centered">Directory</h1>
+     <h1 class="center">Directory</h1>
      <p>Enter a full or partial name (first or last or nickname), and/or select a neighborhood.
            If you provide no information, all residents will be shown.</p>
      <p>Click 'Reset' to clear your search and search again.</p>
@@ -36,16 +36,16 @@
     <% end %>
    </div>
 
-   <div class="col-md-6 centered">
+   <div class="col-md-6 center">
     <% if params[:q].present? %>
-      <h1 class="centered">Results</h1>
+      <h1 class="center">Results</h1>
      <% @results = Profile.ransack(params[:q]).result.order("last_name ASC, first_name ASC") %>
      <% if Profile.ransack(params[:q]).result.blank? %>
       <div class="two">No results. Try searching for something else.</div>
      <% else %>
       <% @results.each do |person| %>
        <p>
-        <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a> 
+        <a href= <%= profile_path(person.id) %> >   <%= person.first_name %> <%= person.last_name %></a>
        </p>
       <% end %>
      <% end %>
