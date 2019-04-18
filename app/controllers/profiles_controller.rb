@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
+  before_action :logged_in_admin, only: [:edit, :update, :create, :destroy]
 
   def import
     Profile.import(params[:file])
