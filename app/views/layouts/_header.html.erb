@@ -1,10 +1,10 @@
 <html>
  <head>
   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
  </head>
- 
+
  <body>
     <div class="container">
       <nav class="navbar navbar-fixed-top justify-content-between">
@@ -19,27 +19,24 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-      
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %> 
-              <li><%= link_to "Directory",   '/directory' %></li>
-            <% end %>
-            <% if user_signed_in? %> 
-              <li><%= link_to "Pictures",   '/pictures' %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Directory", profiles_path %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
-              <li><%= link_to "Create Profile",  '/profiles/new' %></li>
+              <li><%= link_to "Create Profile", new_profile_path %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
-              <li><%= link_to "Create User",   '/auth/register/sign_up' %></li>
+              <li><%= link_to "Create User", new_user_registration_path %></li>
               <li><%= link_to "Users", users_path %></li>
             <% end %>
             <%if user_signed_in?%>
-              <li><%= link_to "Resources",   '/home' %></li>
+              <li><%= link_to "Resources", home_path %></li>
             <% end %>
             <% if user_signed_in?%>
-              <li><%= link_to "Log out", '/auth/logout', :method => :delete  %></li>
+              <li><%= link_to "Log out", destroy_user_session_path, :method => :delete  %></li>
             <% end %>
           </ul>
         </div>
