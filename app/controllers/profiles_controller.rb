@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to action: "show", id: @user
+      redirect_to profiles_path
     else
       render 'edit'
     end
