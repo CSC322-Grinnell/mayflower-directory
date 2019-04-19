@@ -13,8 +13,9 @@ class ProfilesController < ApplicationController
       .result.order("last_name ASC, first_name ASC")
 
     result_threads = all_results.map do |profile|
-      # Be super careful about side-effects here.  Concurrency bugs are tricky.
       Thread.new do
+        # Be super careful about side-effects and races here. Concurrency bugs
+        # are tricky.
         Thread.current[:profile] = profile
         Thread.current[:image_url] = profile_image(profile, get_bucket)
       end
