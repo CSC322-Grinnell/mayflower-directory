@@ -5,7 +5,7 @@
 
   <body>
     <div class="title">
-      <font size=7>Change Password</font>
+      <font size=7>Change Your Password</font>
       </br>
       </br>
     </div>
@@ -18,12 +18,6 @@
             
             <div class="form-horizontal", style="text-align:left">
               <div class="form-group">
-    
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, placeholder: 'Enter Email' %>
-              </div>
-              <br>
               
               <div class="field">
                 <%= f.label :current_password %><br />
@@ -52,16 +46,7 @@
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:'Enter New Password' %>
               </div>
-              </br>
-            
-            <!--<div class="field">-->
-            <!--<% if user_signed_in? && current_user.admin %>-->
-            <!--  <%= f.label :admin, class: "col control-label"%>-->
-            <!--  <%= f.check_box :admin, {}, "admin" %>-->
-            <!--</div>-->
-            <!--<% end %>-->
-            
-            
+
             </font>
             </div>
                 <%= f.submit "Update", class: "btn btn-primary btn-large" %>

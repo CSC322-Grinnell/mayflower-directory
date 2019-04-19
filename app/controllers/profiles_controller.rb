@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :create, :destroy]
+  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new]
 
   def import
     Profile.import(params[:file])
@@ -95,6 +95,10 @@ class ProfilesController < ApplicationController
 
   def get_dataset
     render json: { data: Profile.all }
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
   private
