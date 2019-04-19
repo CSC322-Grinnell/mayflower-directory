@@ -17,17 +17,20 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
+  test "should show all profiles with no search" do
+    login_as(users(:normal))
+    get profiles_path
+    assert_response :success
+    assert_select ".profile" do |profile_elements|
+      assert_select profile_elements[0], ".profile__name", "Green, Frog"
+      assert_select profile_elements[1], ".profile__name", "No'Info, Sparse"
+    end
+  end
+
   test "should get new" do
     login_as(users(:admin))
     get profiles_new_path
     assert_response :success
-  end
-
-  test "should redirect to directory after delete" do
-    login_as(users(:admin))
-    delete profile_path(profiles(:frog))
-    follow_redirect!
-    assert_equal profiles_path, path
   end
 
   test "should let admin users create profiles" do
@@ -56,6 +59,13 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference -> { Profile.all.count } do
       delete profile_path(profiles(:frog).id)
     end
+  end
+
+  test "should redirect to directory after delete" do
+    login_as(users(:admin))
+    delete profile_path(profiles(:frog))
+    follow_redirect!
+    assert_equal profiles_path, path
   end
 
   test "should let admin users update profiles" do
