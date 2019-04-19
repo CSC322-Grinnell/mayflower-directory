@@ -1,9 +1,36 @@
 class ProfilesController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :create, :index, :destroy]
+  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new]
 
   def import
     Profile.import(params[:file])
     redirect_to root_url, notice: "Profiles imported."
+  end
+
+  def index
+    @search = Profile.search(params[:q])
+
+    all_results = Profile.ransack(params[:q])
+      .result.order("last_name ASC, first_name ASC")
+
+    result_threads = all_results.map do |profile|
+      # Be super careful about side-effects here.  Concurrency bugs are tricky.
+      Thread.new do
+        Thread.current[:profile] = profile
+        Thread.current[:image_url] = profile_image(profile, get_bucket)
+      end
+    end
+
+    @results = result_threads.map do |thread|
+      thread.join
+      profile = thread[:profile]
+      image_url = thread[:image_url]
+
+      {
+        :name => profile.last_name + ", " + profile.first_name,
+        :image_url => image_url,
+        :link => profile_path(profile.id)
+      }
+    end
   end
 
   def new
@@ -16,10 +43,6 @@ class ProfilesController < ApplicationController
 
   def search
     @user = Profile.search(params[:search])
-  end
-
-  def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
   end
 
   def update
@@ -53,22 +76,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def index
-    @search = Profile.search(params[:id])
-    @profiles = @search.result
-    @user = Profile.all
-  end
-
-
-  # Confirms a logged-in user as admin.
-   def logged_in_admin
-     unless current_user.admin
-       flash[:danger] = "Please log in as admin."
-       redirect_to '/home'
-     end
-   end
-
-
   def show
     @profile = Profile.find(params[:id])
     @image_url = profile_image(@profile, get_bucket)
@@ -82,31 +89,7 @@ class ProfilesController < ApplicationController
     Profile.find(params[:id]).destroy
     flash[:success] = "Profile deleted"
 
-    redirect_to '/search'
-  end
-
-  def pictures
-    all_profiles = Profile.all.order("last_name ASC, first_name ASC")
-
-    profile_threads = all_profiles.map do |profile|
-      # Be super careful about side-effects here.  Concurrency bugs are tricky.
-      Thread.new do
-        Thread.current[:profile] = profile
-        Thread.current[:image_url] = profile_image(profile, get_bucket)
-      end
-    end
-
-    @profiles = profile_threads.map do |thread|
-      thread.join
-      profile = thread[:profile]
-      image_url = thread[:image_url]
-
-      {
-        :name => profile.last_name + ", " + profile.first_name,
-        :image_url => image_url,
-        :link => profile_path(profile.id)
-      }
-    end
+    redirect_to profiles_path
   end
 
   def get_dataset
@@ -114,6 +97,17 @@ class ProfilesController < ApplicationController
   end
 
   private
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
+    def profile_params
+      params.require(:profile).permit(
+        :first_name, :last_name, :nickname, :landline, :cell, :email, :address,
+        :neighborhood, :spouse, :biography, :avatar
+      )
+    end
+
     def get_bucket
       s3 = Aws::S3::Resource.new(
         region: 'us-east-2',

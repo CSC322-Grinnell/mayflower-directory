@@ -1,15 +1,15 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionController::TestCase
-  
+
   include Devise::Test::ControllerHelpers
-  
+
   # def sign_in(user)
   #   post user_session_path \
   #     "test1@test.com"    => user.email,
   #     "Passw0rd!" => user.password
   # end
-  
+
   setup do
     @test1 = users(:one)
     sign_in(@test1)
@@ -25,11 +25,6 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get directory" do
-    get :directory
-    assert_response :success
-  end
-  
   test "should get about" do
     get :about
     assert_response :success
