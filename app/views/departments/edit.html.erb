@@ -17,15 +17,11 @@
             
             <%= f.label "Services" %>
             <ul>
-              <% @department.services.each do |service|%>
-              <li>
-              <%= service.content%>
-              <%= link_to 'Edit', edit_service_path(service)%>
-              |
-              <%end%>
+              <%= f.fields_for :services do |service_f|%>
+            <li>
+              <%= service_f.text_field :content, class: 'form-control', placeholder: 'Enter service content' %>
+            <%end%>
             </li>
-            
-        	 
         	<%=link_to 'Add a new service', new_service_path %>
         	</ul>
             </div>
