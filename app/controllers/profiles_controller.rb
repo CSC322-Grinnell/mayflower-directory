@@ -34,10 +34,6 @@ class ProfilesController < ApplicationController
     @user = Profile.search(params[:search])
   end
 
-  def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :nickname, :landline, :cell, :email, :address, :neighborhood, :spouse, :biography, :avatar)
-  end
-
   def update
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
@@ -69,14 +65,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # Confirms a logged-in user as admin.
-   def logged_in_admin
-     unless current_user.admin
-       flash[:danger] = "Please log in as admin."
-       redirect_to '/home'
-     end
-  end
-
   def show
     @profile = Profile.find(params[:id])
     @image_url = profile_image(@profile, get_bucket)
@@ -97,11 +85,18 @@ class ProfilesController < ApplicationController
     render json: { data: Profile.all }
   end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
-
   private
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
+    def profile_params
+      params.require(:profile).permit(
+        :first_name, :last_name, :nickname, :landline, :cell, :email, :address,
+        :neighborhood, :spouse, :biography, :avatar
+      )
+    end
+
     def get_bucket
       s3 = Aws::S3::Resource.new(
         region: 'us-east-2',
