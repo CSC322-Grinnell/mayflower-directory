@@ -3,77 +3,62 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  setup do
-    @admin      = users(:admin)
-    @user       = users(:normal)
-    @other_user = users(:other_normal)
-  end
-
-  test "should redirect login page to login when not logged in" do
-    get '/auth/login'
-    assert_response :success
-  end
-
-  test "should redirect to root if not an admin" do
-    login_as(@user)
-    get root_url
-    assert_response :success
-  end
-
-  test "should not allow the admin attribute to be changed on the web" do
-    login_as(@other_user)
-    assert_not @other_user.admin?
-    patch user_path(@other_user), params: {
-                                  user: { password:              "",
-                                          password_confirmation: "",
-                                          admin: true } }
-    assert_not @other_user.reload.admin?
-  end
+  # TODO: regular users shouldn't be able to do anything
 
   test "should redirect to users page after deleting a user" do
-      login_as(@admin)
-      @user.destroy
-      get users_url
-      assert_response :success
+    login_as(users(:admin))
+    delete user_path(users(:normal))
+
+    assert_response :redirect
+    follow_redirect!
+    assert_equal users_path, path
+  end
+
+  test "admin should be able to update user info" do
+    login_as(users(:admin))
+    user = users(:normal)
+    foo_attributes = {
+      name: "Foo",
+      email: "foobarbaz@bartell.com",
+      admin: true,
+    }
+
+    get edit_info_user_path(user)
+    assert_select "form[action='#{user_path(user)}']" do
+      foo_attributes.each_key do |attribute|
+        assert_select "input[name='user[#{attribute}]']"
+      end
+    end
+
+    put user_path(user), params: { user: foo_attributes }
+    user.reload
+
+    foo_attributes.each do |attribute, value|
+      assert_equal value, user[attribute]
+    end
   end
 
   test "should redirect to users page after updating a user" do
-      login_as(@admin)
-      @user.update({})
-      get users_url
-      assert_response :success
-  end
+    login_as(users(:admin))
+    put user_path(users(:normal)), params: { user: { name: "Foo" } }
 
-  test 'invalid without email' do
-    @user.email = nil
-    refute @user.valid?
-    assert_not_nil @user.errors[:email]
-  end
-
-  test "should update name" do
-    login_as(@admin)
-    @user.update({name: "New Person"})
-    assert_match(@user.name, "New Person")
-  end
-
-  test "should update email" do
-    login_as(@admin)
-    @user.update({email: "person@gmail.com"})
-    assert_match(@user.email, "person@gmail.com")
+    assert_response :redirect
+    follow_redirect!
+    assert_equal users_path, path
   end
 
   #Error
   #  test "should update password" do
-  #    login_as(@admin)
-  #    @user.update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
-  #    assert_match(@user.password, "Passw0rd!!")
+  #    login_as(users(:admin))
+  #    users(:normal).update({password: "Passw0rd!!", password_confirmation: "Passw0rd!!"})
+  #    assert_match(users(:normal).password, "Passw0rd!!")
   #  end
 
     #This is a failure
   # test "user should be nil after deleting" do
-  #   login_as(@admin)
-  #   @user.destroy
-  #   assert_nil(@user)
+  #   login_as(users(:admin))
+  #   users(:normal).destroy
+  #   assert_nil(users(:normal))
   # end
 
 end
