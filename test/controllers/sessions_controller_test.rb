@@ -7,9 +7,4 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @user       = users(:one)
     sign_in(@user)
   end
-
-  test "should get directory" do
-    get directory_url
-    assert_response :success
-  end
 end

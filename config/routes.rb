@@ -8,10 +8,7 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
-  get 'directory', to: 'static_pages#directory'
   get 'display', to: 'static_pages#display'
-  get 'pictures', to: 'profiles#pictures'
-
   get 'resources/library', to: 'static_pages#library'
 
   resources :profiles do
@@ -23,7 +20,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'static_pages#directory'
+  root 'profiles#index'
 
   devise_scope :user do
     post 'users/import', to: 'users/registrations#import_users'

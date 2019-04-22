@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # Is no authentication required?
    def require_no_authentication
    end
-   
+
 # Confirms a logged-in user as admin.
    def logged_in_admin
      unless current_user && current_user.admin
@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
        redirect_to '/home'
      end
    end
-   
+
   def import_users
     file = params[:file]
     if ! file
@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to '/auth/register/sign_up'
     else
       User.import(file)
-      redirect_to static_pages_search_path, notice: "User data imported!"
+      redirect_to profiles_path, notice: "User data imported!"
     end
   end
 
