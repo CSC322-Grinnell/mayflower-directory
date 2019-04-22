@@ -50,14 +50,14 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should let admin users delete profiles" do
     login_as(users(:admin))
     assert_difference -> { Profile.all.count }, -1 do
-      delete profile_path(profiles(:frog).id)
+      delete profile_path(profiles(:frog))
     end
   end
 
   test "should not let unprivileged users delete profiles" do
     login_as(users(:normal))
     assert_no_difference -> { Profile.all.count } do
-      delete profile_path(profiles(:frog).id)
+      delete profile_path(profiles(:frog))
     end
   end
 
@@ -72,12 +72,11 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     login_as(users(:admin))
     profile = profiles(:frog)
 
-    put profile_path(profile.id), params: { profile: @bob_attributes }
-
-    updated_profile = Profile.find(profile.id)
+    put profile_path(profile), params: { profile: @bob_attributes }
+    profile.reload
 
     @bob_attributes.each do |key, value|
-      assert_equal value, updated_profile[key]
+      assert_equal value, profile[key]
     end
   end
 
@@ -86,9 +85,10 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     profile = profiles(:frog)
     old_attributes = profile.attributes
 
-    put profile_path(profile.id), params: { profile: @bob_attributes }
+    put profile_path(profile), params: { profile: @bob_attributes }
+    profile.reload
 
-    Profile.find(profile.id).attributes.each do |key, value|
+    profile.attributes.each do |key, value|
       assert_equal old_attributes[key], value
     end
   end
@@ -97,7 +97,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     login_as(users(:admin))
     profile = profiles(:frog)
 
-    put profile_path(profile.id), params: { profile: @bob_attributes }
+    put profile_path(profile), params: { profile: @bob_attributes }
     follow_redirect!
 
     assert_equal profiles_path, path
