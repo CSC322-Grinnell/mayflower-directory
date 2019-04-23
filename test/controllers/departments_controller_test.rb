@@ -25,54 +25,66 @@ class DepartmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show all departments on landing page as user" do
+    login_as(users(:normal))
 
   end
 
   test "should show all departments on landing page as admin" do
+    login_as(users(:admin))
 
   end
 
   test "should allow admin create new department" do
+    login_as(users(:admin))
 
   end
 
   test "should not allow user create new department" do
+    login_as(users(:normal))
 
   end
 
   test "should allow admin edit new department" do
+    login_as(users(:admin))
 
   end
 
   test "should not allow user edit new department" do
-
+    login_as(users(:normal))
   end
 
   test "should allow admin remove department" do
+    login_as(users(:admin))
 
   end
 
   test "should not allow user remove department" do
+    login_as(users(:normal))
 
   end
 
   test "should redirect admin to department after edit" do
+    login_as(users(:admin))
 
   end
 
   test "should redirect admin to department after new" do
+    login_as(users(:admin))
 
   end
 
   test "should redirect admin to department after remove" do
+    login_as(users(:admin))
 
   end
 
   test "should edit page successfully as amin" do
+    login_as(users(:admin))
 
   end
 
   test "should load each departmennt correctly" do
+    login_as(users(:normal))
 
   end
 
