@@ -4,35 +4,65 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @foo_info_attributes = {
+    @valid_info_attributes = {
       name: "Foo",
-      email: "foobarbaz@bartell.com",
+      email: "veryvalidformatting@email.com",
       admin: true,
     }
-    @foo_password_attributes = {
+    @invalid_info_attributes = {
+      name: "Foo",
+      email: "foo",
+      admin: true,
+    }
+
+    @valid_password_attributes = {
       password:              "ValidP@ssword1",
       password_confirmation: "ValidP@ssword1",
     }
+    @invalid_password_attributes = {
+      password:              "invalid_password",
+      password_confirmation: "invalid_password",
+    }
+  end
+
+  test "update user info form should have the right inputs" do
+    login_as(users(:admin))
+    user = users(:normal)
+
+    get edit_info_user_path(user)
+
+    assert_select "form[action='#{user_path(user)}']" do
+      @valid_info_attributes.each_key do |attribute|
+        assert_select "input[name='user[#{attribute}]']"
+      end
+    end
   end
 
   test "admin should be able to update user info" do
     login_as(users(:admin))
     user = users(:normal)
 
-    get edit_info_user_path(user)
-    assert_select "form[action='#{user_path(user)}']" do
-      @foo_info_attributes.each_key do |attribute|
-        assert_select "input[name='user[#{attribute}]']"
-      end
-    end
-
-    put user_path(user), params: { user: @foo_info_attributes }
+    put user_path(user), params: { user: @valid_info_attributes }
     user.reload
 
-    @foo_info_attributes.each do |attribute, value|
+    assert_select ".error-messages__list-item", false
+    @valid_info_attributes.each do |attribute, value|
       assert_equal value, user[attribute],
                    "Mismatched attribute #{attribute}"
     end
+  end
+
+  test "should reject invalid info" do
+    login_as(users(:admin))
+    user = users(:normal)
+
+    old_attributes = user.attributes
+
+    put user_path(user), params: { user: @invalid_info_attributes }
+    user.reload
+
+    assert_select ".error-messages__list-item"
+    assert_equal old_attributes, user.attributes
   end
 
   test "regular users should not be able to update user info" do
@@ -41,7 +71,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     old_attributes = user.attributes
 
-    put user_path(user), params: { user: @foo_info_attributes }
+    put user_path(user), params: { user: @valid_info_attributes }
     user.reload
 
     user.attributes.each do |attribute, value|
@@ -52,11 +82,24 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect to users page after updating a user" do
     login_as(users(:admin))
-    put user_path(users(:normal)), params: { user: @foo_info_attributes }
+    put user_path(users(:normal)), params: { user: @valid_info_attributes }
 
     assert_response :redirect
     follow_redirect!
     assert_equal users_path, path
+  end
+
+  test "update password form should have the right inputs" do
+    login_as(users(:admin))
+    user = users(:normal)
+
+    get edit_password_user_path(user)
+
+    assert_select "form[action='#{user_path(user)}']" do
+      @valid_password_attributes.each_key do |attribute|
+        assert_select "input[name='user[#{attribute}]']"
+      end
+    end
   end
 
   test "admin should be able to update user password" do
@@ -65,17 +108,24 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     old_encrypted_password = user.encrypted_password
 
-    get edit_password_user_path(user)
-    assert_select "form[action='#{user_path(user)}']" do
-      @foo_password_attributes.each_key do |attribute|
-        assert_select "input[name='user[#{attribute}]']"
-      end
-    end
-
-    put user_path(user), params: { user: @foo_password_attributes }
+    put user_path(user), params: { user: @valid_password_attributes }
     user.reload
 
+    assert_select ".error-messages__list-item", false
     assert_not_equal old_encrypted_password, user.encrypted_password
+  end
+
+  test "should reject invalid passwords" do
+    login_as(users(:admin))
+    user = users(:normal)
+
+    old_attributes = user.attributes
+
+    put user_path(user), params: { user: @invalid_password_attributes }
+    user.reload
+
+    assert_select ".error-messages__list-item"
+    assert_equal old_attributes, user.attributes
   end
 
   test "regular users should not be able to update other user's password" do
@@ -84,7 +134,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     old_attributes = user.attributes
 
-    put user_path(user), params: { user: @foo_password_attributes }
+    put user_path(user), params: { user: @valid_password_attributes }
     user.reload
 
     user.attributes.each do |attribute, value|
@@ -95,7 +145,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect to users page after updating a password" do
     login_as(users(:admin))
-    put user_path(users(:normal)), params: { user: @foo_password_attributes }
+    put user_path(users(:normal)), params: { user: @valid_password_attributes }
 
     assert_response :redirect
     follow_redirect!
