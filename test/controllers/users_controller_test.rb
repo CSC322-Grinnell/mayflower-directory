@@ -74,10 +74,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     put user_path(user), params: { user: @valid_info_attributes }
     user.reload
 
-    user.attributes.each do |attribute, value|
-      assert_equal old_attributes[attribute], value,
-                   "Mismatched attribute #{attribute}"
-    end
+    assert_equal old_attributes, user.attributes
   end
 
   test "should redirect to users page after updating a user" do
@@ -137,10 +134,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     put user_path(user), params: { user: @valid_password_attributes }
     user.reload
 
-    user.attributes.each do |attribute, value|
-      assert_equal old_attributes[attribute], value,
-                   "Mismatched attribute #{attribute}"
-    end
+    assert_equal old_attributes, user.attributes
   end
 
   test "should redirect to users page after updating a password" do
