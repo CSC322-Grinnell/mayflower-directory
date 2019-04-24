@@ -73,6 +73,6 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:name, :contact, :description, services_attributes: [:id, :content])
+      params.require(:department).permit(:name, :contact, :description, services_attributes: [:id, :content, :_destroy])
     end
 end

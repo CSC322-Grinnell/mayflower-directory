@@ -1,36 +1,7 @@
 <h1 class="center">Editing Department</h1>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@department) do |f| %>
-      <%= render 'shared/error_messages', object: f.object%>
-        <div class="form-horizontal", style="text-align:left">
-            <div class="form-group">
-  
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Enter department name' %>
-            
-            <%= f.label :contact %>
-            <%= f.text_field :contact, class: 'form-control', placeholder: 'Enter contact information' %>
-            
-            <%= f.label :description %>
-            <%= f.text_field :description, class: 'form-control', placeholder: 'Enter description' %>
-            
-            <%= f.label "Services" %>
-            <ul>
-              <%= f.fields_for :services do |service_f|%>
-            <li>
-              <%= service_f.text_field :content, class: 'form-control', placeholder: 'Enter service content' %>
-            <%end%>
-            </li>
-        	<%=link_to 'Add a new service', new_service_path %>
-        	</ul>
-            </div>
-        </div>
-      <center>
-        <%= f.submit "Save", class: "btn btn-primary btn-large" %>
-      </center>
-      <% end %>
-  
+      <%= render 'form' %>
     </div>
   </div>
   
