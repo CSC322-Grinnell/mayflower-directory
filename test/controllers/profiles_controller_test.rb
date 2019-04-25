@@ -1,4 +1,4 @@
-# require 'test_helper'
+require 'test_helper'
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -25,6 +25,13 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
       assert_select profile_elements[0], ".profile__name", "Green, Frog"
       assert_select profile_elements[1], ".profile__name", "No'Info, Sparse"
     end
+  end
+
+  test "should normalize biography line breaks" do
+    login_as(users(:normal))
+    get profile_path(profiles(:frog))
+
+    assert_select "#bio", "One\n\ntwo\n\nthree\n\nfour"
   end
 
   test "should get new" do
