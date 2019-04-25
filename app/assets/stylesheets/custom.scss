@@ -1,7 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+/* Universal */
+
+/* Keep the follwoing html style for correct rem sizing */
+html {
+  font-size: 62.5%; /* 62.5% of 16px (default font size) = 10px */
+}
 
 body {
   padding-top: 100px;
@@ -18,12 +23,41 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
+h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
 }
 
-.center h1 {
-  margin-bottom: 10px;
+h2 {
+  font-size: 4.5rem;
+  font-weight: bold;
+  text: underline;
+}
+
+h3 {
+  font-size: 4rem;
+}
+
+h4 {
+  font-size: 3.5rem;
+}
+
+h5 {
+  font-size: 3rem;
+}
+
+h6 {
+  font-size: 2.5rem;
+}
+
+p,
+ul {
+  font-size: 2rem;
+}
+
+ul {
+  list-style: none;
 }
 
 .container {
@@ -32,9 +66,13 @@ textarea {
   word-spacing: 3px;
 }
 
-.title {
-  letter-spacing: 2px;
+.about__question {
+  font-size: 2.5rem;
   font-weight: bold;
+}
+
+.form-horizontal {
+  text-align: left;
 }
 
 /* header */
@@ -80,20 +118,7 @@ textarea {
 li a:hover {
   color: #376e8c;
   background-color: white;
-}
-
-.icon-bar {
-  background-color: #ffffff;
-}
-
-/*hover over text*/
-li a:hover {
-  color: #376e8c;
-  background-color: white;
-}
-
-.icon-bar {
-  background-color: #ffffff;
+  text-decoration: none;
 }
 
 /* footer */
@@ -127,7 +152,7 @@ li a:hover {
 
 .footer ul li {
   float: left;
-  margin-left: 18px;
+  margin-left: 12px;
   text-decoration: underline;
 }
 
@@ -236,7 +261,7 @@ li a:hover {
 .info {
   padding: 15px;
   text-align: center;
-  font-size: 18pt;
+  font-size: 2.5rem;
   color: #376e8c;
 }
 
@@ -307,4 +332,16 @@ li a:hover {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+.contact--heading-admins {
+  font-size: 2.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon-bar {
+  background-color: #ffffff;
 }

@@ -7,10 +7,9 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @search = Profile.search(params[:q])
+    @search = Profile.ransack(params[:q])
 
-    all_results = Profile.ransack(params[:q])
-      .result.order("last_name ASC, first_name ASC")
+    all_results = @search.result.order("last_name ASC, first_name ASC")
 
     result_threads = all_results.map do |profile|
       Thread.new do
@@ -50,7 +49,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to action: "show", id: @user
+      redirect_to profiles_path
     else
       render 'edit'
     end
