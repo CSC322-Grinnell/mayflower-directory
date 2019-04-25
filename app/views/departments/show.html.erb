@@ -2,33 +2,33 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <h1 class="row center"><%= @department.name %></h1>
-<div class="row center">
 
-  <a href="/departments">Departments</a> > <%= @department.name %>
-
-    <% if current_user.admin %>
-     ( <%= link_to "Edit", "/departments/" + @department.id.to_s + "/edit"  %>
-      | <%= link_to "Delete", @department, method: :delete,
-                            data: { confirm: "Are you sure you want to delete this department?" } %> )
-    <% end %>
+<div class="row center dept-breadcrumbs" style="margin: 15px;">
+  <a href="/departments" >Departments</a> > <%= @department.name %>
 </div>
 
 <div class="col-md-4" style="background-color: #f6f6f6; height: 100%; padding-bottom: 50px;">
-	<h2>Contact</h2>
-	<p>Add a staff for this <p>
+  <section>
+  	<h2>Contact</h2>
+  	<p>Add a staff for this <p>
+  <section>
 </div>
 
 <div class="col-md-8" style="padding-left: 20px;">
 
-	<h2>Description</h2>
-	<p><%= @department.description %></p>
+  <section>
+  	<h2>Description</h2>
+  	<p><%= @department.description %></p>
+  </section>
 
-	<h2>Services</h2>
-	<ul>
-	  <% @services.each do |s| %>
-		<li><%= s.content %></li>
-		<% end %>
-	</ul>
+  <section>
+  	<h2>Services</h2>
+  	<ul>
+  	  <% @services.each do |s| %>
+  		<li><%= s.content %></li>
+  		<% end %>
+  	</ul>
+	<section>
 
   <!-- TODO: Implement me
   	<h2>Staff</h2>
@@ -36,5 +36,14 @@
   -->
 
 </div>
-<div class="clear" style="clear: both">
-</div>
+
+
+<center>
+  <% if current_user.admin %>
+    <%= link_to "Edit", "/departments/" + @department.id.to_s + "/edit", class: "btn btn-primary btn-large"  %>
+     <%= link_to "Delete", @department, method: :delete, class: "btn btn-primary btn-large",
+                          data: { confirm: "Are you sure you want to delete this department?" } %>
+  <% end %>
+</center>
+
+<div class="clear" style="clear: both"></div>

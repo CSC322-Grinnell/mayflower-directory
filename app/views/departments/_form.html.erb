@@ -1,5 +1,6 @@
 <%= form_for @department do |f| %>
 <%= render 'shared/error_messages', object: f.object%>
+
   <div class="form-horizontal", style="text-align:left">
     <div class="form-group">
 
@@ -37,12 +38,15 @@
 
     </div>
   </div>
-<center>
-  <%= f.submit "Save", class: "btn btn-primary btn-large" %>
-  <!-- TODO: add return/cancel button -->
-  <%= link_to "Delete", @department, method: :delete, class: "btn btn-primary btn-large",
-                            data: { confirm: "Are you sure you want to delete this department?"
-                            } %>
-</center>
+
+  <center>
+    <%= link_to "Back", :back, class: "btn btn-primary btn-large",
+                              data: { confirm: "Are you sure you do not want to save?"} %>
+    <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+    <!-- TODO: add return/cancel button -->
+    <%= link_to "Delete", @department, method: :delete, class: "btn btn-primary btn-large",
+                              data: { confirm: "Are you sure you want to delete this department?"} %>
+  </center>
+
 <% end %>
 
