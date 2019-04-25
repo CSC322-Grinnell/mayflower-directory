@@ -1,0 +1,30 @@
+<%= form_for @department do |f| %>
+      <%= render 'shared/error_messages', object: f.object%>
+        <div class="form-horizontal", style="text-align:left">
+            <div class="form-group">
+            
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Enter department name' %>
+            
+            <%= f.label :contact %>
+            <%= f.text_field :contact, class: 'form-control', placeholder: 'Enter contact information' %>
+            
+            <%= f.label :description %>
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Enter description' %>
+            
+            <%= f.label "Services" %>
+            <ul>
+              <%= f.fields_for :services do |service|%>
+              <%= render 'service_fields', :f => service %>
+              <% end %>
+              <div class='links'>
+                <%= link_to_add_association 'add service', f, :services %>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <center>
+        <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+      </center>
+      <% end %>
+  

@@ -8,7 +8,7 @@
 
 
 # This is how we are making the admin, an admin. Add with the same format if you would like to make a new admin.
-user = User.create! :email => 'admin@admin.com', :password => 'Passw0rd!', :password_confirmation => 'Passw0rd!', :admin =>true
+user = User.create! :email => 'mayflower-directory@protonmail.com', :password => 'IowaDynamiteTrucker1!', :password_confirmation => 'IowaDynamiteTrucker1!', :admin =>true
 
 
 require 'csv'
