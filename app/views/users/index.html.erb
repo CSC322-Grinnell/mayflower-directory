@@ -1,5 +1,6 @@
-<% provide(:title, 'All users') %>
-<h1 class="centered">All users</h1>
+<h1 class="center">All Users</h1>
+
+
 
 <!--function to search for user emails using the input typed into the search box-->
 <script>
@@ -12,11 +13,10 @@
 
 <ul class="users">
   <div class="search_feature">
-    <form action="" id="form1" onsubmit="return false">
-        <div>
-            <input size="42" placeholder="Enter name or email address to search" type="text" id="search">
-            <input type="submit" id="submit_form" onclick="searchOnPage()" value="Next">
-        </div>
+    <form action="" id="form1" onsubmit="return false" class="btns-bar">
+        <input size="40" placeholder="Enter name or email address to search" type="text" id="search">
+        <input type="submit" class="btn btn-primary btn-medium" id="submit_form" onclick="searchOnPage()" value="Next">
+        <%= link_to "Create User", new_user_registration_path, class: "btn btn-primary btn-medium" %>
     </form>
   </div>
 
