@@ -15,6 +15,20 @@ class ProfilesHelperTest < ActionView::TestCase
     )
   end
 
+  test "normalize_line_breaks removes whitespace around line breaks" do
+    assert_equal(
+      normalize_line_breaks("foo  \n   \n\t\nbar\n baz\t\n\t\n\tzing"),
+      "foo\n\nbar\n\nbaz\n\nzing"
+    )
+  end
+
+  test "normalize_line_breaks removes whitespace around the text" do
+    assert_equal(
+      normalize_line_breaks(" \n  \tfoo \n\n\n"),
+      "foo"
+    )
+  end
+
   test "normalize_line_breaks should do nothing when there are no line breaks" do
     assert_equal(normalize_line_breaks("foo bar baz zing"), "foo bar baz zing")
     assert_equal(normalize_line_breaks(""), "")
