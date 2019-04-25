@@ -13,8 +13,14 @@ class ProfilesController < ApplicationController
 
     bucket = get_bucket
     @results = all_results.map do |profile|
+      if profile.nickname
+        name = "#{profile.last_name}, #{profile.nickname} (#{profile.first_name})"
+      else
+        name = "#{profile.last_name}, #{profile.first_name}"
+      end
+
       {
-        :name => profile.last_name + ", " + profile.first_name,
+        :name => name,
         :image_url => profile_image(profile, bucket),
         :link => profile_path(profile.id)
       }
