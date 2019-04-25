@@ -1,10 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+/* Universal */
+
+/* Keep the follwoing html style for correct rem sizing */
+html {
+  font-size: 62.5%; /* 62.5% of 16px (default font size) = 10px */
+}
 
 body {
-  padding-top: 100px;
+  padding-top: 80px;
   font-family: "Libre Franklin", sans-serif;
   padding-left: 5px;
   padding-right: 5px;
@@ -18,13 +23,39 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
+h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.center h1 {
-  margin-bottom: 10px;
+h2 {
+  font-size: 4.25rem;
+  font-weight: bold;
+  text: underline;
 }
+
+h3 {
+  font-size: 3.75rem;
+}
+
+h4 {
+  font-size: 3.3rem;
+}
+
+h5 {
+  font-size: 2.8rem;
+}
+
+h6 {
+  font-size: 2.4rem;
+}
+
+p,
+ul {
+  font-size: 2rem;
+}
+
 
 .container {
   background: #ffffff;
@@ -32,9 +63,13 @@ textarea {
   word-spacing: 3px;
 }
 
-.title {
-  letter-spacing: 2px;
+.about__question {
+  font-size: 2.5rem;
   font-weight: bold;
+}
+
+.form-horizontal {
+  text-align: left;
 }
 
 /* header */
@@ -80,20 +115,7 @@ textarea {
 li a:hover {
   color: #376e8c;
   background-color: white;
-}
-
-.icon-bar {
-  background-color: #ffffff;
-}
-
-/*hover over text*/
-li a:hover {
-  color: #376e8c;
-  background-color: white;
-}
-
-.icon-bar {
-  background-color: #ffffff;
+  text-decoration: none;
 }
 
 /* footer */
@@ -127,7 +149,7 @@ li a:hover {
 
 .footer ul li {
   float: left;
-  margin-left: 18px;
+  margin-left: 12px;
   text-decoration: underline;
 }
 
@@ -177,6 +199,10 @@ li a:hover {
   background-color: #860601;
 }
 
+.btn-medium {
+  width: 250px;
+}
+
 .form-control {
   font-size: 14pt;
   height: 50px;
@@ -186,15 +212,6 @@ li a:hover {
   height: 50px;
 }
 
-.reset {
-  font-size: 15pt;
-  color: #376e8c;
-  text-decoration: underline;
-}
-
-.reset:hover {
-  color: #860601;
-}
 
 /*home*/
 
@@ -213,7 +230,7 @@ li a:hover {
 .info {
   padding: 15px;
   text-align: center;
-  font-size: 18pt;
+  font-size: 2.5rem;
   color: #376e8c;
 }
 
@@ -222,7 +239,7 @@ li a:hover {
   color: #860601;
 }
 
-@media (min-width: 300px) and (max-width: 1000px) {
+@media (min-width: 500px) and (max-width: 1000px) {
   .navbar-collapse.collapse {
     display: none !important;
   }
@@ -286,6 +303,17 @@ li a:hover {
   }
 }
 
+.contact--heading-admins {
+  font-size: 2.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon-bar {
+  background-color: #ffffff;
+}
 
 /* Specific Classes */
 
@@ -297,7 +325,7 @@ li a:hover {
 }
 
 .gallery {
-  margin: 5px;
+  margin: 10px;
   border: none;
   border-radius: 5px;
   box-shadow: 5px 5px 18px #d3d3d3;
@@ -338,4 +366,33 @@ li a:hover {
 .staff-profile:hover {
   border: 2px solid #860601;
   color: #860601;
+}
+
+.btns-bar {
+  width:100%;
+  background-color: $gray-lighter;
+  padding: 5px;
+}
+
+.btns-bar-btm {
+  margin-top: 70px;
+}
+
+.department-info {
+  margin-top: 10px;
+}
+
+.btn-alert {
+  background-color: #A60000;
+  color: white;
+
+
+}
+.btn-alert:hover{
+    color: white;
+  background-color: #8B0000;
+  }
+
+.btn-secondary {
+
 }

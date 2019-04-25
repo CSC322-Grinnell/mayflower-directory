@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class = "center">Departments</h1>
+<h1 class="center">Departments</h1>
 
-<% if current_user.admin %>
-<div class="row" style="margin: 5px;">
-  <%= link_to 'Create Department', new_department_path, class: "btn btn-primary btn-medium" %>
-</div>
-<% end %>
+<center class="btns-bar">
+  <% if current_user.admin %>
+    <div class="row" style="margin: 5px;">
+      <%= link_to 'Create Department', new_department_path, class: "btn btn-primary btn-medium" %>
+    </div>
+  <% end %>
+</center>
+
 
 <center>
   <table>
@@ -20,9 +23,9 @@
       <% @departments.each do |department| %>
         <tr>
           <div class="gallery">
-  	    	        <a href= <%= "/departments/" + department.id.to_s %> >
-          			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
-             			<h2 class="info"> <%= department.name%> </h2></a>
+            <a href= <%= "/departments/" + department.id.to_s %> >
+      			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
+         		<h2 class="info"> <%= department.name%> </h2></a>
         </tr>
       <% end %>
     </tbody>
