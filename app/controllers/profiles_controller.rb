@@ -8,17 +8,7 @@ class ProfilesController < ApplicationController
 
   def index
     @search = Profile.ransack(params[:q])
-
-    all_results = @search.result.order("last_name ASC, first_name ASC")
-
-    bucket = get_bucket
-    @results = all_results.map do |profile|
-      {
-        :name => profile.last_name + ", " + profile.first_name,
-        :image_url => profile_image(profile, bucket),
-        :link => profile_path(profile.id)
-      }
-    end
+    @results = @search.result.order("last_name ASC, first_name ASC")
   end
 
   def new
@@ -66,7 +56,6 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @image_url = profile_image(@profile, get_bucket)
   end
 
   def display
