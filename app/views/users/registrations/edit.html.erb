@@ -1,59 +1,38 @@
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-  </head>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-  <body>
-    <h1 class="centered">Change Your Password</h1>
-    <br>
-    <br>
+    <h1 class="center">Change Your Password</h1>
 
-      <div class="row">
-        <div class="col-md-6">
-          <font size="5">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-            <div class="form-horizontal", style="text-align:left">
-              <div class="form-group">
+    <div class="form-horizontal">
+      <div class="form-group">
 
-              <div class="field">
-                <%= f.label :current_password %><br />
-                <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Enter Current Password' %>
-              </div>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
+        <%= f.label :current_password, class: "col control-label" %>
+        <%= f.password_field :current_password, class: 'form-control', autocomplete: "off", placeholder: 'Enter Current Password' %>
 
 
-              <div class="field">
-                <label for="password">New </label>
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "off", placeholder: 'Enter New Password' %>
-                <% if @minimum_password_length %>
-                  <br />
-                  <em><%= @minimum_password_length %> characters minimum</em>
-                <% end %>
-              </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-              <div class="field">
-                <label for="password">New </label>
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:'Enter New Password' %>
-              </div>
+        <label for="password", class: "col control-label">New </label>
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Enter New Password' %>
+        <% if @minimum_password_length %>
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
 
-            </font>
-            </div>
-                <%= f.submit "Update", class: "btn btn-primary btn-large" %>
+        <label for="password">New </label>
+        <%= f.label :password_confirmation, class: "col control-label" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off", placeholder:'Enter New Password' %>
 
-            <%= button_to "Delete", registration_path(resource_name),
-              class: "btn btn-alert btn-large",
-              data: { confirm: "Are you sure you want to delete your account?" }, method: :delete %>
-            <% end %>
-
-          </div>
-        </div>
       </div>
-  </body>
-</html>
+    </div>
+    <center>
+      <%= f.submit "Update", class: "btn btn-primary btn-large" %>
+    </center>
+    <% end %>
+  </div>
+</div>
