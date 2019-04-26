@@ -1,6 +1,7 @@
 <% provide(:title, 'Directory') %>
 <h1 class="centered">Directory</h1>
 
+<div class="btns-bar">
 <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
   <%= f.label "Search for resident:", class: "col control-label" %>
   <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
@@ -22,6 +23,7 @@
     </div>
   </div>
 <% end %>
+</div>
 
 <main class="pictures">
   <% if @results.blank? %>
