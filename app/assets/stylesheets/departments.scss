@@ -1,3 +1,40 @@
 // Place all the styles related to the departments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dept-div--contact {
+  background-color: #f6f6f6;
+  padding-bottom: 50px;
+}
+
+.dept-div--main {
+  padding-left: 20px;
+}
+
+.dept-info {
+  margin-top: 10px;
+}
+
+.staff-profile {
+  background-color: #f6f6f6;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  min-height: 150px;
+  margin: 5px 0px 10px 00px;
+}
+
+.staff-profile:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.emergency-msg {
+  background-color: #f6f6f6;
+  border-style: dashed;
+  border-color: red;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
