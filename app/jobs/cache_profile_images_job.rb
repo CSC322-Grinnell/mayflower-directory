@@ -2,14 +2,11 @@ class CacheProfileImagesJob < ApplicationJob
   queue_as :default
 
   def perform
-    puts "=== CACHING IMAGES ==="
     bucket = get_bucket
-
     Profile.all.each do |profile|
       profile.cached_picture_url = profile_image(profile, bucket)
       profile.save!
     end
-    puts "=== DONE CACHING IMAGES ==="
   end
 
   after_perform do
