@@ -51,8 +51,7 @@ h6 {
   font-size: 2.4rem;
 }
 
-p,
-ul {
+p, ul, a {
   font-size: 2rem;
 }
 
@@ -372,6 +371,9 @@ li a:hover {
   width:100%;
   background-color: $gray-lighter;
   padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .btns-bar-btm {
@@ -385,8 +387,6 @@ li a:hover {
 .btn-alert {
   background-color: #A60000;
   color: white;
-
-
 }
 .btn-alert:hover{
     color: white;
@@ -396,4 +396,13 @@ li a:hover {
 .btn-secondary {
   background-color: #f6f6f6;
   color: black;
+}
+
+.profile-bio {
+  text-align:justify;
+
+}
+
+.bold {
+   font-weight: bold;
 }
