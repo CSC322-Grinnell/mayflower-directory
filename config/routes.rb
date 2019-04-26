@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
   get 'departments', to: 'static_pages#departments'
   get 'directory', to: 'static_pages#directory'
-  get 'display', to: 'static_pages#display'
   get 'pictures', to: 'profiles#pictures'
 
   resources :profiles do
