@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     bucket = get_bucket
     @results = all_results.map do |profile|
       {
-        :name => profile.last_name + ", " + profile.first_name,
+        :name => profile_name(profile),
         :image_url => profile_image(profile, bucket),
         :link => profile_path(profile.id)
       }
@@ -132,5 +132,12 @@ class ProfilesController < ApplicationController
       rescue Aws::S3::Errors::BadRequest
         return default_url
       end
+    end
+
+    def profile_name(profile)
+      if (profile.nickname.blank?)
+        return profile.last_name + ", " + profile.first_name
+      end
+      return profile.last_name + ", " + profile.nickname + ", (" + profile.first_name + ")"
     end
 end
