@@ -7,21 +7,55 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :fog
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  
+  def initialize(*args)
+    super
+    s3 = Aws::S3::Resource.new(
+      region: ENV['AWS_DEFAULT_REGION'],
+      credentials: Aws::Credentials.new(
+        ENV['AWS_ACCESS_KEY_ID'],
+        ENV['AWS_SECRET_ACCESS_KEY']
+      )
+    )
 
+    @bucket = s3.bucket('mayflower-data')
+  end
+
+  def file_exists?(filename)
+    @bucket.object(File.join(store_dir, filename)).exists?
+  end
+
+  def retrieve_for_profile!(profile)
+    if not profile.avatar.file.nil?
+      profile.avatar.url
+    else
+      begin
+        base_filename = "#{profile.last_name}, #{profile.first_name}"
+        png_filename = "#{base_filename}.png"
+        jpg_filename = "#{base_filename}.jpg"
+
+        if file_exists?(jpg_filename)
+          retrieve_from_store!(jpg_filename)
+          url
+        elsif file_exists?(png_filename)
+          retrieve_from_store!(png_filename)
+          url
+        else
+          nil
+        end
+      rescue Aws::S3::Errors::BadRequest
+        nil
+      end
+    end
+  end
+
+  # Override the directory where uploaded files will be stored.
   def store_dir
     'images'
-    #/mayflower-data/images
   end
-  
+
   def cache_dir
     'images'
   end
-  
-  #stuff in comments can be commented out if we need them later
-
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -45,32 +79,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-   def extension_whitelist
-     %w(jpg jpeg gif png)
-   end
-   
-   #more whitelisting so only images get uploaded to the AWS
-   def content_type_whitelist
-    /image\//
-   end
-   
-   # blacklisting some stuff thats not images
-   def content_type_blacklist
-    ['application/text', 'application/json']
-   end
-   
-   
-   #for resizing images to thumbnails
-   
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
 
-   process resize_to_fit: [800, 800]
+  #more whitelisting so only images get uploaded to the AWS
+  def content_type_whitelist
+   /image\//
+  end
 
-   version :thumb do
-     process resize_to_fill: [200,200]
-   end
+  # blacklisting some stuff thats not images
+  def content_type_blacklist
+   ['application/text', 'application/json']
+  end
 
+  process resize_to_fit: [800, 800]
 
-   
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
