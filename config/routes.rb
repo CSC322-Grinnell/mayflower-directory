@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :services
   resources :departments
 
@@ -15,11 +15,7 @@ Rails.application.routes.draw do
   get 'directory', to: 'static_pages#directory'
   get 'display', to: 'static_pages#display'
   get 'pictures', to: 'profiles#pictures'
-  
-  # Department Routes, remove when model is setup
-  get 'department1', to: 'static_pages#department1'
-  
-  
+
   resources :profiles do
     collection { post :import }
   end
