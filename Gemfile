@@ -78,7 +78,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'test-unit'
-  gem 'sqlite3'
+  gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
   gem 'figaro'
   gem 'phony_rails'
   gem "minitest", "5.10.1"
