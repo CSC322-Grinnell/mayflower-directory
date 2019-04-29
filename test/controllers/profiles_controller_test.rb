@@ -27,6 +27,13 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should normalize biography line breaks" do
+    login_as(users(:normal))
+    get profile_path(profiles(:frog))
+
+    assert_select "#bio", "One\n\ntwo\n\nthree\n\nfour"
+  end
+
   test "should get new" do
     login_as(users(:admin))
     get profiles_new_path
