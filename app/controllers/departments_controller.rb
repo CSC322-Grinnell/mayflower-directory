@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new]
 
   # GET /departments
   # GET /departments.json
