@@ -3,8 +3,6 @@ services:
   rails:
     build: .
     volumes:
-      - ".:/app"
+      - ".:/srv"
     ports:
       - "3000:3000"
-    env_file:
-      - ../aws-secrets.env
