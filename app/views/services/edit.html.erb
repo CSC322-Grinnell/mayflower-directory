@@ -1,0 +1,15 @@
+<h1 class="center">Editing Service</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@service) do |f| %>
+    <%= render 'shared/error_messages', object: f.object%>
+        <div class="form-horizontal", style="text-align:left">
+            <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_field :content, class: 'form-control', placeholder: 'Enter service content' %>
+            <%= f.submit "Save", class: "btn btn-primary" %>
+            </div>
+            <%end%>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  padding-top: 100px;
+  padding-top: 80px;
   font-family: "Libre Franklin", sans-serif;
   padding-left: 5px;
   padding-right: 5px;
@@ -26,29 +26,29 @@ textarea {
 h1 {
   font-size: 5rem;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 4.5rem;
+  font-size: 4.25rem;
   font-weight: bold;
   text: underline;
 }
 
 h3 {
-  font-size: 4rem;
+  font-size: 3.75rem;
 }
 
 h4 {
-  font-size: 3.5rem;
+  font-size: 3.3rem;
 }
 
 h5 {
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 h6 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 
 p,
@@ -56,9 +56,6 @@ ul {
   font-size: 2rem;
 }
 
-ul {
-  list-style: none;
-}
 
 .container {
   background: #ffffff;
@@ -202,6 +199,10 @@ li a:hover {
   background-color: #860601;
 }
 
+.btn-medium {
+  width: 250px;
+}
+
 .form-control {
   font-size: 14pt;
   height: 50px;
@@ -211,15 +212,6 @@ li a:hover {
   height: 50px;
 }
 
-.reset {
-  font-size: 15pt;
-  color: #376e8c;
-  text-decoration: underline;
-}
-
-.reset:hover {
-  color: #860601;
-}
 
 /*home*/
 
@@ -234,29 +226,6 @@ li a:hover {
   text-align: center;
 }
 
-.galleries {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-
-.gallery {
-  margin: 5px;
-  border: 2px solid #ccc;
-  max-width: 30%;
-  min-width: 350px;
-  display: inline-block;
-}
-
-.gallery:hover {
-  border: 2px solid #860601;
-  color: #860601;
-}
-
-.gallery img {
-  max-width: 100%;
-  height: auto;
-}
 
 .info {
   padding: 15px;
@@ -270,7 +239,7 @@ li a:hover {
   color: #860601;
 }
 
-@media (min-width: 300px) and (max-width: 1000px) {
+@media (min-width: 500px) and (max-width: 1000px) {
   .navbar-collapse.collapse {
     display: none !important;
   }
@@ -344,4 +313,86 @@ li a:hover {
 
 .icon-bar {
   background-color: #ffffff;
+}
+
+/* Specific Classes */
+
+
+.galleries {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.gallery {
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 18px #d3d3d3;
+  max-width: 30%;
+  min-width: 350px;
+  display: inline-block;
+}
+
+.gallery:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+}
+
+.emergency-msg {
+  background-color: #f6f6f6;
+  border-style: dashed;
+  border-color: red;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.staff-profile {
+  background-color: #f6f6f6;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  min-height: 150px;
+  margin: 5px 0px 10px 00px;
+}
+
+.staff-profile:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.btns-bar {
+  width:100%;
+  background-color: $gray-lighter;
+  padding: 5px;
+}
+
+.btns-bar-btm {
+  margin-top: 70px;
+}
+
+.department-info {
+  margin-top: 10px;
+}
+
+.btn-alert {
+  background-color: #A60000;
+  color: white;
+
+
+}
+.btn-alert:hover{
+    color: white;
+  background-color: #8B0000;
+  }
+
+.btn-secondary {
+
 }
