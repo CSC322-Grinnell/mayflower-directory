@@ -1,0 +1,10 @@
+cook: 
+  first_name: "Gordon"
+  last_name: "Ramsay"
+  nickname: "Ramsie"
+  landline: "No idea"
+  bio: "chef, writer, celebrity"
+  
+clean: 
+  first_name: "Nobody"
+  last_name: " "

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <script> require 'aws-sdk-s3'  </script>
+  </head>
+
+  <body>
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1><%= @staff.first_name %> <%= @staff.last_name%></h1>
+        </br>
+        </br>
+
+        <div class="img_container">
+          <img src="<%= @image_url %>">
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <p>
+        <%# </br> </br> </br> </br> </br> </br> %> </br>
+        <font size = 5>
+
+        <% if @staff.email.present? %>
+          <b>Email: </b>
+        <a href="mailto:<%= @staff.email %>"> <%= @staff.email %> </a>
+          <br/>
+        <% end %>
+
+        <%if @staff.landline.present?
+            if @staff.landline.length < 10
+              @staff.landline = "641" + @staff.landline
+            end
+          end %>
+
+        <% if @staff.landline.present? %>
+          <b>Landline:</b>
+        <a href="tel:<%= @staff.landline %>"><%= number_to_phone(@staff.landline,area_code: true) %></a>
+          <br/>
+        <% end %>
+
+         <%if @staff.cell.present?
+             if @staff.cell.length < 10
+              @staff.cell = "641" + @staff.cell
+              end
+            end
+          %>
+
+         <% if @staff.cell.present? %>
+          <b>Cell:</b>
+          <a href="tel:<%= @staff.cell %>"><%= number_to_phone(@staff.cell,area_code: true) %></a>
+          <br/>
+        <% end %>
+
+        <!--<% if @staff.department.present? %>-->
+        <!--  <b>Department:</b>-->
+        <!--  <%= @staff.department %>-->
+        <!--  <br/>-->
+        <!--<% end %>-->
+
+        <% if @staff.nickname.present? %>
+          <b>Nickname:</b>
+          <%= @staff.nickname %>
+          <br/>
+        <% end %>
+
+        <% if @staff.address.present? %>
+          <b>Address:</b>
+          <%= @staff.address %>
+          <br/>
+        <% end %>
+
+        <% if @staff.bio.present? %>
+          <b>Biography:</b>
+            <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify">
+              <%= normalize_line_breaks @staff.biography %>
+            </div>
+        <% end %>
+
+          </br>
+          <% if current_user.admin %>
+             <%= link_to "Edit", "/staffs/" + @staff.id.to_s + "/edit"  %>
+              | <%= link_to "Delete", @user, method: :delete,
+                                    data: { confirm: "Are you sure you want to delete this staff?" } %>
+          <% end %>
+
+          </br>
+          </br>
+          <%= link_to "Back to directory", :back %>
+          </font>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+$(document).ready(function() {
+  var minimized_elements = $("#bio");
+  var minimize_character_count = 100;
+
+  minimized_elements.each(function(){
+    var t = $(this).text();
+    if(t.length < minimize_character_count ) return;
+
+    $(this).html(
+        t.slice(0,minimize_character_count )+
+        '<span>... </span><a href="#" class="read_more" style="font-size:25px">Read more</a>'+
+        '<span style="display:none;">'+ t.slice(minimize_character_count, t.length) + ' ' +
+        '<a href="#" class="read_less" style="font-size:25px">Read less</a></span>'
+      );
+  });
+
+  $('a.read_more', minimized_elements).click(function(event){
+    event.preventDefault();
+    $(this).hide().prev().hide();
+    $(this).next().show();
+  });
+
+  $('a.read_less', minimized_elements).click(function(event){
+    event.preventDefault();
+    $(this).parent().hide().prev().show().prev().show();
+  });
+});
+</script>
+
