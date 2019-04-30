@@ -113,7 +113,7 @@ class ProfilesController < ApplicationController
       base_filename = "#{profile.last_name}, #{profile.first_name}"
       png_filename = "#{base_filename}.png"
       jpg_filename = "#{base_filename}.jpg"
-      default_url = view_context.image_url("Mayflower_Default_Photo.jpg")
+      default_url = view_context.image_url("default_profile_photo.jpg")
 
       begin
         if not profile.avatar.file.nil?
