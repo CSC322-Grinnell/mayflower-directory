@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :services
   resources :departments
+  resources :staffs
 
   get 'password_resets/new'
   get 'password_resets/edit'
