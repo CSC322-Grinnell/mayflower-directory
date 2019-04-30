@@ -12,6 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20190430061351) do
 
+  create_table "Departments_Staffs", id: false, force: :cascade do |t|
+    t.integer "staff_id",      null: false
+    t.integer "department_id", null: false
+  end
+
   create_table "departments", force: :cascade do |t|
     t.string   "name"
     t.text     "contact"
@@ -20,17 +25,14 @@ ActiveRecord::Schema.define(version: 20190430061351) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "departments_staffs", id: false, force: :cascade do |t|
-    t.integer "department_id", null: false
-    t.integer "staff_id",      null: false
-    t.index ["department_id", "staff_id"], name: "index_departments_staffs_on_department_id_and_staff_id"
-  end
-
   create_table "join_staff_departments", force: :cascade do |t|
     t.integer  "department_id"
     t.integer  "staff_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["department_id", "staff_id"], name: "index_join_staff_departments_on_department_id_and_staff_id", unique: true
+    t.index ["department_id"], name: "index_join_staff_departments_on_department_id"
+    t.index ["staff_id"], name: "index_join_staff_departments_on_staff_id"
   end
 
   create_table "profiles", force: :cascade do |t|
