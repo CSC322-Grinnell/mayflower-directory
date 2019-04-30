@@ -4,12 +4,14 @@
 
 <div class="center">
   <% if @profile.nickname.present? %>
-    <h1 class="row center"><%= @profile.nickname%> (<%= @profile.first_name %>) <%= @profile.last_name%></h1>
+    <h1 class="row"><%= @profile.nickname%> (<%= @profile.first_name %>) <%= @profile.last_name%></h1>
   <% else %>
-    <h1 class="row center"><%= @profile.first_name %><%= @profile.last_name%></h1>
+    <h1 class="row"><%= @profile.first_name %><%= @profile.last_name%></h1>
   <% end %>
   <p><%= link_to "Profiles", :back %> > <%= @profile.first_name %> <%= @profile.last_name%></p>
 </div>
+
+<p id="notice"><%= notice %></p>
 
 <section class="btns-bar center">
   <% if current_user.admin %>

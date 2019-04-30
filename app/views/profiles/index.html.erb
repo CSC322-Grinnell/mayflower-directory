@@ -1,6 +1,8 @@
 <% provide(:title, 'Directory') %>
 <h1 class="centered">Directory</h1>
 
+<p id="notice"><%= notice %></p>
+
 <div class="btns-bar">
 <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
   <%= f.label "Search for resident:", class: "col control-label" %>
