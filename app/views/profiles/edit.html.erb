@@ -11,7 +11,6 @@
       <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
           <%= f.label :avatar %>
-          <%= image_tag @image_url, class: "profile-form__avatar-thumbnail" %>
           <%= f.file_field :avatar,
                            class: 'profile-form__avatar-input form-control' %>
           <%= f.hidden_field :avatar_cache %>
