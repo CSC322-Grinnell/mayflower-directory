@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190415154355) do
+ActiveRecord::Schema.define(version: 20190430061351) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -18,6 +18,19 @@ ActiveRecord::Schema.define(version: 20190415154355) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "departments_staffs", id: false, force: :cascade do |t|
+    t.integer "department_id", null: false
+    t.integer "staff_id",      null: false
+    t.index ["department_id", "staff_id"], name: "index_departments_staffs_on_department_id_and_staff_id"
+  end
+
+  create_table "join_staff_departments", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "staff_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -41,6 +54,28 @@ ActiveRecord::Schema.define(version: 20190415154355) do
     t.integer  "department_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "staff_departments", force: :cascade do |t|
+    t.integer  "staff_id"
+    t.integer  "department_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["department_id"], name: "index_staff_departments_on_department_id"
+    t.index ["staff_id"], name: "index_staff_departments_on_staff_id"
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.string   "landline"
+    t.string   "cell"
+    t.string   "email"
+    t.string   "address"
+    t.text     "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
