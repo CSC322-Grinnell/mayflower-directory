@@ -85,10 +85,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-
     def profile_params
       params.require(:profile).permit(
         :first_name, :last_name, :nickname, :landline, :cell, :email, :address,

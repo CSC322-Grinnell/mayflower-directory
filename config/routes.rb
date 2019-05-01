@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
   get 'departments', to: 'static_pages#departments'
 
+
   resources :profiles do
     collection { post :import }
   end
