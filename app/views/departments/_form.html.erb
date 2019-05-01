@@ -6,7 +6,7 @@
 
       <div class="col-md-4" style="background-color: #f6f6f6; height: 100%; padding-bottom: 50px;">
       	<h2><%= f.label :contact %></h2>
-        <%= f.text_field :contact, class: 'form-control', placeholder: 'Enter contact information' %>
+        <%= f.text_area :contact, class: 'form-control', placeholder: 'Enter contact information', size: '10x10' %>
       </div>
 
       <div class="col-md-8" style="padding-left: 20px;">
@@ -15,7 +15,7 @@
         <%= f.text_field :name, class: 'form-control', placeholder: 'Enter department name' %>
 
       	<h2><%= f.label :description %></h2>
-      	<%= f.text_field :description, class: 'form-control', placeholder: 'Enter description' %>
+      	<%= f.text_area :description, class: 'form-control', placeholder: 'Enter description', size: '50x10'%>
 
       	<h2><%= f.label "Services" %></h2>
       	<ul>
