@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+frog:
   first_name: Frog
   last_name: Green
   nickname: Froggy
@@ -10,7 +10,8 @@ one:
   spouse: Baddie User
   cell: 1112224324
   landline: 9871232324
+  biography: "One\ntwo\n\n\nthree\n\nfour"
 
-two:
-  first_name: MyString
-  last_name: MyString
+sparse:
+  first_name: Sparse
+  last_name: No'Info
