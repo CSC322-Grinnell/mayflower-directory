@@ -93,14 +93,14 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should redirect to search after update" do
+  test "should redirect to profile after updating it" do
     login_as(users(:admin))
     profile = profiles(:frog)
 
     put profile_path(profile), params: { profile: @bob_attributes }
     follow_redirect!
 
-    assert_equal profiles_path, path
+    assert_equal profile_path(profile), path
   end
 
 end
