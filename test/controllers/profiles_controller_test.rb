@@ -102,5 +102,23 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal profile_path(profile), path
   end
+  
+  test "Unpriveleged users should not be able to import profiles" do 
+    login_as(users(:normal))
+    profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
+    
+    assert_no_difference -> {Profile.all.count} do 
+      post import_profiles_path, params:{file: profile_csv}
+    end
+  end
+  
+  test "Admins should be able to import profiles" do
+    login_as(users(:admin))
+    profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
+    
+    assert_difference -> {Profile.all.count}, 4 do 
+      post import_profiles_path, params:{file: profile_csv}
+    end
+  end
 
 end
