@@ -22,7 +22,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get profiles_path
     assert_response :success
     assert_select ".profile" do |profile_elements|
-      assert_select profile_elements[0], ".profile__name", "Green, Frog"
+      assert_select profile_elements[0], ".profile__name", "Green, Froggy (Frog)"
       assert_select profile_elements[1], ".profile__name", "No'Info, Sparse"
     end
   end
