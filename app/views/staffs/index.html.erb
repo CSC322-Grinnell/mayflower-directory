@@ -1,19 +1,26 @@
-%h1 Listing staffs
+<h1 class="center">All Staff</h1>
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
 
-  %tbody
-    - @staffs.each do |staff|
-      %tr
-        %td= link_to 'Show', staff
-        %td= link_to 'Edit', edit_staff_path(staff)
-        %td= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+<!--function to search for user emails using the input typed into the search box-->
+<script>
+    function searchOnPage() {
+        var searchInput = document.getElementById('search').value;
+        window.find(searchInput);
+        return true;
+    }
+</script>
 
-= link_to 'New Staff', new_staff_path
+<p id="notice"><%= notice %></p>
+
+<ul class="">
+  <div class="search_feature">
+    <form action="" id="form1" onsubmit="return false" class="btns-bar">
+        <input size="40" placeholder="Enter name or email address to search" type="text" id="search">
+        <input type="submit" class="btn btn-primary btn-medium" id="submit_form" onclick="searchOnPage()" value="Next">
+        <%= link_to "Create User", new_user_registration_path, class: "btn btn-primary btn-medium" %>
+    </form>
+  </div>
+
+  <%= render @staffs.order("name ASC") %>
+</ul>
