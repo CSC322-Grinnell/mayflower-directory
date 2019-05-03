@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class RelationshipTest < ActiveSupport::TestCase
+class JoinStaffDepartmentTest < ActiveSupport::TestCase
 
   def setup
-    @relationship = JoinStaffDepartment.new(department_id: department(:dining).id,
-                                     staff_id: staff(:cook).id)
+    @relationship = JoinStaffDepartment.new(department_id: departments(:faa).id,
+                                     staff_id: staffs(:cook).id)
   end
 
   test "should be valid" do
