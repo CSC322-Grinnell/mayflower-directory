@@ -10,16 +10,16 @@ class Department < ApplicationRecord
         staffs << staff
     end 
     
-  def has_staff?(staff)
-    staffs.include?(staff)
-  end
-  
-  def remove_staff(staff)
-    if has_staff?(staff)
-      staffs.delete(staff)
-    else 
-      puts "Staff does not work under this department"
+    def has_staff?(staff)
+        staffs.include?(staff)
     end
+  
+    def remove_staff(staff)
+        if has_staff?(staff)
+            staffs.delete(staff)
+        else 
+        puts "Staff does not work under this department"
+        end
     
-  end
+    end
 end
