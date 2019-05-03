@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :profiles do
     collection { post :import }
   end
+  
+  # We might not need this
   resources :departments do
     member do
       get :services, :staffs 

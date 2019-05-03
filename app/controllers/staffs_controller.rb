@@ -25,6 +25,7 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
+ 
 
     respond_to do |format|
       if @staff.save
@@ -69,6 +70,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.fetch(:staff, {})
+      params.require(:staff).permit!
     end
 end
