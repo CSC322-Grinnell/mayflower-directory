@@ -4,12 +4,30 @@ class StaffsController < ApplicationController
   # GET /staffs
   # GET /staffs.json
   def index
-    @staffs = Staff.all
+    @search = Staff.ransack(params[:q])
+
+    all_results = @search.result.order("last_name ASC, first_name ASC")
+
+    # bucket = get_bucket
+    @results = all_results.map do |profile|
+      if profile.nickname.present?
+        name = "#{profile.last_name}, #{profile.nickname} (#{profile.first_name})"
+      else
+        name = "#{profile.last_name}, #{profile.first_name}"
+      end
+
+      {
+        :name => name,
+        # :image_url => profile_image(profile, bucket),
+        :link => staff_path(profile.id)
+      }
+    end
   end
 
   # GET /staffs/1
   # GET /staffs/1.json
   def show
+    @staff = Staff.find(params[:id])
   end
 
   # GET /staffs/new
@@ -25,7 +43,7 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
- 
+
 
     respond_to do |format|
       if @staff.save

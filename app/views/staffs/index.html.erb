@@ -1,26 +1,32 @@
-<h1 class="center">All Staff</h1>
+<% provide(:title, 'Directory') %>
+<h1 class="center">Staff Profiles</h1>
 
-
-
-<!--function to search for user emails using the input typed into the search box-->
-<script>
-    function searchOnPage() {
-        var searchInput = document.getElementById('search').value;
-        window.find(searchInput);
-        return true;
-    }
-</script>
-
-<p id="notice"><%= notice %></p>
-
-<ul class="">
-  <div class="search_feature">
-    <form action="" id="form1" onsubmit="return false" class="btns-bar">
-        <input size="40" placeholder="Enter name or email address to search" type="text" id="search">
-        <input type="submit" class="btn btn-primary btn-medium" id="submit_form" onclick="searchOnPage()" value="Next">
-        <%= link_to "Create User", new_user_registration_path, class: "btn btn-primary btn-medium" %>
-    </form>
+<section>
+  <div class="btns-bar">
+    <center>
+      <%= link_to 'Create Staff', new_staff_path, class: "btn btn-primary btn-medium" %>
+    </center>
   </div>
+</section>
 
-  <%= render @staffs.order("name ASC") %>
-</ul>
+<main class="pictures">
+  <% if @results.blank? %>
+    <p>No results. Try searching for something else.</p>
+  <% else %>
+    <% @results.each do |profile| %>
+      <a class="profile" href="<%= profile[:link] %>">
+        <div class="profile__picture-wrapper">
+          <img class="profile__picture" src="<%=profile[:image_url] %>">
+        </div>
+        <h2 class="profile__name">
+          <%= profile[:name] %>
+        </h2>
+      </a>
+    <% end %>
+  <% end %>
+</main>
+
+<% provide(:image_credit, raw('
+  Default profile icon made by <a href="https://www.freepik.com/">Freepik</a>
+  from <a href="https://www.flaticon.com/">www.flaticon.com</a>
+')) %>
