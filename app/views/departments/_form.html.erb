@@ -10,10 +10,14 @@
       </div>
 
       <div class="col-md-8" style="padding-left: 20px;">
-
         <h2><%= f.label :name %></h2>
         <%= f.text_field :name, class: 'form-control', placeholder: 'Enter department name' %>
 
+        <h2><%= f.label :picture %></h2>
+        <p2>(Add or replace the department picture)</p2>
+        <%= f.file_field :picture, class: 'form-control' %>
+        <%= f.hidden_field :picture_cache %>
+        
       	<h2><%= f.label :description %></h2>
       	<%= f.text_area :description, class: 'form-control', placeholder: 'Enter description', size: '50x10'%>
 
