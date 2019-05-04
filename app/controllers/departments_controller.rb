@@ -22,6 +22,10 @@ class DepartmentsController < ApplicationController
   # GET /departments/1/edit
   def edit
   end
+  
+  def remove_staff
+    
+  end
 
   # POST /departments
   # POST /departments.json
@@ -71,6 +75,6 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:name, :contact, :description, services_attributes: [:id, :content, :_destroy])
+      params.require(:department).permit(:name, :contact, :description, staff_id: [], services_attributes: [:id, :content, :_destroy])
     end
 end

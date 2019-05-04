@@ -25,7 +25,7 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
- 
+    @staff.work_for(params[:department_id])
 
     respond_to do |format|
       if @staff.save
