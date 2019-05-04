@@ -25,8 +25,11 @@
             <% if user_signed_in? %>
               <li><%= link_to "Directory", profiles_path %></li>
             <% end %>
-            <% if user_signed_in? %> 
+            <% if user_signed_in? %>
               <li><%= link_to "Departments", departments_path %></li>
+            <% end %>
+            <% if user_signed_in? && current_user.admin %>
+              <li><%= link_to "Staff", staffs_path %></li>
             <% end %>
             <% if user_signed_in? && current_user.admin %>
               <li><%= link_to "Create Profile", new_profile_path %></li>
