@@ -1,3 +1,41 @@
 // Place all the styles related to the departments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dept-div--profile {
+  background-color: #f6f6f6;
+  margin: 5px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  max-width: 300px;
+  a {
+    color: black;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.dept-div--profile:hover {
+    background-color: #b3bdb6;
+
+  a{
+    text-decoration: none;
+  }
+}
+
+.dept-div--profile_picture {
+  display: block;
+  max-width:300px;
+  max-height:300px;
+  width: auto;
+  height: auto;
+}
+
+
+.dept-a--remove {
+  width: 100%;
+  margin: 5px;
+}

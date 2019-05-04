@@ -20,7 +20,7 @@
     <section>
     	<h2>Contact</h2>
     	<p>Add a staff for this <p>
-    <section>
+    </section>
   </div>
 
   <div class="col-md-8" style="padding-left: 20px;">
@@ -37,12 +37,29 @@
     		<li><%= s.content %></li>
     		<% end %>
     	</ul>
-  	<section>
+  	</section>
 
-    <!-- TODO: Implement me
+  	<section>
     	<h2>Staff</h2>
-        <p> Not implemented</p>
-    -->
+
+      <div class="col-md-4 dept-div--profile">
+        <a href="https://rails-tutorial-grinnelldennis.c9users.io/staffs/3">
+          <%= image_tag("mayflower_logo_large.png", class: "dept-div--profile_picture") %>
+          <h3 class="center">Dennis Chan</h3>
+          <h4 class="center">Software Developer</h4>
+        </a>
+      </div>
+
+      <div class="col-md-4 dept-div--profile">
+        <a href="https://rails-tutorial-grinnelldennis.c9users.io/staffs/3">
+          <%= image_tag("mayflower_logo_large.png", class: "dept-div--profile_picture") %>
+          <h3 class="center">John Lennon</h3>
+          <h4 class="center">Product Owner</h4>
+        </a>
+      </div>
+
+    </section>
+
   </div>
 </section>
 
