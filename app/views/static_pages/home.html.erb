@@ -1,59 +1,65 @@
-<html>
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-</head>
+<div class="container1">
+  <div class="row">
+	  <h1 class="center">Resources</h1>
+    <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+    <a href="https://www.accuweather.com/en/us/grinnell-ia/50112/weather-forecast/333134" class="aw-widget-legal">
+        <!--
+          By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+          -->
+    </a>
+    <div id="awcc1522811744052" class="aw-widget-current"  data-locationkey="333134" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1522811744052"></div>
+  </div>
 
- <body>
-     <div class="container1">
-        <div class="row">
-            <h1 class="center">Resources</h1>
+	<div class="row galleries">
 
-                <a href="https://www.accuweather.com/en/us/grinnell-ia/50112/weather-forecast/333134" class="aw-widget-legal">
-                <!--
-                By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
-                -->
-                </a><div id="awcc1522811744052" class="aw-widget-current"  data-locationkey="333134" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1522811744052"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-        </div>
+		<a class="gallery" href=<%= resources_library_path %>>
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<%= image_tag("mayflower_logo_large.png", class: "gallery-image") %>
+  		</div>
+   		<h2 class="info">Mayflower Library</h2>
+		</a>
 
-		<div class="row galleries">
-	        	<div class="gallery">
-    				<div class="gallery-default_background">
-						<%= link_to image_tag("mayflower_logo_large.png"), resources_library_path %>}
-					</div>
-           			<h2 class="info">Mayflower Library</h2></a>
-    			</div>
-	    	    <div class="gallery">
-	    	        <a href="http://www.mayflowerhomes.com/calendar/" target="_blank">
-        			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6ju77n1b1l1t2d12or1vhf6o6p.jpg">
-           			<h2 class="info">Mayflower Calendar</h2></a>
-	        </div>
-	    	    <div class="gallery">
-	    	        <a href="http://www.mayflowerhomes.com/menus/" target="_blank">
-        			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6kcb5m1a2trodpnp4j21nmt3u.jpg">
-           			<h2 class="info">Mayflower Dining Menu</h2></a>
-	        	</div>
-	    	    <div class="gallery">
-	    	        <a href="http://www.mayflowerhomes.com/newsletters/" target="_blank">
-        			<img src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
-           			<h2 class="info">Mayflower Newsletters</h2></a>
-    			</div>
-	    	    <div class="gallery">
-	    	        <a href="https://www.grinnell.edu/calendars/frontpage-hotevents" target="_blank">
-        				<img src="http://galined.com/wp-content/uploads/2017/06/Grinell-College.jpg">
-           			<h2 class="info">Grinnell College Events</h2></a>
-    			</div>
-    			<div class="gallery">
-	        	    <a href="https://www.grinnellchamber.org/en/events/community_calendar/" target="_blank">
-        				<img src="https://www.pdga.com/files/u5379/Grinnell_Games_Putt.jpg">
-           			<h2 class="info">Community Calendar</h2></a>
-    			</div>
-	        	<div class="gallery">
-	        	    <a href="http://www.grinnelliowa.gov/" target="_blank">
-        				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Grinnell_Iowa_-_downtown.jpg/1200px-Grinnell_Iowa_-_downtown.jpg">
-           			<h2 class="info">Grinnell City Website</h2></a>
-    			</div>
+   	<a class="gallery" href="http://www.mayflowerhomes.com/calendar/">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6ju77n1b1l1t2d12or1vhf6o6p.jpg">
+  		</div>
+  		<h2 class="info">Mayflower Calendar</h2>
+  	</a>
+
+  	<a class="gallery" href="http://www.mayflowerhomes.com/menus/">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6kcb5m1a2trodpnp4j21nmt3u.jpg">
+  		</div>
+  		<h2 class="info">Mayflower Dining Menu</h2>
+  	</a>
+
+  	<a class="gallery" href="http://www.mayflowerhomes.com/newsletters/">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
+  		</div>
+  		<h2 class="info">Mayflower Newsletters</h2>
+		</a>
 
 
-	     </div>
-</body>
-</html>
+  	<a class="gallery" href="https://www.grinnell.edu/calendars/frontpage-hotevents">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="http://galined.com/wp-content/uploads/2017/06/Grinell-College.jpg">
+  		</div>
+  		<h2 class="info">Grinnell College Events</h2>
+		</a>
+
+  	<a class="gallery" href="https://www.grinnellchamber.org/en/events/community_calendar/">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="https://www.pdga.com/files/u5379/Grinnell_Games_Putt.jpg">
+			</div>
+			<h2 class="info">Community Calendar</h2>
+		</a>
+
+  	<a class="gallery" href="http://www.grinnelliowa.gov/">
+  		<div class="gallery-picture_wrapper gallery-default_background">
+				<img class="gallery-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Grinnell_Iowa_-_downtown.jpg/1200px-Grinnell_Iowa_-_downtown.jpg">
+  		</div>
+  		<h2 class="info">Grinnell City Website</h2>
+  	</a>
+	</div>
+</div>

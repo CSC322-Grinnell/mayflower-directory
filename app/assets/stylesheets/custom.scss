@@ -234,6 +234,9 @@ li a:hover {
   text-align: center;
 }
 
+
+/* Gallery */
+
 .galleries {
   display: flex;
   flex-flow: row wrap;
@@ -243,9 +246,7 @@ li a:hover {
 .gallery {
   margin: 5px;
   border: 2px solid #ccc;
-  max-width: 30%;
-  min-width: 350px;
-  display: inline-block;
+  width: 350px;
 }
 
 .gallery:hover {
@@ -253,9 +254,20 @@ li a:hover {
   color: #860601;
 }
 
-.gallery img {
-  max-width: 100%;
-  height: auto;
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: block;
+}
+
+.gallery-picture_wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 65%; // maintains aspect ratio relative to div width
+  position: relative;
 }
 
 .info {
@@ -269,6 +281,8 @@ li a:hover {
   text-decoration: underline;
   color: #860601;
 }
+
+/* ---------- */
 
 @media (min-width: 300px) and (max-width: 1000px) {
   .navbar-collapse.collapse {
