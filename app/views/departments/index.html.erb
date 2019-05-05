@@ -3,11 +3,11 @@
 <h1 class="center">Departments</h1>
 
 <% if current_user.admin %>
-<center class="btns-bar">
-    <div class="row" style="margin: 5px;">
+  <center class="btns-bar">
+    <div class="row">
       <%= link_to 'Create Department', new_department_path, class: "btn btn-primary btn-medium" %>
     </div>
-</center>
+  </center>
 <% end %>
 
 <center>
