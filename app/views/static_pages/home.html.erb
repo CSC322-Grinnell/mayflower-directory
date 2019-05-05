@@ -12,54 +12,19 @@
 
 	<div class="row galleries">
 
-		<a class="gallery" href=<%= resources_library_path %>>
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<%= image_tag("mayflower_logo_large.png", class: "gallery-image") %>
-  		</div>
-   		<h2 class="info">Mayflower Library</h2>
-		</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: resources_library_path, img: "mayflower_logo_large.png",	title: "Mayflower Library"} %>
 
-   	<a class="gallery" href="http://www.mayflowerhomes.com/calendar/">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6ju77n1b1l1t2d12or1vhf6o6p.jpg">
-  		</div>
-  		<h2 class="info">Mayflower Calendar</h2>
-  	</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "http://www.mayflowerhomes.com/calendar/", img: "http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6ju77n1b1l1t2d12or1vhf6o6p.jpg", title: "Mayflower Calendar"} %>
 
-  	<a class="gallery" href="http://www.mayflowerhomes.com/menus/">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6kcb5m1a2trodpnp4j21nmt3u.jpg">
-  		</div>
-  		<h2 class="info">Mayflower Dining Menu</h2>
-  	</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "http://www.mayflowerhomes.com/menus/", img: "http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6kcb5m1a2trodpnp4j21nmt3u.jpg",	title: "Mayflower Dining Menu"} %>
 
-  	<a class="gallery" href="http://www.mayflowerhomes.com/newsletters/">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg">
-  		</div>
-  		<h2 class="info">Mayflower Newsletters</h2>
-		</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "http://www.mayflowerhomes.com/newsletters/", img: "http://www.mayflowerhomes.com/wp-content/gallery-bank/original-images/o_19v6khnbp27b1foi11sc11mh3r8p.jpg",	title: "Mayflower Newsletters"} %>
 
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "https://www.grinnell.edu/calendars/frontpage-hotevents", img: "http://galined.com/wp-content/uploads/2017/06/Grinell-College.jpg",	title: "Grinnell College Events"} %>
 
-  	<a class="gallery" href="https://www.grinnell.edu/calendars/frontpage-hotevents">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="http://galined.com/wp-content/uploads/2017/06/Grinell-College.jpg">
-  		</div>
-  		<h2 class="info">Grinnell College Events</h2>
-		</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "https://www.grinnellchamber.org/en/events/community_calendar/", img: "https://www.pdga.com/files/u5379/Grinnell_Games_Putt.jpg",	title: "Community Calendar"} %>
 
-  	<a class="gallery" href="https://www.grinnellchamber.org/en/events/community_calendar/">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="https://www.pdga.com/files/u5379/Grinnell_Games_Putt.jpg">
-			</div>
-			<h2 class="info">Community Calendar</h2>
-		</a>
+		<%= render partial: "layouts/gallery_cardview", locals: { url: "http://www.grinnelliowa.gov/", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Grinnell_Iowa_-_downtown.jpg/1200px-Grinnell_Iowa_-_downtown.jpg",	title: "Grinnell City Website"} %>
 
-  	<a class="gallery" href="http://www.grinnelliowa.gov/">
-  		<div class="gallery-picture_wrapper gallery-default_background">
-				<img class="gallery-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Grinnell_Iowa_-_downtown.jpg/1200px-Grinnell_Iowa_-_downtown.jpg">
-  		</div>
-  		<h2 class="info">Grinnell City Website</h2>
-  	</a>
 	</div>
 </div>
