@@ -344,16 +344,6 @@ li a:hover {
   height: auto;
 }
 
-.emergency-msg {
-  background-color: #f6f6f6;
-  border-style: dashed;
-  border-color: red;
-  width: 100%;
-  margin: 20px;
-  padding: 20px;
-  font-weight: bold;
-}
-
 .staff-profile {
   background-color: #f6f6f6;
   border-style: solid;
@@ -396,4 +386,11 @@ li a:hover {
 
 .btn-secondary {
 
+}
+
+.breadcrumb {
+  background-color: white;
+  a {
+    color: #337ab7;
+  }
 }

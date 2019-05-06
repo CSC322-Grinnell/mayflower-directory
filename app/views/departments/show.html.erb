@@ -3,9 +3,9 @@
 
 <h1 class="row center"><%= @department.name %></h1>
 
-<div class="row center dept-breadcrumbs" style="margin: 15px;">
-  <a href="/departments" >Departments</a> > <%= @department.name %>
-</div>
+<p class="row center breadcrumb">
+  <a href=<%= department_path %> >Departments</a> > <%= @department.name %>
+</p>
 
 <% if current_user.admin %>
 <center class="btns-bar">
@@ -42,21 +42,11 @@
   	<section>
     	<h2>Staff</h2>
 
-      <div class="col-md-4 dept-div--profile">
-        <a href="https://rails-tutorial-grinnelldennis.c9users.io/staffs/3">
-          <%= image_tag("mayflower_logo_large.png", class: "dept-div--profile_picture") %>
-          <h3 class="center">Dennis Chan</h3>
-          <h4 class="center">Software Developer</h4>
-        </a>
-      </div>
-
-      <div class="col-md-4 dept-div--profile">
-        <a href="https://rails-tutorial-grinnelldennis.c9users.io/staffs/3">
-          <%= image_tag("mayflower_logo_large.png", class: "dept-div--profile_picture") %>
-          <h3 class="center">John Lennon</h3>
-          <h4 class="center">Product Owner</h4>
-        </a>
-      </div>
+      <main class="pictures">
+        <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
+        <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
+        <%= render partial: "layouts/profile_cardview", locals: {title: "Tran Le", url: "", img: ""} %>
+      </main>
 
     </section>
 

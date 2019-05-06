@@ -19,7 +19,7 @@
   border-radius: 5px;
   max-width: 300px;
   a {
-    color: black;
+    color: white;
   }
 
   img {
@@ -33,6 +33,7 @@
 
   a{
     text-decoration: none;
+
   }
 }
 
@@ -48,4 +49,8 @@
 .dept-a--remove {
   width: 100%;
   margin: 5px;
+}
+
+.service-btn--remove > a {
+    color: white;
 }
