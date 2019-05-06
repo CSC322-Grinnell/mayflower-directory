@@ -10,6 +10,7 @@ frog:
   spouse: Baddie User
   cell: 1112224324
   landline: 9871232324
+  biography: "One\ntwo\n\n\nthree\n\nfour"
 
 sparse:
   first_name: Sparse

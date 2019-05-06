@@ -22,9 +22,16 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get profiles_path
     assert_response :success
     assert_select ".profile" do |profile_elements|
-      assert_select profile_elements[0], ".profile__name", "Green, Frog"
+      assert_select profile_elements[0], ".profile__name", "Green, Froggy (Frog)"
       assert_select profile_elements[1], ".profile__name", "No'Info, Sparse"
     end
+  end
+
+  test "should normalize biography line breaks" do
+    login_as(users(:normal))
+    get profile_path(profiles(:frog))
+
+    assert_select "#bio", "One\n\ntwo\n\nthree\n\nfour"
   end
 
   test "should get new" do
@@ -93,14 +100,32 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should redirect to search after update" do
+  test "should redirect to profile after updating it" do
     login_as(users(:admin))
     profile = profiles(:frog)
 
     put profile_path(profile), params: { profile: @bob_attributes }
     follow_redirect!
 
-    assert_equal profiles_path, path
+    assert_equal profile_path(profile), path
+  end
+  
+  test "Unpriveleged users should not be able to import profiles" do 
+    login_as(users(:normal))
+    profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
+    
+    assert_no_difference -> {Profile.all.count} do 
+      post import_profiles_path, params:{file: profile_csv}
+    end
+  end
+  
+  test "Admins should be able to import profiles" do
+    login_as(users(:admin))
+    profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
+    
+    assert_difference -> {Profile.all.count}, 4 do 
+      post import_profiles_path, params:{file: profile_csv}
+    end
   end
 
 end
