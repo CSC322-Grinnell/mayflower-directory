@@ -1,6 +1,10 @@
 <a class="profile" href="<%= url %>">
   <div class="profile__picture-wrapper">
-    <img class="profile__picture" src="<%= img %>">
+    <% if img.blank? %>
+			<%= image_tag("mayflower_logo_large.png", class: "profile__picture") %>
+		<% else %>
+			<%= image_tag(img, class: "profile__picture") %>
+		<% end %>
   </div>
   <h2 class="profile__name">
     <%= title %>
