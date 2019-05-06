@@ -15,16 +15,11 @@
 .dept-div--profile {
   background-color: #f6f6f6;
   margin: 5px;
+  width: 250px;
   padding-bottom: 10px;
-  border-radius: 5px;
-  max-width: 300px;
+  display: inline-block;
   a {
     color: white;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
   }
 }
 
@@ -38,18 +33,12 @@
 }
 
 .dept-div--profile_picture {
-  display: block;
-  max-width:300px;
+  max-width:250px;
   max-height:300px;
   width: auto;
   height: auto;
 }
 
-
-.dept-a--remove {
-  width: 100%;
-  margin: 5px;
-}
 
 .service-btn--remove > a {
     color: white;

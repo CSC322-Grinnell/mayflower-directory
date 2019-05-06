@@ -31,23 +31,17 @@
     	<h2>Staff</h2>
 
         <div class="pictures dept-div--profile">
-          <center>
           <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
-          <a href="" class="btn btn-alert dept-a--remove">Remove Association</a>
-          </center>
+          <a href="" class="btn btn-alert">Remove Association</a>
         </div>
 
         <div class="pictures dept-div--profile">
-          <center>
           <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
-          <a href="" class="btn btn-alert dept-a--remove">Remove Association</a>
-          </center>
+          <a href="" class="btn btn-alert">Remove Association</a>
         </div>
 
         <div class="pictures dept-div--profile">
-          <center>
-          <%= render partial: "layouts/profile_cardview", locals: {title: "ADD NEW", url: "", img: ""} %>
-          </center>
+          <%= render partial: "layouts/profile_cardview", locals: {title: "ADD NEW", url: "", img: "icon_add.png"} %>
         </div>
 
     </section>
