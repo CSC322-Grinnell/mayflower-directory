@@ -14,9 +14,9 @@ class ProfilesController < ApplicationController
     bucket = get_bucket
     @results = all_results.map do |profile|
       if profile.nickname.present?
-        name = "#{profile.last_name}, #{profile.nickname} (#{profile.first_name})"
+        name = "#{profile.nickname} #{profile.last_name} (#{profile.first_name})"
       else
-        name = "#{profile.last_name}, #{profile.first_name}"
+        name = "#{profile.first_name}, #{profile.last_name}"
       end
 
       {
