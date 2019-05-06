@@ -14,18 +14,18 @@
 
 .dept-div--profile {
   background-color: #f6f6f6;
-  margin: 5px;
-  width: 250px;
+  margin: 5px 0px 3px 0px;
+  width: 260px;
   padding-bottom: 10px;
   display: inline-block;
+  justify-content: center;
+
   a {
     color: white;
   }
 }
 
 .dept-div--profile:hover {
-    background-color: #b3bdb6;
-
   a{
     text-decoration: none;
 
