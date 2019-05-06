@@ -30,19 +30,24 @@
         <section>
     	<h2>Staff</h2>
 
-        <div class="col-md-4 dept-div--profile">
-            <%= image_tag("mayflower_logo_large.png", class: "dept-div--profile_picture") %>
-            <h3 class="center">Dennis Chan</h3>
-            <h4 class="center">Software Developer</h4>
+        <div class="pictures dept-div--profile">
+          <center>
+          <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
           <a href="" class="btn btn-alert dept-a--remove">Remove Association</a>
+          </center>
         </div>
 
-
-        <div class="col-md-4 dept-div--profile">
-            <%= image_tag("mayflower_logo_large.png", size: "50x50") %>
-            <h3 class="center">John Lennon</h3>
-            <h4 class="center">Product Owner</h4>
+        <div class="pictures dept-div--profile">
+          <center>
+          <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
           <a href="" class="btn btn-alert dept-a--remove">Remove Association</a>
+          </center>
+        </div>
+
+        <div class="pictures dept-div--profile">
+          <center>
+          <%= render partial: "layouts/profile_cardview", locals: {title: "ADD NEW", url: "", img: ""} %>
+          </center>
         </div>
 
     </section>
