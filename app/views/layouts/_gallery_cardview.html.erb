@@ -1,0 +1,13 @@
+<!-- See static_pages/home.html.erb (Resources tab) for usage -->
+
+
+<a class="gallery" href=<%= url %>>
+	<div class="gallery-picture_wrapper gallery-default_background">
+		<% if img.blank? %>
+			<%= image_tag("mayflower_logo_large.png", class: "gallery-image") %>
+		<% else %>
+			<%= image_tag(img, class: "gallery-image") %>
+		<% end %>
+	</div>
+ 	<h2 class="info"><%= title %></h2>
+</a>
