@@ -71,8 +71,8 @@
     <section>
       <h2>Departments</h2>
       <ul>
-        <%= @staff.departments.each do |dep| %>
-        <li><%= dep.name %></li>
+        <% @staff.departments.each do |dep| %>
+        <li><a href=<%= department_path(dep.id) %>><%= dep.name %> </li>
         <% end %>
       </ul>
     </section>

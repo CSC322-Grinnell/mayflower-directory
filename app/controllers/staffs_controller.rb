@@ -18,7 +18,7 @@ class StaffsController < ApplicationController
 
       {
         :name => name,
-        :image_url => staff_image(staff, bucket),
+        # :image_url => staff_image(staff, bucket),
         :link => staff_path(staff.id)
       }
     end
@@ -28,7 +28,6 @@ class StaffsController < ApplicationController
   # GET /staffs/1.json
   def show
     @staff = Staff.find(params[:id])
-    @image_url = staff_image(@staff, get_bucket)
   end
 
   # GET /staffs/new
@@ -38,6 +37,7 @@ class StaffsController < ApplicationController
 
   # GET /staffs/1/edit
   def edit
+    @staff = Staff.find(params[:id])
   end
 
   # POST /staffs
@@ -59,6 +59,7 @@ class StaffsController < ApplicationController
   # PATCH/PUT /staffs/1
   # PATCH/PUT /staffs/1.json
   def update
+    @staff = Staff.find(params[:id])
     respond_to do |format|
       if @staff.update(staff_params)
         format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
@@ -73,6 +74,7 @@ class StaffsController < ApplicationController
   # DELETE /staffs/1
   # DELETE /staffs/1.json
   def destroy
+    @staff = Staff.find(params[:id])
     @staff.destroy
     respond_to do |format|
       format.html { redirect_to staffs_url, notice: 'Staff was successfully destroyed.' }
@@ -82,31 +84,6 @@ class StaffsController < ApplicationController
 
   private
   
-    def staff_image(staff, bucket)
-      folder_name = "images"
-      base_filename = "#{staff.last_name}, #{staff.first_name}"
-      png_filename = "#{base_filename}.png"
-      jpg_filename = "#{base_filename}.jpg"
-      default_url = view_context.image_url("Mayflower_Default_Photo.jpg")
-
-      begin
-        if not staff.avatar.file.nil?
-          return staff.avatar.url
-        elsif bucket.object(File.join(folder_name, jpg_filename)).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(jpg_filename)
-          return uploader.url
-        elsif bucket.object(File.join(folder_name, png_filename)).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(png_filename)
-          return uploader.url
-        else
-          return default_url
-        end
-      rescue Aws::S3::Errors::BadRequest
-        return default_url
-      end
-    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
       params.require(:staff).permit!
