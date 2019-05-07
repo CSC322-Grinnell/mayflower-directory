@@ -44,8 +44,6 @@
       <% @department.staffs.each do |staff| %>
         <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
       <% end %>
-
-
     </section>
 
   </div>

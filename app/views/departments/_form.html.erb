@@ -33,25 +33,26 @@
         </div>
 
         <section>
-    	<h2>Staff</h2>
 
-        <div class="dept-div--profile">
-          <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
-          <center>
-            <a href="" class="btn btn-alert">Remove Association</a>
-          </center>
-        </div>
+    	    <h2>Staff</h2>
 
-        <div class="dept-div--profile">
-          <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
-          <center>
-            <a href="" class="btn btn-alert">Remove Association</a>
-          </center>
-        </div>
 
-        <div class="dept-div--profile">
-          <%= render partial: "layouts/profile_cardview", locals: {title: "Add New", url: staffs_path, img: "icon_add.png"} %>
-        </div>
+          <% @department.staffs.each do |staff| %>
+            <div class="dept-div--profile">
+              <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
+              <center>
+                <a href="" class="btn btn-alert">Remove Association</a>
+              </center>
+            </div>
+          <% end %>
+
+
+          <div class="dept-div--profile">
+            <%= render partial: "layouts/profile_cardview", locals: {title: "Add New", url: staffs_path, img: "icon_add.png"} %>
+            <center>
+                <a href="" class="btn btn-alert"></a>
+              </center>
+          </div>
 
     </section>
 
