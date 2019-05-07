@@ -43,11 +43,7 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
-<<<<<<< HEAD
-    @staff.work_for(params[:department_id])
-=======
-
->>>>>>> e22416605940a9343343dc8f5a2f8adce909ffb7
+    # @department = @staff.departments.build
 
     respond_to do |format|
       if @staff.save

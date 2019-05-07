@@ -71,11 +71,11 @@
 
     <section>
       <h2>Departments</h2>
-        <ul>
-          <li><a href="">department 1</a></li>
-          <li><a href="">department 2</a></li>
-          <li><a href="">department 3</a></li>
-        </ul>
+      <ul>
+        <%= @staff.departments.each do |dep| %>
+        <li><%= dep.name %></li>
+        <% end %>
+      </ul>
     </section>
 
   </div>
