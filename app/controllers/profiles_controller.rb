@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new]
+  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new, :import]
 
   def import
     Profile.import(params[:file])
@@ -14,9 +14,9 @@ class ProfilesController < ApplicationController
     bucket = get_bucket
     @results = all_results.map do |profile|
       if profile.nickname.present?
-        name = "#{profile.last_name}, #{profile.nickname} (#{profile.first_name})"
+        name = "#{profile.nickname} #{profile.last_name} (#{profile.first_name})"
       else
-        name = "#{profile.last_name}, #{profile.first_name}"
+        name = "#{profile.first_name}, #{profile.last_name}"
       end
 
       {
@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
     @user = Profile.find(params[:id])
     if @user.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to profiles_path
+      redirect_to profile_path(@user.id)
     else
       render 'edit'
     end
@@ -91,10 +91,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-
     def profile_params
       params.require(:profile).permit(
         :first_name, :last_name, :nickname, :landline, :cell, :email, :address,
