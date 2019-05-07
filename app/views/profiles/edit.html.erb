@@ -52,17 +52,23 @@
       
         </div>
       </div>
-      
-      <br/>
-      <% if current_user.admin %>
-      <center>
-       <%= link_to "Delete Profile", @user, method: :delete,
-                                        data: { confirm: "Are you sure you want to delete this profile?" } %>
-      </center>
-      <% end %>
-    </body>
-</html>
 
+    <div class="center">
+      <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+
+<br/>
+<% if current_user.admin %>
+  <div class="center">
+    <%= link_to "Delete Profile", @user, method: :delete,
+                data: { confirm: "Are you sure you want to delete this " +
+                                "profile?" } %>
+  </div>
+<% end %>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -80,5 +86,5 @@ $(document).ready(function() {
       $('#word_left').text(250-words);
     }
   });
-}); 
+});
 </script>

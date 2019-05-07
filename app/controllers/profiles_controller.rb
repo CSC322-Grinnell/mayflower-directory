@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = Profile.find(params[:id])
+    @image_url = profile_image(@user, get_bucket)
   end
 
   def search
