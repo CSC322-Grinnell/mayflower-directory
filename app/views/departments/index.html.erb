@@ -12,5 +12,5 @@
 
 <% @departments.each do |department| %>
   <!-- TODO: truncated department.picture.url because of exception -->
-  <%= render partial: "layouts/gallery_cardview", locals: { title: department.name, url: "/departments/" + department.id.to_s, img: department.picture} %>
+  <%= render partial: "layouts/gallery_cardview", locals: { title: department.name, url: department_path(department.id), img: department.picture} %>
 <% end %>
