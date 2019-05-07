@@ -67,14 +67,15 @@
 }
 
 .profile {
+  display: inline-block;
+  vertical-align: top;
+
   @media screen {
     width: 250px;
     margin: 5px;
   }
 
   @media print {
-    display: inline-block;
-    vertical-align: top;
     width: calc(25% - 1em);
     margin: 5px 0;
   }

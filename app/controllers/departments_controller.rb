@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
-  before_action :set_department, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_user, only: [:edit, :update, :create, :destroy, :new]
+  before_action :set_department, only: [:edit, :update, :destroy, :show]
   # GET /departments
   # GET /departments.json
   def index
@@ -10,7 +10,6 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
-    @department = Department.find(params[:id])
     @services = @department.services
     @image_url = view_context.image_url("Mayflower_Default_Photo.jpg") #use default pic for now
   end
@@ -22,7 +21,6 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/1/edit
   def edit
-    @department = Department.find(params[:id])
   end
 
   # POST /departments
@@ -73,6 +71,6 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:name, :contact, :description, services_attributes: [:id, :content, :_destroy])
+      params.require(:department).permit(:name, :contact, :description, :picture, services_attributes: [:id, :content, :_destroy])
     end
 end

@@ -1,5 +1,4 @@
 
-<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
 <script> require 'aws-sdk-s3'  </script>
 
 <div class="center">
@@ -8,7 +7,7 @@
   <% else %>
     <h1 class="row"><%= @profile.first_name %><%= @profile.last_name%></h1>
   <% end %>
-  <p><%= link_to "Profiles", :back %> > <%= @profile.first_name %> <%= @profile.last_name%></p>
+  <p><%= link_to "Profiles", profiles_path %> > <%= @profile.first_name %> <%= @profile.last_name%></p>
 </div>
 
 <p id="notice"><%= notice %></p>

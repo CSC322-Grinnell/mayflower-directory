@@ -226,6 +226,42 @@ li a:hover {
 }
 
 
+
+/* Gallery */
+
+.galleries {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.gallery {
+  margin: 5px;
+  border: 2px solid #ccc;
+  width: 350px;
+}
+
+.gallery:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: block;
+}
+
+.gallery-picture_wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 65%; // maintains aspect ratio relative to div width
+  position: relative;
+}
+
 .info {
   padding: 15px;
   text-align: center;
@@ -238,7 +274,9 @@ li a:hover {
   color: #860601;
 }
 
-@media (min-width: 500px) and (max-width: 1000px) {
+/* ---------- */
+
+@media (min-width: 300px) and (max-width: 1000px) {
   .navbar-collapse.collapse {
     display: none !important;
   }
@@ -302,6 +340,7 @@ li a:hover {
   }
 }
 
+
 .center {
   text-align: center;
 }
@@ -310,6 +349,9 @@ li a:hover {
   background-color: #ffffff;
 }
 
+.gallery-default_background {
+  background-color:#376e8c;
+}
 /* Specific Classes */
 
 
