@@ -23,7 +23,8 @@
         <tr>
           <div class="gallery">
             <a href= <%= "/departments/" + department.id.to_s %> >
-      			<img src= <%= department.picture.url%> >
+              <!-- TODO: used to be department.picture.url but broken, justso the link is truncated -->
+      			<img src= <%= department.picture%> >
          		<h2 class="info"> <%= department.name%> </h2></a>
         </tr>
       <% end %>

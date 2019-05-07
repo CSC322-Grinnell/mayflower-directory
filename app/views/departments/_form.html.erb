@@ -17,8 +17,8 @@
         <h2><%= f.label :picture %></h2>
         <p2>(Add or replace the department picture)</p2>
         <%= f.file_field :picture, class: 'form-control' %>
-        <%= f.hidden_field :picture_cache %>
-        
+        <!-- %= f.hidden_field :picture_cache % -->
+
       	<h2><%= f.label :description %></h2>
       	<%= f.text_area :description, class: 'form-control', placeholder: 'Enter description', size: '50x10'%>
 
@@ -38,19 +38,19 @@
         <div class="dept-div--profile">
           <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
           <center>
-          <a href="" class="btn btn-alert">Remove Association</a>
+            <a href="" class="btn btn-alert">Remove Association</a>
           </center>
         </div>
 
         <div class="dept-div--profile">
           <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
           <center>
-          <a href="" class="btn btn-alert">Remove Association</a>
+            <a href="" class="btn btn-alert">Remove Association</a>
           </center>
         </div>
 
         <div class="dept-div--profile">
-          <%= render partial: "layouts/profile_cardview", locals: {title: "ADD NEW", url: "", img: "icon_add.png"} %>
+          <%= render partial: "layouts/profile_cardview", locals: {title: "Add New", url: staffs_path, img: "icon_add.png"} %>
         </div>
 
     </section>
