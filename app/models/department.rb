@@ -5,6 +5,7 @@ class Department < ApplicationRecord
                         
     has_many :services, dependent: :destroy
     accepts_nested_attributes_for :services, reject_if: lambda {|attributes| attributes['content'].blank?}, allow_destroy: true
+<<<<<<< HEAD
 
     def add_staff(staff)
         staffs << staff
@@ -22,4 +23,8 @@ class Department < ApplicationRecord
         end
     
     end
+=======
+    
+    mount_uploader :picture, DepartmentPictureUploader
+>>>>>>> 219b83d89a1e22b39603a7da4c31777f26199145
 end

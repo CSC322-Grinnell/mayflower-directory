@@ -3,9 +3,9 @@
 
 <h1 class="row center"><%= @department.name %></h1>
 
-<div class="row center dept-breadcrumbs" style="margin: 15px;">
+<p class="row center dept-breadcrumbs" style="margin: 15px;">
   <a href="/departments" >Departments</a> > <%= @department.name %>
-</div>
+</p>
 
 <% if current_user.admin %>
 <center class="btns-bar">
@@ -16,14 +16,14 @@
 <% end %>
 
 <section class="department-info">
-  <div class="col-md-4" style="background-color: #f6f6f6; height: 100%; padding-bottom: 50px;">
+  <div class="col-md-4 dept-col--contact">
     <section>
     	<h2>Contact</h2>
     	<p>Add a staff for this <p>
     </section>
   </div>
 
-  <div class="col-md-8" style="padding-left: 20px;">
+  <div class="col-md-8 dept-col--description">
 
     <section>
     	<h2>Description</h2>
