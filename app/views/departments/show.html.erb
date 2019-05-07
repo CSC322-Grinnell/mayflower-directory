@@ -41,12 +41,10 @@
 
   	<section>
     	<h2>Staff</h2>
+      <% @department.staffs.each do |staff| %>
+        <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
+      <% end %>
 
-      <main class="pictures">
-        <%= render partial: "layouts/profile_cardview", locals: {title: "Dennis Chan", url: "", img: ""} %>
-        <%= render partial: "layouts/profile_cardview", locals: {title: "John Lennon", url: "", img: ""} %>
-        <%= render partial: "layouts/profile_cardview", locals: {title: "Tran Le", url: "", img: ""} %>
-      </main>
 
     </section>
 

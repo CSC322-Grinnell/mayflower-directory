@@ -16,6 +16,8 @@
           <%= f.label :nickname %>
           <%= f.text_field :nickname, class: 'form-control', placeholder: 'Enter nickname' %>
 
+          <%= f.label :title , class: "col control-label"%>
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Enter staff job title' %>
           <%= f.label :landline %>
           <%= f.text_field :landline, class: 'form-control', placeholder: 'Enter landline' %>
 
@@ -33,24 +35,12 @@
           <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
         </div>
       </div>
-
-      <section>
-        <h2>Departments</h2>
-        <ul>
-          <li class="staff-dept-associations">
-            <a href="" class="">department 1</a>
-            <a href="" class="btn btn-alert">Remove</a>
-          </li>
-          <li class="staff-dept-associations">
-            <a href="" class="">department 2</a>
-            <a href="" class="btn btn-alert">Remove</a>
-          </li>
-          <li class="staff-dept-associations">
-            <a href="" class="">department 3</a>
-            <a href="" class="btn btn-alert">Remove</a>
-          </li>
-        </ul>
-      </section>
+          <section>
+            <h2>Departments</h2>
+            <br>
+             <%= f.collection_check_boxes :department_ids, Department.all, :id, :name %>
+            <br>
+          </section>
 
     <center>
       <%= f.submit "Save", class: "btn btn-primary btn-large" %>

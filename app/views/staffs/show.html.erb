@@ -31,7 +31,6 @@
       <p class="bold">Email: <a href="mailto:<%= @staff.email %>"> <%= @staff.email %> </a></p>
     </section>
     <% end %>
-
     <%if @staff.landline.present?
         if @staff.landline.length < 10
           @staff.landline = "641" + @staff.landline
@@ -71,11 +70,11 @@
 
     <section>
       <h2>Departments</h2>
-        <ul>
-          <li class="staff-dept-associations"><a href="">department 1</a></li>
-          <li class="staff-dept-associations"><a href="">department 2</a></li>
-          <li class="staff-dept-associations"><a href="">department 3</a></li>
-        </ul>
+      <ul>
+        <% @staff.departments.each do |dep| %>
+        <li><a href=<%= department_path(dep.id) %>><%= dep.name %> </li>
+        <% end %>
+      </ul>
     </section>
 
   </div>
