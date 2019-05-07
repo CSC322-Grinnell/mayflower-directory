@@ -1,5 +1,5 @@
 class StaffsController < ApplicationController
-  before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /staffs
   # GET /staffs.json
@@ -9,17 +9,17 @@ class StaffsController < ApplicationController
     all_results = @search.result.order("last_name ASC, first_name ASC")
 
     # bucket = get_bucket
-    @results = all_results.map do |profile|
-      if profile.nickname.present?
-        name = "#{profile.last_name}, #{profile.nickname} (#{profile.first_name})"
+    @results = all_results.map do |staff|
+      if staff.nickname.present?
+        name = "#{staff.last_name}, #{staff.nickname} (#{staff.first_name})"
       else
-        name = "#{profile.last_name}, #{profile.first_name}"
+        name = "#{staff.last_name}, #{staff.first_name}"
       end
 
       {
         :name => name,
-        # :image_url => profile_image(profile, bucket),
-        :link => staff_path(profile.id)
+        :image_url => staff_image(staff, bucket),
+        :link => staff_path(staff.id)
       }
     end
   end
@@ -28,6 +28,7 @@ class StaffsController < ApplicationController
   # GET /staffs/1.json
   def show
     @staff = Staff.find(params[:id])
+    @image_url = staff_image(@staff, get_bucket)
   end
 
   # GET /staffs/new
@@ -43,7 +44,6 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
-    # @department = @staff.departments.build
 
     respond_to do |format|
       if @staff.save
@@ -81,11 +81,32 @@ class StaffsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_staff
-      @staff = Staff.find(params[:id])
-    end
+  
+    def staff_image(staff, bucket)
+      folder_name = "images"
+      base_filename = "#{staff.last_name}, #{staff.first_name}"
+      png_filename = "#{base_filename}.png"
+      jpg_filename = "#{base_filename}.jpg"
+      default_url = view_context.image_url("Mayflower_Default_Photo.jpg")
 
+      begin
+        if not staff.avatar.file.nil?
+          return staff.avatar.url
+        elsif bucket.object(File.join(folder_name, jpg_filename)).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(jpg_filename)
+          return uploader.url
+        elsif bucket.object(File.join(folder_name, png_filename)).exists?
+          uploader = AvatarUploader.new
+          uploader.retrieve_from_store!(png_filename)
+          return uploader.url
+        else
+          return default_url
+        end
+      rescue Aws::S3::Errors::BadRequest
+        return default_url
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
       params.require(:staff).permit!
