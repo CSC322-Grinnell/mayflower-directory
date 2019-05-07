@@ -10,24 +10,7 @@
   </center>
 <% end %>
 
-<center>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @departments.each do |department| %>
-        <tr>
-          <div class="gallery">
-            <a href= <%= "/departments/" + department.id.to_s %> >
-              <!-- TODO: used to be department.picture.url but broken, justso the link is truncated -->
-      			<img src= <%= department.picture%> >
-         		<h2 class="info"> <%= department.name%> </h2></a>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</center>
+<% @departments.each do |department| %>
+  <!-- TODO: truncated department.picture.url because of exception -->
+  <%= render partial: "layouts/gallery_cardview", locals: { title: department.name, url: "/departments/" + department.id.to_s, img: department.picture} %>
+<% end %>
