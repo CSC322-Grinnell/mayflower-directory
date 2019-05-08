@@ -19,7 +19,7 @@
 
   <div class="col-md-4 img_container">
     <!-- TODO: check if this exists -->
-      <img style="width: 100%; border: 2px solid;" src="<%= @image_url %>">
+      <img style="width: 100%; border: 2px solid;", src=<%= @staff.avatar.url %>>
   </div>
 
   <div class="col-md-8">
@@ -61,10 +61,8 @@
 
     <% if @staff.bio.present? %>
     <section>
-      <p class="bold">Biography:</p>
-      <p class="profile-bio">
-        <%= @staff.bio %>
-      </p>
+      <p>Biography:</p>
+      <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify"><%= normalize_line_breaks @staff.bio %>            </div>
     <section>
     <% end %>
 

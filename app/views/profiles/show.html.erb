@@ -80,9 +80,7 @@
 
         <% if @profile.biography.present? %>
           <b>Biography:</b>
-            <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify">
-              <%= normalize_line_breaks @profile.biography %>
-            </div>
+            <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify"><%= normalize_line_breaks @profile.biography %>            </div>
         <% end %>
 
           </br>

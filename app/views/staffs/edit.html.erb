@@ -2,71 +2,8 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@staff) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-      <div class="form-horizontal", style="text-align:left">
-        <div class="form-group">
-
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, class: 'form-control', placeholder: 'Enter first name' %>
-
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Enter last name' %>
-
-          <%= f.label :nickname %>
-          <%= f.text_field :nickname, class: 'form-control', placeholder: 'Enter nickname' %>
-          
-          <%= f.label :title , class: "col control-label"%>
-          <%= f.text_field :title, class: 'form-control', placeholder: 'Enter staff job title' %>
-          <%= f.label :landline %>
-          <%= f.text_field :landline, class: 'form-control', placeholder: 'Enter landline' %>
-
-          <%= f.label :cell %>
-          <%= f.text_field :cell, class: 'form-control', placeholder: 'Enter cell' %>
-
-          <%= f.label :email %>
-          <%= f.text_field :email, class: 'form-control', placeholder: 'Enter email' %>
-
-          <%= f.label :address %>
-          <%= f.text_field :address, class: 'form-control', placeholder: 'Enter address' %>
-
-          <%= f.label :bio %>
-          <%= f.text_area :bio, class: 'form-control', placeholder: 'Enter biography',id: "word_count", size: '50x10'%>
-          <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
-        </div>
-      </div>
-          <section>
-            <h2>Departments</h2>
-            <br>
-             <%= f.collection_check_boxes :department_ids, Department.all, :id, :name %>
-            <br>
-          </section>
-
-    <center>
-      <%= f.submit "Save", class: "btn btn-primary btn-large" %>
-      <%= link_to "Delete", @staff, method: :delete, class: "btn btn-primary btn-large btn-alert",
-                                  data: { confirm: "Are you sure you want to delete this staff profile?" } %>
-    </center>
-    <% end %>
+    <%= render 'form' %>
 
   </div>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#word_count").on('keyup', function() {
-    var words = this.value.match(/\S+/g).length;
-
-    if (words > 250) {
-      // Split the string on first 200 words and rejoin on spaces
-      var trimmed = $(this).val().split(/\s+/, 250).join(" ");
-      // Add a space at the end to make sure more typing creates new words
-      $(this).val(trimmed + " ");
-    }
-    else {
-      $('#display_count').text(words);
-      $('#word_left').text(250-words);
-    }
-  });
-});
-</script>

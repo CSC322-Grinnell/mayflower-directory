@@ -18,7 +18,7 @@ class StaffsController < ApplicationController
 
       {
         :name => name,
-        # :image_url => staff_image(staff, bucket),
+        :image_url => staff.avatar.url,
         :link => staff_path(staff.id)
       }
     end
