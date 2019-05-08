@@ -41,7 +41,7 @@
             <div class="dept-div--profile">
               <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
               <center>
-                <a href="" class="btn btn-alert">Remove Association</a>
+                <a href=<%= edit_staff_path(staff.id) %> class="btn btn-alert">Remove Association</a>
               </center>
             </div>
           <% end %>
