@@ -44,7 +44,7 @@
       <% @department.staffs.each do |staff| %>
         <div class="col-md-4 dept-div--profile">
         <a href=<%= staff_path(staff.id) %>>
-          <%= image_tag("Mayflower_Default_Photo.jpg", class: "dept-div--profile_picture") %>
+          <%= image_tag(staff.avatar.url, class: "dept-div--profile_picture") %>
           <h3 class="center"><%= staff.first_name %>, <%= staff.last_name %></h3>
           <% if staff.title.present? %>
           <h4 class="center"><%= staff.title %></h4>
