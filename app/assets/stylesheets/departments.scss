@@ -2,12 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.dept-col--contact {
+
+.dept-div--contact {
   background-color: #f6f6f6;
-  height: 100%;
   padding-bottom: 50px;
 }
 
-.dept-col--description {
+.dept-div--main {
   padding-left: 20px;
+}
+
+.dept-info {
+  margin-top: 10px;
+}
+
+.staff-profile {
+  background-color: #f6f6f6;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  min-height: 150px;
+  margin: 5px 0px 10px 00px;
+}
+
+.staff-profile:hover {
+  border: 2px solid #860601;
+  color: #860601;
 }

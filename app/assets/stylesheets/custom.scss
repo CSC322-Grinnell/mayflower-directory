@@ -51,8 +51,7 @@ h6 {
   font-size: 2.4rem;
 }
 
-p,
-ul {
+p, ul, a {
   font-size: 2rem;
 }
 
@@ -342,10 +341,6 @@ li a:hover {
 }
 
 
-.contact--heading-admins {
-  font-size: 2.5rem;
-}
-
 .center {
   text-align: center;
 }
@@ -386,49 +381,25 @@ li a:hover {
   height: auto;
 }
 
-.emergency-msg {
-  background-color: #f6f6f6;
-  border-style: dashed;
-  border-color: red;
-  width: 100%;
-  margin: 20px;
-  padding: 20px;
-  font-weight: bold;
-}
 
-.staff-profile {
-  background-color: #f6f6f6;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: white;
-  min-height: 150px;
-  margin: 5px 0px 10px 00px;
-}
-
-.staff-profile:hover {
-  border: 2px solid #860601;
-  color: #860601;
-}
 
 .btns-bar {
   width:100%;
   background-color: $gray-lighter;
   padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .btns-bar-btm {
   margin-top: 70px;
 }
 
-.department-info {
-  margin-top: 10px;
-}
 
 .btn-alert {
   background-color: #A60000;
   color: white;
-
-
 }
 .btn-alert:hover{
     color: white;
@@ -436,5 +407,17 @@ li a:hover {
   }
 
 .btn-secondary {
+  background-color: #f6f6f6;
+  color: black;
+}
 
+.bold {
+   font-weight: bold;
+}
+
+#notice{
+  padding: 10px;
+  background-color: green;
+  color: white;
+  text-align: center;
 }
