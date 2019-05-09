@@ -1,11 +1,10 @@
-
-<!-- <p id="notice"><%= notice %></p> -->
-
 <h1 class="row center"><%= @department.name %></h1>
 
-<p class="row center dept-breadcrumbs" style="margin: 15px;">
-  <a href="/departments" >Departments</a> > <%= @department.name %>
-</p>
+<div class="row center breadcrumbs">
+  <p><a href="/departments" >Departments</a> > <%= @department.name %></p>
+</div>
+
+<p id="notice"><%= notice %></p>
 
 <% if current_user.admin %>
 <center class="btns-bar">
@@ -15,16 +14,15 @@
 </center>
 <% end %>
 
-<section class="department-info">
-  <div class="col-md-4 dept-col--contact">
+<section class="dept-info">
+  <div class="col-md-4 dept-div--contact">
     <section>
     	<h2>Contact</h2>
-    	<p>Add a staff for this <p>
-    </section>
+    	<p>TODO: SET LINK FOR THIS BOX</p>
+    <section>
   </div>
 
-  <div class="col-md-8 dept-col--description">
-
+  <div class="col-md-8 dept-div--main">
     <section>
     	<h2>Description</h2>
     	<p><%= @department.description %></p>

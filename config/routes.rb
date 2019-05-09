@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'departments', to: 'static_pages#departments'
   get 'resources/library', to: 'static_pages#library'
 
-
   resources :profiles do
     collection { post :import }
   end
