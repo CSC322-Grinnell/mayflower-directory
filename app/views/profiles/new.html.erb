@@ -6,7 +6,7 @@
     <%= form_for(@user, html: {
                    class: "profile-form profile-form--new"
                  }) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
           <%= f.label :avatar, class: "col control-label" %>

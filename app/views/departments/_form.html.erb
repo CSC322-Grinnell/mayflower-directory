@@ -1,0 +1,56 @@
+<%= form_for @department do |f| %>
+<%= render 'shared/error_messages', object: f.object%>
+
+  <div class="form-horizontal", style="text-align:left">
+    <div class="form-group">
+
+      <div class="col-md-4 dept-col--contact">
+      	<h2><%= f.label :contact %></h2>
+        <%= f.text_area :contact, class: 'form-control', placeholder: 'Enter contact information', size: '10x10' %>
+      </div>
+
+      <div class="col-md-8 dept-col--description">
+
+        <h2><%= f.label :name %></h2>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Enter department name' %>
+
+        <h2><%= f.label :picture %></h2>
+        <p2>(Add or replace the department picture)</p2>
+        <%= f.file_field :picture, class: 'form-control' %>
+        <%= f.hidden_field :picture_cache %>
+        
+      	<h2><%= f.label :description %></h2>
+      	<%= f.text_area :description, class: 'form-control', placeholder: 'Enter description', size: '50x10'%>
+
+      	<h2><%= f.label "Services" %></h2>
+      	<ul>
+          <%= f.fields_for :services do |service|%>
+          <%= render 'service_fields', :f => service %>
+          <% end %>
+        </ul>
+        <div class='links btns-bar'>
+          <%= link_to_add_association 'Add Service', f, :services, class:"btn btn-medium btn-primary"%>
+        </div>
+
+        <!-- TODO: Implement me
+        	<h2>Staff</h2>
+            <p> Not implemented</p>
+        -->
+
+      </div>
+      <div class="clear" style="clear: both">
+      </div>
+
+    </div>
+  </div>
+
+    <%= link_to "Back", :back, class: "btn btn-large",
+                              data: { confirm: "Are you sure you do not want to save?"} %>
+    <%= f.submit "Save", class: "btn btn-large" %>
+    <!-- TODO: add return/cancel button -->
+    <%= link_to "Delete", @department, method: :delete, class: "btn btn-alert btn-large",
+                              data: { confirm: "Are you sure you want to delete this department?"} %>
+
+
+<% end %>
+
