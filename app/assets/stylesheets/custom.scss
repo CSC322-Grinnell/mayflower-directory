@@ -386,10 +386,8 @@ li a:hover {
 .btns-bar {
   width:100%;
   background-color: $gray-lighter;
-  padding: 5px;
-  margin-top: 10px;
+  padding: 10px;
   margin-bottom: 10px;
-  font-weight: bold;
 }
 
 .btns-bar-btm {
@@ -420,4 +418,11 @@ li a:hover {
   background-color: green;
   color: white;
   text-align: center;
+}
+
+.breadcrumb {
+  background-color: white;
+  a {
+    color: #337ab7;
+  }
 }

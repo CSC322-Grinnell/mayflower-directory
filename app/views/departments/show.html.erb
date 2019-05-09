@@ -1,10 +1,16 @@
 <h1 class="row center"><%= @department.name %></h1>
 
+<<<<<<< HEAD
 <div class="row center breadcrumbs">
   <p><a href="/departments" >Departments</a> > <%= @department.name %></p>
 </div>
 
 <p id="notice"><%= notice %></p>
+=======
+<p class="row center breadcrumb">
+  <a href=<%= departments_path %> >Departments</a> > <%= @department.name %>
+</p>
+>>>>>>> 904a8ec362bf7ba4fc4f64c28836eb1123a8449a
 
 <% if current_user.admin %>
 <center class="btns-bar">
@@ -18,8 +24,13 @@
   <div class="col-md-4 dept-div--contact">
     <section>
     	<h2>Contact</h2>
+<<<<<<< HEAD
     	<p>TODO: SET LINK FOR THIS BOX</p>
     <section>
+=======
+    	<p><%= @department.contact %><p>
+    </section>
+>>>>>>> 904a8ec362bf7ba4fc4f64c28836eb1123a8449a
   </div>
 
   <div class="col-md-8 dept-div--main">
@@ -40,18 +51,8 @@
   	<section>
     	<h2>Staff</h2>
       <% @department.staffs.each do |staff| %>
-        <div class="col-md-4 dept-div--profile">
-        <a href=<%= staff_path(staff.id) %>>
-          <%= image_tag(staff.avatar.url, class: "dept-div--profile_picture") %>
-          <h3 class="center"><%= staff.first_name %>, <%= staff.last_name %></h3>
-          <% if staff.title.present? %>
-          <h4 class="center"><%= staff.title %></h4>
-          <%end%>
-        </a>
-      </div>
+        <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
       <% end %>
-
-
     </section>
 
   </div>

@@ -1,7 +1,7 @@
 # stuff will go in the gitignore here #
 
 MayflowerDirectory1.csv
-*.png
+
 
 # Ignore bundler config.
 /.bundle

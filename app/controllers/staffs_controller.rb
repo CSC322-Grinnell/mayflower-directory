@@ -11,9 +11,9 @@ class StaffsController < ApplicationController
     # bucket = get_bucket
     @results = all_results.map do |staff|
       if staff.nickname.present?
-        name = "#{staff.last_name}, #{staff.nickname} (#{staff.first_name})"
+        name = "#{staff.nickname} (#{staff.first_name}) #{staff.last_name}"
       else
-        name = "#{staff.last_name}, #{staff.first_name}"
+        name = "#{staff.first_name} #{staff.last_name}"
       end
 
       {
@@ -83,7 +83,7 @@ class StaffsController < ApplicationController
   end
 
   private
-  
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
       params.require(:staff).permit!
