@@ -22,6 +22,11 @@
          href="<%= profiles_path %>">
         Reset
       </a>
+      <% if current_user.admin %>
+       <a class="directory-search__button directory-search__button" href="<%= new_user_registration_path %>">
+          Create Profile
+        </a>
+    <% end %>
     </div>
   </div>
 <% end %>
