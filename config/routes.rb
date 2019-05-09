@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :services
+  resources :departments
+
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'profiles/new'
@@ -8,7 +11,9 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
-  get 'display', to: 'static_pages#display'
+  get 'departments', to: 'static_pages#departments'
+  get 'resources/library', to: 'static_pages#library'
+
 
   resources :profiles do
     collection { post :import }
