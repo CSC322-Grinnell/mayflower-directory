@@ -32,7 +32,7 @@ Please feel free to use a different markup language if you do not plan to run
 * Choose the clone from Git or Mercurial URL option and enter the url of the Github repo
 * Everyone should have an individual private workspace. Some things like account info and profiles will only exist on your personal workspace.
 
-#### NOTE: Cloud9 will soon be shut down, create local repositories with other services (AWS), or on your personal machine 
+#### NOTE: Cloud9 will soon be shut down, create local repositories with other services (AWS, Docker), or on your personal machine 
 
 #### In the Workspace:
 * Run on terminal bundle install

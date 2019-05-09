@@ -41,16 +41,8 @@
 * Tran Le
 * John Lennon
 * Zander Otavka
-
-### Links from past teams: 
-
-* [Spring 2017 Team's Waffle Page](https://waffle.io/baejongh/mayflower)
-* Fall 2017 Team's Google Slides
-	- https://docs.google.com/presentation/d/1KqmDjSqzYSs7QuO1QVgaVKArPO2P7_NTjr2TN88mWIM/edit#slide=id.p
-	- https://docs.google.com/presentation/d/1qf7VvQlvfgZK39O7cuS5852ypNCjBLp9kQgYAGpRiI8/edit#slide=id.p
-	- https://docs.google.com/presentation/d/1s0hZl9CJ3HiLw7Ek5VSHu1OCMrWThQ3EI0k_ayZQ9vk/edit#slide=id.p
    
-**Please contact a Fall 2017 member for links, passwords &/or invitations. (Trello, Slack, Heroku App)**
+**Please contact a previous team member for links, passwords &/or invitations. (Trello, Slack, Heroku App)**
     
 #### Setting Up Your Work Environment: 
     
@@ -66,15 +58,15 @@ Heroku. For setting up the CLI and credentials, you can refer to the
 [official guide](https://devcenter.heroku.com/articles/heroku-cli).
 
 After cloning the application, run
-`heroku git:remote -a mayflower-directory-staging` in the root of the
+`heroku git:remote -a mayflowerdirectory-staging` in the root of the
 project to add a `heroku` git remote. You can then deploy changes that
 you have committed by pushing to the `heroku` remote with
 `git push heroku master`. These changes will be available at the
 `mayflower-directory-staging` Heroku app.
 
-From the Heroku dashboard, under the `mayflower` pipeline, you can then
-deploy the changes you made from `mayflower-directory-staging` to
-`mayflower-directory`. This is the app that is will be used by the
+From the Heroku dashboard, under the `mayflowerdirectory` pipeline, you can then
+deploy the changes you made from `mayflowerdirectory-staging` to
+`mayflowerdirectory`. This is the app that is will be used by the
 Mayflower residents, and so you should be careful in making sure all the
 changes you made to the staging app work correctly.
     
@@ -91,3 +83,5 @@ Below are some notes from previous team members:
 4. Asking questions is much more efficient than googling the answer - (also sometimes all you need to do is restart)
 5. Be POLITE to the clients and make sure to ask questions and TALK to them.
 6. NEVER use `git add .`
+7. Review each others' code to keep everyone on the same page (Github pull request reviews)
+8. If there's a weird issue, try restarting the server
