@@ -27,11 +27,11 @@
           <%= f.fields_for :services do |service|%>
           <%= render 'service_fields', :f => service %>
           <% end %>
-        </ul>
         <div class='links btns-bar'>
           <%= link_to_add_association 'Add Service', f, :services, class:"btn btn-medium btn-primary"%>
         </div>
-
+        </ul>
+        
         <section>
 
     	    <h2>Staff</h2>

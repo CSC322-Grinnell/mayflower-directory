@@ -76,7 +76,7 @@
     <% if @profile.biography.present? %>
     <section>
       <p class="bold">Biography:</p>
-      <p class="profile-bio", style="white-space:pre-line text-align:justify"><%= normalize_line_breaks @profile.biography %></p>
+      <p style="white-space:pre-line; text-align:justify"><%= normalize_line_breaks @profile.biography %></p>
     <section>
     <% end %>
 
