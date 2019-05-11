@@ -136,4 +136,11 @@ class ProfilesController < ApplicationController
         return default_url
       end
     end
+
+    def profile_name(profile)
+      if (profile.nickname.blank?)
+        return profile.last_name + ", " + profile.first_name
+      end
+      return profile.last_name + ", " + profile.nickname + ", (" + profile.first_name + ")"
+    end
 end
