@@ -32,7 +32,6 @@ h1 {
 h2 {
   font-size: 4.25rem;
   font-weight: bold;
-  text: underline;
 }
 
 h3 {
@@ -51,10 +50,11 @@ h6 {
   font-size: 2.4rem;
 }
 
-p, ul, a {
+p,
+ul,
+a {
   font-size: 2rem;
 }
-
 
 .container {
   background: #ffffff;
@@ -211,7 +211,6 @@ li a:hover {
   height: 50px;
 }
 
-
 /*home*/
 
 .container1 {
@@ -224,8 +223,6 @@ li a:hover {
   position: relative;
   text-align: center;
 }
-
-
 
 /* Gallery */
 
@@ -340,7 +337,6 @@ li a:hover {
   }
 }
 
-
 .center {
   text-align: center;
 }
@@ -350,10 +346,9 @@ li a:hover {
 }
 
 .gallery-default_background {
-  background-color:#376e8c;
+  background-color: #376e8c;
 }
 /* Specific Classes */
-
 
 .galleries {
   display: flex;
@@ -381,10 +376,8 @@ li a:hover {
   height: auto;
 }
 
-
-
 .btns-bar {
-  width:100%;
+  width: 100%;
   background-color: $gray-lighter;
   padding: 5px;
   margin-top: 10px;
@@ -396,15 +389,15 @@ li a:hover {
   margin-top: 70px;
 }
 
-
 .btn-alert {
-  background-color: #A60000;
+  background-color: #a60000;
   color: white;
 }
-.btn-alert:hover{
-    color: white;
-  background-color: #8B0000;
-  }
+
+.btn-alert:hover {
+  color: white;
+  background-color: #8b0000;
+}
 
 .btn-secondary {
   background-color: #f6f6f6;
@@ -412,10 +405,10 @@ li a:hover {
 }
 
 .bold {
-   font-weight: bold;
+  font-weight: bold;
 }
 
-#notice{
+#notice {
   padding: 10px;
   background-color: green;
   color: white;
