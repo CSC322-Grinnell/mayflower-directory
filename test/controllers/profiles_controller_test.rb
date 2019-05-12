@@ -1,3 +1,4 @@
+require "minitest/mock"
 require 'test_helper'
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
@@ -47,6 +48,18 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should refresh cached avatar url when creating a profile" do
+    login_as(users(:admin))
+    refresh_mock = MiniTest::Mock.new
+    refresh_mock.expect(:call, nil, [Profile])
+
+    CacheProfileImagesJob.stub(:refresh_profile!, refresh_mock) do
+      post profiles_path, params: { profile: @bob_attributes }
+    end
+
+    assert_mock refresh_mock
+  end
+
   test "should not let unprivileged users create profiles" do
     login_as(users(:normal))
     assert_no_difference -> { Profile.all.count } do
@@ -85,6 +98,19 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     @bob_attributes.each do |key, value|
       assert_equal value, profile[key]
     end
+  end
+
+  test "should refresh cached avatar url when updating a profile" do
+    login_as(users(:admin))
+    profile = profiles(:frog)
+    refresh_mock = MiniTest::Mock.new
+    refresh_mock.expect(:call, nil, [Profile])
+
+    CacheProfileImagesJob.stub(:refresh_profile!, refresh_mock) do
+      put profile_path(profile), params: { profile: @bob_attributes }
+    end
+
+    assert_mock refresh_mock
   end
 
   test "should not let unprivileged users update profiles" do

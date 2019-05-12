@@ -24,33 +24,25 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = Profile.find(params[:id])
-    if @user.update_attributes(profile_params)
+    profile = Profile.find(params[:id])
+    if profile.update_attributes(profile_params)
+      CacheProfileImagesJob.refresh_profile!(profile)
       flash[:success] = "Profile updated"
-      redirect_to profile_path(@user.id)
+      redirect_to profile_path(profile)
     else
       render 'edit'
     end
   end
 
   def create
-    puts "*** CREATING A NEW PROFILE ****"
-    puts "Params object:" + profile_params.to_s
-    puts "Params hash:  " + profile_params.to_unsafe_h.to_s
-    avatar = profile_params.delete(:avatar)
-    puts "Avatar:       " + avatar.to_s
-
-    @user = Profile.new(profile_params)
-    #puts "User is "
-    #puts @user.to_s
-    if @user.save
-      flash[:notice] = "Profile sucessfully added"
-      redirect_to '/profiles/' + @user[:id].to_s
+    profile = Profile.new(profile_params)
+    if profile.save
+      CacheProfileImagesJob.refresh_profile!(profile)
+      flash[:success] = "Profile created"
+      redirect_to profile_path(profile)
     else
-      puts "** Could not save profile"
-      puts @user.errors.full_messages
-      flash[:notice] = "there was a problem creating the new profile"
-      redirect_to '/profiles/new'
+      flash[:notice] = "There was a problem creating the new profile"
+      redirect_to new_profile_path
     end
   end
 
