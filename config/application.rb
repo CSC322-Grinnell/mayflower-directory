@@ -25,7 +25,7 @@ module Workspace
 
     if defined?(Rails::Server)
       config.after_initialize do
-        CacheProfileImagesJob.perform_now
+        CacheProfileAvatarsJob.perform_now
       end
     end
   end

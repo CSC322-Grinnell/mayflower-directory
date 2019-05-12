@@ -7,8 +7,8 @@ module ProfilesHelper
     end
   end
 
-  def picture_url(profile)
-    profile.cached_picture_url or image_url("default_profile_photo.jpg")
+  def avatar_url(profile)
+    profile.cached_avatar_url or image_url("default_avatar.jpg")
   end
 
   def normalize_line_breaks(text)

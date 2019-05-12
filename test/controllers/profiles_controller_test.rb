@@ -53,7 +53,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     refresh_mock = MiniTest::Mock.new
     refresh_mock.expect(:call, nil, [Profile])
 
-    CacheProfileImagesJob.stub(:refresh_profile!, refresh_mock) do
+    CacheProfileAvatarsJob.stub(:refresh_profile!, refresh_mock) do
       post profiles_path, params: { profile: @bob_attributes }
     end
 
@@ -106,7 +106,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     refresh_mock = MiniTest::Mock.new
     refresh_mock.expect(:call, nil, [Profile])
 
-    CacheProfileImagesJob.stub(:refresh_profile!, refresh_mock) do
+    CacheProfileAvatarsJob.stub(:refresh_profile!, refresh_mock) do
       put profile_path(profile), params: { profile: @bob_attributes }
     end
 

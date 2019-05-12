@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
   def update
     profile = Profile.find(params[:id])
     if profile.update_attributes(profile_params)
-      CacheProfileImagesJob.refresh_profile!(profile)
+      CacheProfileAvatarsJob.refresh_profile!(profile)
       flash[:success] = "Profile updated"
       redirect_to profile_path(profile)
     else
@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
   def create
     profile = Profile.new(profile_params)
     if profile.save
-      CacheProfileImagesJob.refresh_profile!(profile)
+      CacheProfileAvatarsJob.refresh_profile!(profile)
       flash[:success] = "Profile created"
       redirect_to profile_path(profile)
     else
