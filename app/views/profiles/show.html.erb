@@ -72,8 +72,8 @@
     <% if @profile.biography.present? %>
     <section>
       <p class="bold">Biography:</p>
-      <p class="profile-bio">
-        <%= @profile.biography %>
+      <p class="profile-detail__bio">
+        <%= normalize_line_breaks(@profile.biography) %>
       </p>
     <section>
     <% end %>
@@ -84,7 +84,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  var minimized_elements = $(".profile-bio");
+  var minimized_elements = $(".profile-detail__bio");
   var minimize_character_count = 100;
 
   minimized_elements.each(function(){

@@ -109,6 +109,11 @@
   }
 }
 
+.profile-detail__bio {
+  text-align: justify;
+  white-space: pre-line;
+}
+
 //old legacy code~~~
 
 .img_container {
@@ -203,9 +208,4 @@
   a[href]:after {
     content: none !important;
   }
-}
-
-.profile__bio {
-  text-align:justify;
-
 }

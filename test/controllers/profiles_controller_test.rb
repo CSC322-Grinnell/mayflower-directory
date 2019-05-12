@@ -22,8 +22,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get profiles_path
     assert_response :success
     assert_select ".profile" do |profile_elements|
-      assert_select profile_elements[0], ".profile__name", "Green, Froggy (Frog)"
-      assert_select profile_elements[1], ".profile__name", "No'Info, Sparse"
+      assert_select profile_elements[0], ".profile__name", "Froggy Green (Frog)"
+      assert_select profile_elements[1], ".profile__name", "Sparse No'Info"
     end
   end
 
@@ -31,7 +31,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     login_as(users(:normal))
     get profile_path(profiles(:frog))
 
-    assert_select "#bio", "One\n\ntwo\n\nthree\n\nfour"
+    assert_select ".profile-detail__bio", "One\n\ntwo\n\nthree\n\nfour"
   end
 
   test "should get new" do
@@ -109,21 +109,21 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal profile_path(profile), path
   end
-  
-  test "Unpriveleged users should not be able to import profiles" do 
+
+  test "Unpriveleged users should not be able to import profiles" do
     login_as(users(:normal))
     profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
-    
-    assert_no_difference -> {Profile.all.count} do 
+
+    assert_no_difference -> {Profile.all.count} do
       post import_profiles_path, params:{file: profile_csv}
     end
   end
-  
+
   test "Admins should be able to import profiles" do
     login_as(users(:admin))
     profile_csv = fixture_file_upload('profile_imports.csv','text/csv')
-    
-    assert_difference -> {Profile.all.count}, 4 do 
+
+    assert_difference -> {Profile.all.count}, 4 do
       post import_profiles_path, params:{file: profile_csv}
     end
   end
