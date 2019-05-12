@@ -6,13 +6,7 @@
 /* Keep the follwoing html style for correct rem sizing */
 html {
   font-size: 62.5%; /* 62.5% of 16px (default font size) = 10px */
-}
-
-body {
-  padding-top: 80px;
   font-family: "Libre Franklin", sans-serif;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 section {
@@ -95,7 +89,7 @@ a {
   li a {
     display: block;
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
     padding: 20px 20px;
     text-decoration: none;
@@ -126,7 +120,7 @@ li a:hover {
   padding-right: 10px;
   border-top: 1px solid #eaeaea;
   color: #777;
-  font-size: 13pt;
+  font-size: 1.3rem;
 }
 
 .footer p {
@@ -183,7 +177,7 @@ li a:hover {
 /*Search form*/
 .form-group {
   width: 100%;
-  font-size: 16pt;
+  font-size: 1.6rem;
 }
 
 .btn-large {
@@ -203,7 +197,7 @@ li a:hover {
 }
 
 .form-control {
-  font-size: 14pt;
+  font-size: 1.4rem;
   height: 50px;
 }
 
@@ -294,10 +288,6 @@ li a:hover {
     -webkit-rtl-ordering: logical;
     cursor: default;
     border-color: initial;
-  }
-  body {
-    padding-left: 10px;
-    padding-right: 10px;
   }
   .btn-large {
     height: 50%;
