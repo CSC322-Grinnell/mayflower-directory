@@ -50,14 +50,14 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should refresh cached avatar url when creating a profile" do
     login_as(users(:admin))
-    refresh_mock = MiniTest::Mock.new
-    refresh_mock.expect(:call, nil, [Profile])
+    service_mock = MiniTest::Mock.new
+    service_mock.expect(:refresh!, true, [Profile])
 
-    CacheProfileAvatarsJob.stub(:refresh_profile!, refresh_mock) do
+    CacheProfileAvatarService.stub(:new, service_mock) do
       post profiles_path, params: { profile: @bob_attributes }
     end
 
-    assert_mock refresh_mock
+    assert_mock service_mock
   end
 
   test "should not let unprivileged users create profiles" do
@@ -103,14 +103,14 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should refresh cached avatar url when updating a profile" do
     login_as(users(:admin))
     profile = profiles(:frog)
-    refresh_mock = MiniTest::Mock.new
-    refresh_mock.expect(:call, nil, [Profile])
+    service_mock = MiniTest::Mock.new
+    service_mock.expect(:refresh!, true, [profile])
 
-    CacheProfileAvatarsJob.stub(:refresh_profile!, refresh_mock) do
+    CacheProfileAvatarService.stub(:new, service_mock) do
       put profile_path(profile), params: { profile: @bob_attributes }
     end
 
-    assert_mock refresh_mock
+    assert_mock service_mock
   end
 
   test "should not let unprivileged users update profiles" do
