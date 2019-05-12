@@ -38,7 +38,8 @@ gem 'devise-security'
 gem 'rails_email_validator'
 gem 'bootstrap-sass', '3.3.6'
 
-# 
+# Cocoon provides nested form helpers
+gem 'cocoon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -77,7 +78,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'test-unit'
-  gem 'sqlite3'
+  gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
   gem 'figaro'
   gem 'phony_rails'
   gem "minitest", "5.10.1"

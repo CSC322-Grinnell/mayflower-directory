@@ -1,41 +1,38 @@
-<html>
-  <head>  
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-  </head>
+<h1 class="center">Create Resident Profile</h1>
 
-  <body>
-     <div class="title">
-         <h1 class="centered">Create Resident Profile</h1>
-         </br>
-     </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
-          <div class="form-horizontal", style="text-align:left">
-            <div class="form-group">
-              
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, html: {
+                   class: "profile-form profile-form--new"
+                 }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-horizontal", style="text-align:left">
+        <div class="form-group">
+          <%= f.label :avatar, class: "col control-label" %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+          <%= f.hidden_field :avatar_cache %>
+
           <%= f.label :first_name, class: "col control-label" %>
           <%= f.text_field :first_name, class: 'form-control', placeholder: 'Enter first name' %>
 
           <%= f.label :last_name, class: "col control-label" %>
           <%= f.text_field :last_name, class: 'form-control', placeholder: 'Enter last name' %>
-          
+
           <%= f.label :nickname , class: "col control-label"%>
           <%= f.text_field :nickname, class: 'form-control', placeholder: 'Enter nickname' %>
-          
+
           <%= f.label :landline , class: "col control-label"%>
           <%= f.text_field :landline, class: 'form-control', placeholder: 'Enter landline' %>
-          
+
           <%= f.label :cell , class: "col control-label"%>
           <%= f.text_field :cell, class: 'form-control', placeholder: 'Enter cell' %>
-          
+
           <%= f.label :email , class: "col control-label"%>
           <%= f.text_field :email, class: 'form-control', placeholder: 'Enter email' %>
-          
+
           <%= f.label :address , class: "col control-label"%>
           <%= f.text_field :address, class: 'form-control', placeholder: 'Enter address' %>
-          
+
           <%= f.label :neighborhood , class: "col control-label"%>
           <br>
           <%= f.collection_select(:neighborhood, Profile.select(:neighborhood).uniq.order(:neighborhood), :neighborhood, :neighborhood, :include_blank => true) %>
@@ -43,35 +40,30 @@
           <br>
           <%= f.label :spouse , class: "col control-label"%>
           <%= f.text_field :spouse, class: 'form-control', placeholder: 'Enter spouse' %>
-          
+
           <%= f.label :biography %>
           <%= f.text_area :biography, class: 'form-control', placeholder: 'Enter biography',id: "word_count", size: '50x10'%>
           <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
-          
-          <!--This is for uploading resident photos, it doesn't work yet-->
-          <!--<%= f.label :photograph , class: "col control-label"%>-->
-          <!--<%= f.file_field :avatar, class: 'form_control' %>-->
-          </div>
-          </div>
-          <center>
-          <%= f.submit "Save", class: "btn btn-primary btn-large" %>
-         </center>
-        <% end %>
-        <!--This code is used for batch importing profile information from a CSV file-->
-        <!--The CSV must not have blank space at the end of the document, and column names -->
-        <!--must match those in the code-->
-        <!--Profiles will be duplicated if uploaded more than once-->
-        <!--<div>-->
-        <!--  <h3>Import a CSV File</h3>-->
-        <!--  <%= form_tag import_profiles_path, multipart: true do %>-->
-        <!--    <%= file_field_tag :file %>-->
-        <!--    <%= submit_tag "Import CSV" %>-->
-        <!--  <% end %>-->
-        <!--</div>-->
+
+        </div>
       </div>
-    </div>
-  </body>
-</html>
+      <div class="center">
+        <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+      </div>
+    <% end %>
+    <!--This code is used for batch importing profile information from a CSV file-->
+    <!--The CSV must not have blank space at the end of the document, and column names -->
+    <!--must match those in the code-->
+    <!--Profiles will be duplicated if uploaded more than once-->
+    <!--<div>-->
+    <!--  <h3>Import a CSV File</h3>-->
+    <!--  <%= form_tag import_profiles_path, multipart: true do %>-->
+    <!--    <%= file_field_tag :file %>-->
+    <!--    <%= submit_tag "Import CSV" %>-->
+    <!--  <% end %>-->
+    <!--</div>-->
+  </div>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -89,5 +81,5 @@ $(document).ready(function() {
       $('#word_left').text(250-words);
     }
   });
-}); 
+});
 </script>

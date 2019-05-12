@@ -2,7 +2,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
@@ -85,15 +85,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   #more whitelisting so only images get uploaded to the AWS
   def content_type_whitelist
-   /image\//
+    /image\//
   end
 
   # blacklisting some stuff thats not images
   def content_type_blacklist
-   ['application/text', 'application/json']
+    ['application/text', 'application/json']
   end
-
-  process resize_to_fit: [800, 800]
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
   def yourein
     render html: "Jong Hoon Bae"
   end
+  protected
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+  
 end
