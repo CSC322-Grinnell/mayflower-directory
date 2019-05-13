@@ -11,7 +11,7 @@
 
 <main class="pictures">
   <% if @results.blank? %>
-    <p>No results. Try searching for something else.</p>
+    <p>No results.</p>
   <% else %>
     <% @results.each do |profile| %>
       <%= render partial: "layouts/profile_cardview", locals: {title: profile[:name], url: profile[:link], img: profile[:image_url]} %>
