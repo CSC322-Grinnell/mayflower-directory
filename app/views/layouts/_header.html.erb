@@ -20,8 +20,6 @@
         <li><%= link_to "Directory", profiles_path %></li>
         <li><%= link_to "Departments", departments_path %></li>
         <% if current_user.admin %>
-          <li><%= link_to "Create Profile", new_profile_path %></li>
-          <li><%= link_to "Create User", new_user_registration_path %></li>
           <li><%= link_to "Users", users_path %></li>
         <% end %>
         <li><%= link_to "Resources", home_path %></li>
