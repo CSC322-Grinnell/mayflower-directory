@@ -22,4 +22,6 @@ class Department < ApplicationRecord
         end
 
     end
+    
+    mount_uploader :picture, DepartmentPictureUploader
 end

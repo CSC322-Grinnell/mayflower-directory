@@ -51,8 +51,7 @@ h6 {
   font-size: 2.4rem;
 }
 
-p,
-ul {
+p, ul, a {
   font-size: 2rem;
 }
 
@@ -342,10 +341,6 @@ li a:hover {
 }
 
 
-.contact--heading-admins {
-  font-size: 2.5rem;
-}
-
 .center {
   text-align: center;
 }
@@ -387,6 +382,7 @@ li a:hover {
 }
 
 
+
 .btns-bar {
   width:100%;
   background-color: $gray-lighter;
@@ -398,15 +394,10 @@ li a:hover {
   margin-top: 70px;
 }
 
-.department-info {
-  margin-top: 10px;
-}
 
 .btn-alert {
   background-color: #A60000;
   color: white;
-
-
 }
 .btn-alert:hover{
     color: white;
@@ -414,7 +405,19 @@ li a:hover {
   }
 
 .btn-secondary {
+  background-color: #f6f6f6;
+  color: black;
+}
 
+.bold {
+   font-weight: bold;
+}
+
+#notice{
+  padding: 10px;
+  background-color: green;
+  color: white;
+  text-align: center;
 }
 
 .breadcrumb {
@@ -422,4 +425,6 @@ li a:hover {
   a {
     color: #337ab7;
   }
+  padding: 0px;
+  margin-bottom: 10px;
 }
