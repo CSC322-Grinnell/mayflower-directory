@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = Profile.find(params[:id])
+    @image_url = profile_image(@user, get_bucket)
   end
 
   def search
@@ -134,5 +135,12 @@ class ProfilesController < ApplicationController
       rescue Aws::S3::Errors::BadRequest
         return default_url
       end
+    end
+
+    def profile_name(profile)
+      if (profile.nickname.blank?)
+        return profile.last_name + ", " + profile.first_name
+      end
+      return profile.last_name + ", " + profile.nickname + ", (" + profile.first_name + ")"
     end
 end

@@ -1,6 +1,3 @@
-
-<!-- <p id="notice"><%= notice %></p> -->
-
 <h1 class="row center"><%= @department.name %></h1>
 
 <p class="row center breadcrumb">
@@ -15,19 +12,18 @@
 </center>
 <% end %>
 
-<section class="department-info">
-  <div class="col-md-4 dept-col--contact">
+<section class="dept-info">
+  <div class="col-md-4 dept-div--contact">
     <section>
     	<h2>Contact</h2>
-    	<p><%= @department.contact %><p>
+    	<p style="white-space:pre-line; text-align:justify"><%= normalize_line_breaks @department.contact %></p>
     </section>
   </div>
 
-  <div class="col-md-8 dept-col--description">
-
+  <div class="col-md-8 dept-div--main">
     <section>
     	<h2>Description</h2>
-    	<p><%= @department.description %></p>
+    	<p style="white-space:pre-line; text-align:justify"><%= @department.description %></p>
     </section>
 
     <section>
@@ -42,7 +38,7 @@
   	<section>
     	<h2>Staff</h2>
       <% @department.staffs.each do |staff| %>
-        <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: ""} %>
+        <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: staff.avatar.url} %>
       <% end %>
     </section>
 

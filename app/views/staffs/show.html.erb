@@ -18,12 +18,20 @@
 <div class="row">
 
   <div class="col-md-4 img_container">
-    <!-- TODO: To be implemented -->
+    <!-- TODO: check if this exists -->
+      <img src=<%= @staff.avatar.url %>>
   </div>
 
   <div class="col-md-8">
 
     <h2>Contact Information</h2>
+
+
+    <% if @staff.title.present? %>
+    <section>
+      <p class="bold">Title: <%= @staff.title %> </a></p>
+    </section>
+    <% end %>
 
     <% if @staff.email.present? %>
     <section>
@@ -60,10 +68,8 @@
 
     <% if @staff.bio.present? %>
     <section>
-      <p class="bold">Biography:</p>
-      <p class="profile-bio">
-        <%= @staff.bio %>
-      </p>
+      <p>Biography:</p>
+      <div id="bio", style="font-size:25px; white-space: pre-line; text-align:justify"><%= normalize_line_breaks @staff.bio %>            </div>
     <section>
     <% end %>
 
