@@ -6,13 +6,7 @@
 /* Keep the follwoing html style for correct rem sizing */
 html {
   font-size: 62.5%; /* 62.5% of 16px (default font size) = 10px */
-}
-
-body {
-  padding-top: 100px;
   font-family: "Libre Franklin", sans-serif;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 section {
@@ -26,38 +20,34 @@ textarea {
 h1 {
   font-size: 5rem;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 4.5rem;
+  font-size: 4.25rem;
   font-weight: bold;
-  text: underline;
 }
 
 h3 {
-  font-size: 4rem;
+  font-size: 3.75rem;
 }
 
 h4 {
-  font-size: 3.5rem;
+  font-size: 3.3rem;
 }
 
 h5 {
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 h6 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 
 p,
-ul {
+ul,
+a {
   font-size: 2rem;
-}
-
-ul {
-  list-style: none;
 }
 
 .container {
@@ -99,7 +89,7 @@ ul {
   li a {
     display: block;
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
     padding: 20px 20px;
     text-decoration: none;
@@ -130,7 +120,7 @@ li a:hover {
   padding-right: 10px;
   border-top: 1px solid #eaeaea;
   color: #777;
-  font-size: 13pt;
+  font-size: 1.6rem;
 }
 
 .footer p {
@@ -187,7 +177,7 @@ li a:hover {
 /*Search form*/
 .form-group {
   width: 100%;
-  font-size: 16pt;
+  font-size: 1.8rem;
 }
 
 .btn-large {
@@ -202,6 +192,10 @@ li a:hover {
   background-color: #860601;
 }
 
+.btn-medium {
+  width: 250px;
+}
+
 .form-control {
   font-size: 14pt;
   height: 50px;
@@ -209,16 +203,6 @@ li a:hover {
 
 .custom-select {
   height: 50px;
-}
-
-.reset {
-  font-size: 15pt;
-  color: #376e8c;
-  text-decoration: underline;
-}
-
-.reset:hover {
-  color: #860601;
 }
 
 /*home*/
@@ -234,6 +218,8 @@ li a:hover {
   text-align: center;
 }
 
+/* Gallery */
+
 .galleries {
   display: flex;
   flex-flow: row wrap;
@@ -243,9 +229,7 @@ li a:hover {
 .gallery {
   margin: 5px;
   border: 2px solid #ccc;
-  max-width: 30%;
-  min-width: 350px;
-  display: inline-block;
+  width: 350px;
 }
 
 .gallery:hover {
@@ -253,9 +237,20 @@ li a:hover {
   color: #860601;
 }
 
-.gallery img {
-  max-width: 100%;
-  height: auto;
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: block;
+}
+
+.gallery-picture_wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 65%; // maintains aspect ratio relative to div width
+  position: relative;
 }
 
 .info {
@@ -269,6 +264,8 @@ li a:hover {
   text-decoration: underline;
   color: #860601;
 }
+
+/* ---------- */
 
 @media (min-width: 300px) and (max-width: 1000px) {
   .navbar-collapse.collapse {
@@ -291,10 +288,6 @@ li a:hover {
     -webkit-rtl-ordering: logical;
     cursor: default;
     border-color: initial;
-  }
-  body {
-    padding-left: 10px;
-    padding-right: 10px;
   }
   .btn-large {
     height: 50%;
@@ -334,14 +327,80 @@ li a:hover {
   }
 }
 
-.contact--heading-admins {
-  font-size: 2.5rem;
-}
-
 .center {
   text-align: center;
 }
 
 .icon-bar {
   background-color: #ffffff;
+}
+
+.gallery-default_background {
+  background-color: #376e8c;
+}
+/* Specific Classes */
+
+.galleries {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.gallery {
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 18px #d3d3d3;
+  max-width: 30%;
+  min-width: 350px;
+  display: inline-block;
+}
+
+.gallery:hover {
+  border: 2px solid #860601;
+  color: #860601;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btns-bar {
+  width: 100%;
+  background-color: $gray-lighter;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btns-bar-btm {
+  margin-top: 70px;
+}
+
+.btn-alert {
+  background-color: #a60000;
+  color: white;
+}
+
+.btn-alert:hover {
+  color: white;
+  background-color: #8b0000;
+}
+
+.btn-secondary {
+  background-color: #f6f6f6;
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#notice {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  text-align: center;
 }

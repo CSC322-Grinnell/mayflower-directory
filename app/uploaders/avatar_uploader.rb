@@ -2,17 +2,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
-
-  #stuff in comments can be commented out if we need them later
   def store_dir
     'images'
-    #/mayflower-data/images
   end
-  
+
   def cache_dir
     'images'
   end
@@ -39,28 +36,19 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-   def extension_whitelist
-     %w(jpg jpeg gif png)
-   end
-   
-   #more whitelisting so only images get uploaded to the AWS
-   def content_type_whitelist
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  #more whitelisting so only images get uploaded to the AWS
+  def content_type_whitelist
     /image\//
-   end
-   
-   # blacklisting some stuff thats not images
-   def content_type_blacklist
+  end
+
+
+  # blacklisting some stuff thats not images
+  def content_type_blacklist
     ['application/text', 'application/json']
-   end
-   
-   
-   #for resizing images to thumbnails
-   
-
-   process resize_to_fit: [800, 800]
-
-   version :thumb do
-     process resize_to_fill: [200,200]
-   end
+  end
 
 end

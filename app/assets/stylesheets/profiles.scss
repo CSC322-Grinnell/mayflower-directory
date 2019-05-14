@@ -35,6 +35,7 @@
   flex: 1;
   padding: 0.8rem;
   margin: 0.8rem;
+  font-size: 2rem;
   background-color: #376e8c;
   color: white;
   border-radius: 2px;
@@ -67,14 +68,15 @@
 }
 
 .profile {
+  display: inline-block;
+  vertical-align: top;
+
   @media screen {
     width: 250px;
     margin: 5px;
   }
 
   @media print {
-    display: inline-block;
-    vertical-align: top;
     width: calc(25% - 1em);
     margin: 5px 0;
   }
@@ -105,6 +107,11 @@
   @media print {
     font-size: 1.5rem;
   }
+}
+
+.profile-detail__bio {
+  text-align: justify;
+  white-space: pre-line;
 }
 
 //old legacy code~~~
@@ -201,4 +208,9 @@
   a[href]:after {
     content: none !important;
   }
+}
+
+.profile__bio {
+  text-align:justify;
+
 }

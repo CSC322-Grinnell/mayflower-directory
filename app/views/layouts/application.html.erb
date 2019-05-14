@@ -12,9 +12,23 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
-      <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= render 'layouts/footer' %>
     </div>
   </body>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <script>
+    var n = document.getElementById('notice');
+
+    if (n.innerHTML === "")
+      n.style["display"] = "none";
+    else
+      n.style["display"] = "block";
+  </script>
+
 </html>

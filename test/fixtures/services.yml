@@ -1,0 +1,23 @@
+faa-job1:
+  content: Make 737MAX fly again
+  department_id: 1
+
+faa-job2:
+  content: Push NEXTGEN and fail
+  department_id: 1
+
+faa-job3:
+  content: Spend 13B to rehaul the air traffic control system
+  department_id: 1
+
+faa-job4:
+  content: Privatize air traffic control services
+  department_id: 1
+
+irs-job1:
+  content: Take your money
+  department_id: 2
+
+irs-job2:
+  content: Profit!!!
+  department_id: 2
