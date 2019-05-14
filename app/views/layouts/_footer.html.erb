@@ -10,9 +10,7 @@
     <ul>
       <li><%= link_to "Questions", '/about' %></li>
       <li><%= link_to "Contact", '/help' %></li>
-      <% if user_signed_in? %>
       <li><%= link_to "Change Password", edit_user_registration_path %></li>
-      <% end %>
     </ul>
   </nav>
 </footer>

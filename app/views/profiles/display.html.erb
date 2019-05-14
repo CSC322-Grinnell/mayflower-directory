@@ -18,8 +18,10 @@ Address: <%= person.address %> <br/>
 Spouse: <%= person.spouse %> <br/>
 <% if current_user.admin %>
  <%= link_to "edit", "/profiles/" + person.id.to_s + "/edit"  %>
- | <%= link_to "delete", @user, method: :delete,
-                                data: { confirm: "Are you sure?" } %>
+<% end %>
+<% if current_user.admin %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
   <% end %>
 <br/>
 <br/>
