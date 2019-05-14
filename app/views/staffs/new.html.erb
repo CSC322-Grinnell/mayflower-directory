@@ -1,0 +1,20 @@
+<h1 class="center">Create Staff Profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form'%>
+
+    <!--This code is used for batch importing profile information from a CSV file-->
+    <!--The CSV must not have blank space at the end of the document, and column names -->
+    <!--must match those in the code-->
+    <!--Profiles will be duplicated if uploaded more than once-->
+    <!--<div>-->
+    <!--  <h3>Import a CSV File</h3>-->
+    <!--  <%= form_tag import_profiles_path, multipart: true do %>-->
+    <!--    <%= file_field_tag :file %>-->
+    <!--    <%= submit_tag "Import CSV" %>-->
+    <!--  <% end %>-->
+    <!--</div>-->
+
+  </div>
+</div>

@@ -37,15 +37,8 @@
     <p>No results. Try searching for something else.</p>
   <% else %>
     <% @results.each do |profile| %>
-      <a class="profile" href="<%= profile_path profile %>">
-        <div class="profile__picture-wrapper">
-          <img class="profile__picture"
-               src="<%= avatar_url profile %>">
-        </div>
-        <h2 class="profile__name">
-          <%= full_name profile %>
-        </h2>
-      </a>
+      <%= render partial: "layouts/profile_cardview", locals: {title: full_name(profile), url: profile_path(profile), img: avatar_url(profile)} %>
+
     <% end %>
   <% end %>
 </main>

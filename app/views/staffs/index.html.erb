@@ -1,0 +1,20 @@
+<% provide(:title, 'Staff Directory') %>
+<h1 class="center">Staff Profiles</h1>
+
+<section>
+  <div class="btns-bar">
+    <center>
+      <%= link_to 'Create Staff', new_staff_path, class: "btn btn-primary btn-medium" %>
+    </center>
+  </div>
+</section>
+
+<main class="pictures">
+  <% if @results.blank? %>
+    <p>No results.</p>
+  <% else %>
+    <% @results.each do |profile| %>
+      <%= render partial: "layouts/profile_cardview", locals: {title: profile[:name], url: profile[:link], img: profile[:image_url]} %>
+    <% end %>
+  <% end %>
+</main>

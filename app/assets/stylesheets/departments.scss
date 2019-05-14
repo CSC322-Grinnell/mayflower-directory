@@ -4,6 +4,7 @@
 
 .dept-div--contact {
   background-color: #f6f6f6;
+  height: 100%;
   padding-bottom: 50px;
 }
 
@@ -11,20 +12,38 @@
   padding-left: 20px;
 }
 
-.dept-info {
-  margin-top: 10px;
+.dept-div--profile {
+  background-color: #f6f6f6;
+  margin: 5px 0px 3px 0px;
+  width: 260px;
+  padding-bottom: 10px;
+  display: inline-block;
+  justify-content: center;
+
+  a {
+    color: white;
+  }
 }
 
-.staff-profile {
-  background-color: #f6f6f6;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: white;
-  min-height: 150px;
-  margin: 5px 0px 10px 00px;
+.dept-div--profile:hover {
+  a{
+    text-decoration: none;
+
+  }
+}
+
+.dept-div--profile_picture {
+  max-width:250px;
+  max-height:300px;
+  width: auto;
+  height: auto;
 }
 
 .staff-profile:hover {
   border: 2px solid #860601;
   color: #860601;
+}
+
+.service-btn--remove > a {
+    color: white;
 }

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :services
   resources :departments
+  resources :staffs
 
   get 'password_resets/new'
   get 'password_resets/edit'
@@ -17,7 +18,15 @@ Rails.application.routes.draw do
   resources :profiles do
     collection { post :import }
   end
-
+  
+  # We might not need this
+  resources :departments do
+    member do
+      get :services, :staffs 
+    end
+  end
+  
+  resources :join_staff_departments, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

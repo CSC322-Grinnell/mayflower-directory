@@ -17,8 +17,8 @@
         <h2><%= f.label :picture %></h2>
         <p2>(Add or replace the department picture)</p2>
         <%= f.file_field :picture, class: 'form-control' %>
-        <%= f.hidden_field :picture_cache %>
-        
+        <!-- %= f.hidden_field :picture_cache % -->
+
       	<h2><%= f.label :description %></h2>
       	<%= f.text_area :description, class: 'form-control', placeholder: 'Enter description', size: '50x10'%>
 
@@ -27,15 +27,34 @@
           <%= f.fields_for :services do |service|%>
           <%= render 'service_fields', :f => service %>
           <% end %>
-        </ul>
         <div class='links btns-bar'>
           <%= link_to_add_association 'Add Service', f, :services, class:"btn btn-medium btn-primary"%>
         </div>
+        </ul>
+        
+        <section>
 
-        <!-- TODO: Implement me
-        	<h2>Staff</h2>
-            <p> Not implemented</p>
-        -->
+    	    <h2>Staff</h2>
+
+
+          <% @department.staffs.each do |staff| %>
+            <div class="dept-div--profile">
+              <%= render partial: "layouts/profile_cardview", locals: {title: staff.first_name + " " + staff.last_name, url: staff_path(staff.id), img: staff.avatar.url} %>
+              <center>
+                <a href=<%= edit_staff_path(staff.id) %> class="btn btn-alert">Remove Association</a>
+              </center>
+            </div>
+          <% end %>
+
+
+          <div class="dept-div--profile">
+            <%= render partial: "layouts/profile_cardview", locals: {title: "Add New", url: staffs_path, img: "icon_add.png"} %>
+            <center>
+                <a href="" class="btn "></a> <!-- placeholder to keep the button from floating -->
+              </center>
+          </div>
+
+    </section>
 
       </div>
       <div class="clear" style="clear: both">
