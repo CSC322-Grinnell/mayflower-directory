@@ -5,7 +5,7 @@
 
 <div class="btns-bar">
   <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
-    <%= f.label " Search for resident:", class: "col control-label" %>
+    <p class="col control-label bold"> Search for resident:</p>
     <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
                       placeholder: 'Enter name' %>
 
