@@ -39,8 +39,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
+
   # devise mailer environ
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  unless ENV['RAILS_ENABLE_TEST_LOG']
+    config.log_level = :warn
+  end
 end

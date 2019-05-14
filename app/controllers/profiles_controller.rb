@@ -8,23 +8,7 @@ class ProfilesController < ApplicationController
 
   def index
     @search = Profile.ransack(params[:q])
-
-    all_results = @search.result.order("last_name ASC, first_name ASC")
-
-    bucket = get_bucket
-    @results = all_results.map do |profile|
-      if profile.nickname.present?
-        name = "#{profile.nickname} #{profile.last_name} (#{profile.first_name})"
-      else
-        name = "#{profile.first_name}, #{profile.last_name}"
-      end
-
-      {
-        :name => name,
-        :image_url => profile_image(profile, bucket),
-        :link => profile_path(profile.id)
-      }
-    end
+    @results = @search.result.order("last_name ASC, first_name ASC")
   end
 
   def new
@@ -33,7 +17,6 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = Profile.find(params[:id])
-    @image_url = profile_image(@user, get_bucket)
   end
 
   def search
@@ -41,39 +24,30 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = Profile.find(params[:id])
-    if @user.update_attributes(profile_params)
+    profile = Profile.find(params[:id])
+    if profile.update_attributes(profile_params)
+      CacheProfileAvatarService.new.refresh!(profile)
       flash[:success] = "Profile updated"
-      redirect_to profile_path(@user.id)
+      redirect_to profile_path(profile)
     else
       render 'edit'
     end
   end
 
   def create
-    puts "*** CREATING A NEW PROFILE ****"
-    puts "Params object:" + profile_params.to_s
-    puts "Params hash:  " + profile_params.to_unsafe_h.to_s
-    avatar = profile_params.delete(:avatar)
-    puts "Avatar:       " + avatar.to_s
-
-    @user = Profile.new(profile_params)
-    #puts "User is "
-    #puts @user.to_s
-    if @user.save
-      flash[:notice] = "Profile sucessfully added"
-      redirect_to '/profiles/' + @user[:id].to_s
+    profile = Profile.new(profile_params)
+    if profile.save
+      CacheProfileAvatarService.new.refresh!(profile)
+      flash[:success] = "Profile created"
+      redirect_to profile_path(profile)
     else
-      puts "** Could not save profile"
-      puts @user.errors.full_messages
-      flash[:notice] = "there was a problem creating the new profile"
-      redirect_to '/profiles/new'
+      flash[:notice] = "There was a problem creating the new profile"
+      redirect_to new_profile_path
     end
   end
 
   def show
     @profile = Profile.find(params[:id])
-    @image_url = profile_image(@profile, get_bucket)
   end
 
   def display
@@ -97,50 +71,5 @@ class ProfilesController < ApplicationController
         :first_name, :last_name, :nickname, :landline, :cell, :email, :address,
         :neighborhood, :spouse, :biography, :avatar
       )
-    end
-
-    def get_bucket
-      s3 = Aws::S3::Resource.new(
-        region: 'us-east-2',
-        credentials: Aws::Credentials.new(
-          ENV['AWS_ACCESS_KEY_ID'],
-          ENV['AWS_SECRET_ACCESS_KEY']
-        )
-      )
-
-      s3.bucket('mayflower-data')
-    end
-
-    def profile_image(profile, bucket)
-      folder_name = "images"
-      base_filename = "#{profile.last_name}, #{profile.first_name}"
-      png_filename = "#{base_filename}.png"
-      jpg_filename = "#{base_filename}.jpg"
-      default_url = view_context.image_url("default_profile_photo.jpg")
-
-      begin
-        if not profile.avatar.file.nil?
-          return profile.avatar.url
-        elsif bucket.object(File.join(folder_name, jpg_filename)).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(jpg_filename)
-          return uploader.url
-        elsif bucket.object(File.join(folder_name, png_filename)).exists?
-          uploader = AvatarUploader.new
-          uploader.retrieve_from_store!(png_filename)
-          return uploader.url
-        else
-          return default_url
-        end
-      rescue Aws::S3::Errors::BadRequest
-        return default_url
-      end
-    end
-
-    def profile_name(profile)
-      if (profile.nickname.blank?)
-        return profile.last_name + ", " + profile.first_name
-      end
-      return profile.last_name + ", " + profile.nickname + ", (" + profile.first_name + ")"
     end
 end

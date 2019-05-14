@@ -4,32 +4,32 @@
 <p id="notice"><%= notice %></p>
 
 <div class="btns-bar">
-<%= search_form_for @search, url: "", class: "directory-search" do |f| %>
-  <%= f.label "Search for resident:", class: "col control-label" %>
-  <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
-                     placeholder: 'Enter name' %>
-  <div class="directory-search__controls">
-    <div class="directory-search__neighborhood">
-      <%= f.label "Neighborhood",
-                  class: "col control-label directory-search__neighborhood-label" %>
-      <%= f.collection_select(:neighborhood_eq,
-        Profile.select(:neighborhood).uniq.order(:neighborhood),
-        :neighborhood, :neighborhood, include_blank: true) %>
-    </div>
-    <div class="directory-search__button-container">
-      <%= f.submit "Search", class: "directory-search__button" %>
-      <a class="directory-search__button directory-search__button--reset"
-         href="<%= profiles_path %>">
-        Reset
-      </a>
-      <% if current_user.admin %>
-       <a class="directory-search__button directory-search__button" href="<%= new_user_registration_path %>">
-          Create Profile
+  <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
+    <%= f.label "Search for resident:", class: "col control-label" %>
+    <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
+                      placeholder: 'Enter name' %>
+    <div class="directory-search__controls">
+      <div class="directory-search__neighborhood">
+        <%= f.label "Neighborhood",
+                    class: "col control-label directory-search__neighborhood-label" %>
+        <%= f.collection_select(:neighborhood_eq,
+          Profile.select(:neighborhood).uniq.order(:neighborhood),
+          :neighborhood, :neighborhood, include_blank: true) %>
+      </div>
+      <div class="directory-search__button-container">
+        <%= f.submit "Search", class: "directory-search__button" %>
+        <a class="directory-search__button directory-search__button--reset"
+          href="<%= profiles_path %>">
+          Reset
         </a>
-    <% end %>
+        <% if current_user.admin %>
+        <a class="directory-search__button directory-search__button" href="<%= new_profile_path %>">
+            Create Profile
+          </a>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
 
 <main class="pictures">
@@ -37,7 +37,8 @@
     <p>No results. Try searching for something else.</p>
   <% else %>
     <% @results.each do |profile| %>
-      <%= render partial: "layouts/profile_cardview", locals: {title: profile[:name], url: profile[:link], img: profile[:image_url]} %>
+      <%= render partial: "layouts/profile_cardview", locals: {title: full_name(profile), url: profile_path(profile), img: avatar_url(profile)} %>
+
     <% end %>
   <% end %>
 </main>
