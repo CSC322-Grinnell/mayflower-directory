@@ -11,11 +11,6 @@ class DepartmentsControllerTest < ActionDispatch::IntegrationTest
       contact: "Uttam Dhillon",
       description: "The only things that can legally smoke are our M4s and MK5"
     }
-    @irs = {
-      name: "Internal Revenue Services",
-      contact: "Charles P. Rettig",
-      description: "Shut up and let me take your money"
-    }
   end
 
   test "should load departments landing page as user" do
@@ -43,7 +38,7 @@ class DepartmentsControllerTest < ActionDispatch::IntegrationTest
 
     get new_department_path
     follow_redirect!
-    assert_equal departments_path, path
+    assert_equal root_path, path
   end
 
   test "should allow admin edit department" do
@@ -61,14 +56,13 @@ class DepartmentsControllerTest < ActionDispatch::IntegrationTest
   test "should not allow user edit a department" do
     login_as(users(:normal))
     department = departments(:irs)
+    old_attributes = department.attributes
 
     put department_path(department), params: { department: @dea }
     department.reload
     # maybe this will throw an error before assertion
 
-    @irs.each do |key, value|
-      assert_equal value, department[key]
-    end
+    assert_equal old_attributes, department.attributes 
   end
 
   test "should allow admin remove a department" do
