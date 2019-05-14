@@ -26,6 +26,13 @@
 
     <h2>Contact Information</h2>
 
+
+    <% if @staff.title.present? %>
+    <section>
+      <p class="bold">Title: <%= @staff.title %> </a></p>
+    </section>
+    <% end %>
+
     <% if @staff.email.present? %>
     <section>
       <p class="bold">Email: <a href="mailto:<%= @staff.email %>"> <%= @staff.email %> </a></p>
