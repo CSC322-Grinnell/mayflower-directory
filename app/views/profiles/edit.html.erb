@@ -7,6 +7,11 @@
        <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
 
+      <%= f.label "Profile Picture" %>
+      <%= f.file_field :avatar,
+                       class: 'profile-form__avatar-input form-control' %>
+      <%= f.hidden_field :avatar_cache %>
+
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'form-control', placeholder: 'Enter first name' %>
 
