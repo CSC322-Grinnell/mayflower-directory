@@ -8,7 +8,7 @@
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-horizontal", style="text-align:left">
         <div class="form-group">
-          <%= f.label :avatar %>
+          <%= f.label "Profile Picture" %>
           <%= f.file_field :avatar,
                            class: 'profile-form__avatar-input form-control' %>
           <%= f.hidden_field :avatar_cache %>
