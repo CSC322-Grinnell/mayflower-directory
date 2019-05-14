@@ -6,6 +6,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
+
+  # Override the directory where uploaded files will be stored.
   def store_dir
     'images'
   end
@@ -45,10 +47,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
     /image\//
   end
 
-
   # blacklisting some stuff thats not images
   def content_type_blacklist
     ['application/text', 'application/json']
   end
+
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "something.jpg" if original_filename
+  # end
 
 end
