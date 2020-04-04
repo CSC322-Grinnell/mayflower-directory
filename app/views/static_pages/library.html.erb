@@ -3,13 +3,36 @@
   <a href=<%= home_path %>>Resources</a> > Library
 </p>
 
+<!-- For normal user, show link only -->
+<% if !current_user.admin %>
 <h2>Book List by Author</h2>
-<a class="library-link" href="https://drive.google.com/file/d/1jluwHFk_KQ4wSf0OnX8Cg5-ujuCiq1g5/view?usp=sharing">Click this for list by author</a>
+<%= link_to "Click this for list by author", @library_link.list_by_author %>
 
 <h2>Book List by Title</h2>
-<a class="library-link" href="https://drive.google.com/file/d/1CPT7nY94q1PJPe_jktP2uHLV1yPz5TNf/view?usp=sharing">Click this for list by book title</a>
+<%= link_to "Click this for list by author", @library_link.list_by_title %>
 
 <h2>Mayflower Browsing Collection Locations</h2>
-<a class="library-link" href="https://drive.google.com/file/d/1bEQCueAYYbPc4foTfqiV3yEXKM5AyXEh/view?usp=sharing">Click this for Mayflower Browsing Collection locations</a>
+<%= link_to "Click this for Mayflower Browsing Collection locations", @library_link.browing_collection %>
+<% end %>
 
-<p class="library-last_edited">List last edited on: April 12, 2019</p>
+<!-- For admin, show field for it to edit links -->
+<% if current_user.admin %>
+  <h2>Update Library Links</h2>
+  <h5>(Make sure to include https://)</h5>
+  <%= form_for @library_link, :url => 'library' do |f| %>
+    <%= f.label :list_by_author, "List By Author", class: "h3" %>
+    <%= f.text_field :list_by_author, class: 'form-control' %>
+    <br>
+    <%= f.label :list_by_title, "List By Title", class: "h3" %>
+    <%= f.text_field :list_by_title, class: 'form-control' %>
+    <br>
+    <%= f.label :browing_collection, "Browsing Collection" , class: "h3"%>
+    <%= f.text_field :browing_collection, class: 'form-control' %>
+    <br>
+    <center>
+      <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+    </center>
+  <% end %>
+<% end %>
+
+<p class="library-last_edited">List last edited on: <%= @library_link.updated_at %></p>

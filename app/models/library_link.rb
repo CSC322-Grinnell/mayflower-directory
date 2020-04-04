@@ -1,0 +1,2 @@
+class LibraryLink < ApplicationRecord
+end
