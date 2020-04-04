@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507133619) do
+ActiveRecord::Schema.define(version: 20200404022019) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20190507133619) do
     t.index ["department_id", "staff_id"], name: "index_join_staff_departments_on_department_id_and_staff_id", unique: true
     t.index ["department_id"], name: "index_join_staff_departments_on_department_id"
     t.index ["staff_id"], name: "index_join_staff_departments_on_staff_id"
+  end
+
+  create_table "library_links", force: :cascade do |t|
+    t.string   "list_by_title"
+    t.string   "list_by_author"
+    t.string   "browing_collection"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "profiles", force: :cascade do |t|

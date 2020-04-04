@@ -10,6 +10,10 @@
 # This is how we are making the admin, an admin. Add with the same format if you would like to make a new admin.
 user = User.create! :email => 'mayflower-directory@protonmail.com', :password => 'IowaDynamiteTrucker1!', :password_confirmation => 'IowaDynamiteTrucker1!', :admin =>true
 
+# These are the default library links
+lirarylink = LibraryLink.create! :list_by_title => 'https://drive.google.com/file/d/1jluwHFk_KQ4wSf0OnX8Cg5-ujuCiq1g5/view?usp=sharing',
+                                 :list_by_author => 'https://drive.google.com/file/d/1jluwHFk_KQ4wSf0OnX8Cg5-ujuCiq1g5/view?usp=sharing',
+                                 :browing_collection => 'https://drive.google.com/file/d/1bEQCueAYYbPc4foTfqiV3yEXKM5AyXEh/view?usp=sharing'
 
 require 'csv'
 s3 = Aws::S3::Resource.new(
