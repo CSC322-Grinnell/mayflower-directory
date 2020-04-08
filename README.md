@@ -43,7 +43,12 @@
 * Zander Otavka
 
 #### Spring 2020
-* Names!
+* Yilan Dong
+* Nannan Ji
+* Aabid Shamji
+* Jeremy Sparagon
+* Marty Toney
+* Kandice Wu
    
 **Please contact a previous team member for links, passwords &/or invitations. (Trello, Slack, Heroku App)**
     
