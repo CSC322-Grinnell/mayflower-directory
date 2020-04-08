@@ -27,7 +27,19 @@ class StaticPagesController < ApplicationController
   end
 
   def library
+    @library_link = LibraryLink.order('id').first
+    if(!params[:library_link].nil?)
+      if @library_link.update_attributes(:list_by_title => params[:library_link][:list_by_title],
+                                        :list_by_author => params[:library_link][:list_by_author],
+                                        :browing_collection => params[:library_link][:browing_collection])
+        flash[:success] = "Successful Update!"
+      # Handle a successful update
+      else
+        flash[:notice] = "Update unsuccessful! Please contact maintenance team for help."
+      end
+    end
   end
+
 
   # def search
   #   if current_user.newUser != false

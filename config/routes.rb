@@ -14,18 +14,19 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help'
   get 'departments', to: 'static_pages#departments'
   get 'resources/library', to: 'static_pages#library'
+  patch '/resources/library', to: 'static_pages#library'
 
   resources :profiles do
     collection { post :import }
   end
-  
+
   # We might not need this
   resources :departments do
     member do
-      get :services, :staffs 
+      get :services, :staffs
     end
   end
-  
+
   resources :join_staff_departments, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -52,4 +53,3 @@ Rails.application.routes.draw do
 
 
 end
-

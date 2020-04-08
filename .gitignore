@@ -28,3 +28,6 @@ MayflowerEmailPW.csv
 
 #Ignore aws credentials
 /.aws/credentials
+
+#Ignore rmv files
+.ruby-version

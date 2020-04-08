@@ -1,0 +1,22 @@
+<h1 class="center">Library</h1>
+<p class="center">
+  <a href=<%= home_path %>>Resources</a> > Library
+</p>
+
+<h2>Update Library List</h2>
+<% if current_user.admin %>
+  <%= form_for @library_link, :url => 'library' do |f| %>
+    <%= f.label :list_by_author, "List By Author" %>
+    <%= f.text_field :list_by_author, class: 'form-control' %>
+    <br>
+    <%= f.label :list_by_title, "List By Title" %>
+    <%= f.text_field :list_by_title, class: 'form-control' %>
+    <br>
+    <%= f.label :browing_collection, "Browsing Collection" %>
+    <%= f.text_field :browing_collection, class: 'form-control' %>
+    <br>
+    <center>
+      <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+    </center>
+  <% end %>
+<% end %>
