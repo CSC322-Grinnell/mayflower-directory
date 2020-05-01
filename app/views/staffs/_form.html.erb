@@ -33,7 +33,7 @@
 
           <%= f.label :bio %>
           <%= f.text_area :bio, class: 'form-control', placeholder: 'Enter biography',id: "word_count", size: '50x10'%>
-          <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 250</i></p>
+          <p style="text-align:right"><i>Current word count: <span id="display_count">0</span> / 500</i></p>
         </div>
       </div>
           <section>
@@ -54,15 +54,15 @@ $(document).ready(function() {
   $("#word_count").on('keyup', function() {
     var words = this.value.match(/\S+/g).length;
 
-    if (words > 250) {
-      // Split the string on first 200 words and rejoin on spaces
-      var trimmed = $(this).val().split(/\s+/, 250).join(" ");
+    if (words > 500) {
+      // Split the string on first 500 words and rejoin on spaces
+      var trimmed = $(this).val().split(/\s+/, 500).join(" ");
       // Add a space at the end to make sure more typing creates new words
       $(this).val(trimmed + " ");
     }
     else {
       $('#display_count').text(words);
-      $('#word_left').text(250-words);
+      $('#word_left').text(500-words);
     }
   });
 });
