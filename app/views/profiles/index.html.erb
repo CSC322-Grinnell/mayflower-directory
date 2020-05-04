@@ -7,7 +7,7 @@
   <%= search_form_for @search, url: "", class: "directory-search" do |f| %>
     <p class="col control-label bold"> Search for resident:</p>
     <%= f.search_field :full_name_or_nickname_cont, class: "form-control",
-                      placeholder: 'Enter name' %>
+                      autofocus:true, placeholder: 'Enter name' %>
 
     <div class="directory-search__controls">
 
