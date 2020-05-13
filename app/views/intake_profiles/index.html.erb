@@ -1,0 +1,20 @@
+<% provide(:title, 'Pending new profiles') %>
+
+<h1 class="center">New profiles, pending intake tasks</h1>
+
+<% @intake_profiles.each do |profile| %>
+    <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
+    <p><%= @profile.phone %></p>
+    <p>
+        <input type="checkbox" id="waiver_signed" name="waiver_signed" checked="<%= @profile.waiver_signed %>">
+        <label for="waiver_signed">Waiver signed?</label> &emsp;
+        <input type="checkbox" id="waiver_processed" name="waiver_processed" checked="<%= @profile.waiver_processed %>">
+        <label for="waiver_processed">Waiver processed?</label> &emsp;
+        <input type="checkbox" id="bio_submitted" name="bio_submitted" checked="<%= @profile.bio_submitted %>">
+        <label for="bio_submitted">Bio submitted? (500W max)</label> &emsp;
+        <input type="checkbox" id="picture_submitted" name="picture_submitted" checked="<%= @profile.picture_submitted %>">
+        <label for="picture_submitted">Picture submitted?</label> &emsp;
+        <input type="checkbox" id="profile_done" name="profile_done" checked="<%= @profile.profile_done %>">
+        <label for="profile_done"><b>Profile live?<b></label> &emsp;
+    </p>
+<% end %>
