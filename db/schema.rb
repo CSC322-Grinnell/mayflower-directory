@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200404022019) do
+ActiveRecord::Schema.define(version: 20200513013500) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20200404022019) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "picture"
+  end
+
+  create_table "intake_profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "waiver_signed"
+    t.boolean  "waiver_processed"
+    t.boolean  "bio_submitted"
+    t.boolean  "picture_submitted"
+    t.boolean  "profile_done"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "join_staff_departments", force: :cascade do |t|

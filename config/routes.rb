@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'resources/library', to: 'static_pages#library'
   patch '/resources/library', to: 'static_pages#library'
 
+  get 'intake', to: 'intake_profiles#index'
+
   resources :profiles do
     collection { post :import }
   end

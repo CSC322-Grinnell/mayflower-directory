@@ -3,18 +3,24 @@
 <h1 class="center">New profiles, pending intake tasks</h1>
 
 <% @intake_profiles.each do |profile| %>
-    <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
-    <p><%= @profile.phone %></p>
+    <h3><%= profile.first_name %> <%= profile.last_name %></h3>
+    <p><%= profile.phone %></p>
     <p>
-        <input type="checkbox" id="waiver_signed" name="waiver_signed" checked="<%= @profile.waiver_signed %>">
+        <input type="checkbox" id="waiver_signed" name="waiver_signed" 
+            <% if profile.waiver_signed%>checked<%end%> >
         <label for="waiver_signed">Waiver signed?</label> &emsp;
-        <input type="checkbox" id="waiver_processed" name="waiver_processed" checked="<%= @profile.waiver_processed %>">
+        <input type="checkbox" id="waiver_processed" name="waiver_processed"
+            <% if profile.waiver_processed%>checked<%end%> >
         <label for="waiver_processed">Waiver processed?</label> &emsp;
-        <input type="checkbox" id="bio_submitted" name="bio_submitted" checked="<%= @profile.bio_submitted %>">
+        <input type="checkbox" id="bio_submitted" name="bio_submitted"
+            <% if profile.bio_submitted%>checked<%end%> >
         <label for="bio_submitted">Bio submitted? (500W max)</label> &emsp;
-        <input type="checkbox" id="picture_submitted" name="picture_submitted" checked="<%= @profile.picture_submitted %>">
-        <label for="picture_submitted">Picture submitted?</label> &emsp;
-        <input type="checkbox" id="profile_done" name="profile_done" checked="<%= @profile.profile_done %>">
+        <input type="checkbox" id="picture_submitted" name="picture_submitted" 
+            <% if profile.picture_submitted%>checked<%end%> >
+        <label for="picture_submitted">Picture submitted?</label> <br>
+        <input type="checkbox" id="profile_done" name="profile_done"
+            <% if profile.profile_done%>checked<%end%> >
         <label for="profile_done"><b>Profile live?<b></label> &emsp;
     </p>
+    <br><br>
 <% end %>
