@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby "2.7.1"
 
 #Gem for getting stuff from AWS
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 #minimagick gem
 gem "mini_magick"
